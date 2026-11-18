@@ -1,0 +1,352 @@
+{
+  "version": "3.1.0",
+  "last_updated": "2026-11-18T13:26:11.826759+09:00",
+  "domain": "historical_art_and_literature_masters",
+  "federation_target": "Let's Art (렛츠아트 독립 출자 사전 원장)",
+  "total_masters_indexed": 4875,
+  "categories": {
+    "fine_art_masters": {
+      "name": "세계 미술사 거장 (화가·조각가)",
+      "count": 2640,
+      "movements": [
+        "르네상스",
+        "바로크",
+        "로코코",
+        "신고전주의",
+        "낭만주의",
+        "사실주의",
+        "인상주의",
+        "후기인상주의",
+        "입체주의",
+        "초현실주의"
+      ]
+    },
+    "literature_masters": {
+      "name": "세계 대문호 (소설가·시인·극작가)",
+      "count": 1720,
+      "eras": [
+        "고대·중세 서사시",
+        "르네상스 휴머니즘",
+        "계몽주의",
+        "낭만주의",
+        "사실주의·자연주의",
+        "모더니즘",
+        "실존주의"
+      ]
+    },
+    "classical_music_and_architecture": {
+      "name": "클래식 작곡가 및 역사적 건축 거장",
+      "count": 490
+    }
+  },
+  "featured_masters": [
+    {
+      "id": "artist_vincent_van_gogh",
+      "urn": "urn:people:person:historical:vincent_van_gogh",
+      "art_urn": "urn:art:artist:vincent_van_gogh",
+      "name_kr": "빈센트 반 고흐",
+      "name_en": "Vincent van Gogh",
+      "name_orig": "Vincent Willem van Gogh",
+      "lifespan": "1853 ~ 1890 (향년 37세)",
+      "nationality": "네덜란드",
+      "movement": "후기 인상주의 (Post-Impressionism)",
+      "category": "fine_art_masters",
+      "profile_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Vincent_van_Gogh_-_Self-Portrait_-_Google_Art_Project_%284bzkTuFG9Gswjw%29.jpg/600px-Vincent_van_Gogh_-_Self-Portrait_-_Google_Art_Project_%284bzkTuFG9Gswjw%29.jpg",
+      "summary": "강렬한 색채와 율동적인 붓터치로 인간 내면의 고뇌와 영혼의 빛을 화폭에 담아낸 서양 미술사상 가장 위대한 천재 화가.",
+      "major_works": [
+        {
+          "work_id": "work_starry_night",
+          "title_kr": "별이 빛나는 밤",
+          "title_en": "The Starry Night",
+          "year": 1889,
+          "medium": "캔버스에 유채 (Oil on canvas, 73.7 x 92.1 cm)",
+          "museum": "뉴욕 근대미술관 (MoMA, New York)",
+          "museum_access_api": "moma_open_collection",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1280px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg",
+          "background_story": "생레미의 생폴 드 모졸 정신병원에서 고통과 불안 속에서도 밤하늘의 소용돌이치는 별빛을 통해 초월적 영성을 구현한 불후의 명작."
+        },
+        {
+          "work_id": "work_sunflowers",
+          "title_kr": "해바라기",
+          "title_en": "Sunflowers",
+          "year": 1888,
+          "medium": "캔버스에 유채 (92.1 x 73 cm)",
+          "museum": "런던 내셔널 갤러리 (National Gallery, London)",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Vincent_van_Gogh_%281853-1890%29_Sunflowers_1888.jpg/1024px-Vincent_van_Gogh_%281853-1890%29_Sunflowers_1888.jpg",
+          "background_story": "남프랑스 아를의 노란 집에서 친구 폴 고갱을 맞이하기 위해 그린 찬란한 우정의 상징."
+        },
+        {
+          "work_id": "work_cafe_terrace_at_night",
+          "title_kr": "밤의 카페 테라스",
+          "title_en": "Café Terrace at Night",
+          "year": 1888,
+          "medium": "캔버스에 유채",
+          "museum": "크뢸러 뮐러 미술관 (Kröller-Müller Museum)",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Vincent_Willem_van_Gogh_-_Cafe_Terrace_at_Night_%28Yorck%29.jpg/1024px-Vincent_Willem_van_Gogh_-_Cafe_Terrace_at_Night_%28Yorck%29.jpg",
+          "background_story": "검은색 물감을 일절 쓰지 않고 푸른 밤하늘과 노란 불빛의 보색 대비만으로 온기 넘치는 밤풍경을 완성."
+        }
+      ],
+      "artistic_lineage": {
+        "influenced_by": [
+          "밀레 (Jean-François Millet)",
+          "외젠 들라크루아 (Eugène Delacroix)",
+          "일본 우키요에 (Ukiyo-e) 목판화"
+        ],
+        "contemporaries_and_allies": [
+          "폴 고갱 (Paul Gauguin - 아를 예술가 공동체)",
+          "에밀 베르나르",
+          "동생 테오 반 고흐 (Theo van Gogh - 평생의 후원자이자 영혼의 동반자)"
+        ],
+        "influenced": [
+          "앙리 마티스 (야수파 포비즘)",
+          "에드바르 뭉크 (표현주의)"
+        ]
+      },
+      "famous_quote": "나는 그림을 꿈꾸고, 그 꿈을 그린다. (I dream my painting and I paint my dream.)"
+    },
+    {
+      "id": "artist_leonardo_da_vinci",
+      "urn": "urn:people:person:historical:leonardo_da_vinci",
+      "art_urn": "urn:art:artist:leonardo_da_vinci",
+      "name_kr": "레오나르도 다 빈치",
+      "name_en": "Leonardo da Vinci",
+      "name_orig": "Leonardo di ser Piero da Vinci",
+      "lifespan": "1452 ~ 1519 (향년 67세)",
+      "nationality": "이탈리아 (피렌체 공화국)",
+      "movement": "르네상스 전성기 (High Renaissance)",
+      "category": "fine_art_masters",
+      "profile_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Leonardo_self.jpg/600px-Leonardo_self.jpg",
+      "summary": "회화, 조각, 해부학, 광학, 공학, 비행체 설계 등 전 인류 지성사에서 가장 찬란한 천재성을 발휘한 르네상스 만능인(Homo Universalis).",
+      "major_works": [
+        {
+          "work_id": "work_mona_lisa",
+          "title_kr": "모나리자 (라 조콘다)",
+          "title_en": "Mona Lisa",
+          "year": 1503,
+          "medium": "포플러 판넬에 유채 (77 x 53 cm)",
+          "museum": "파리 루브르 박물관 (Musée du Louvre, Paris)",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/1024px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg",
+          "background_story": "윤곽선을 부드럽게 흐리는 스푸마토(Sfumato) 기법의 정점이자, 불멸의 신비로운 미소로 인류 예술의 정점에 선 초상화."
+        },
+        {
+          "work_id": "work_the_last_supper",
+          "title_kr": "최후의 만찬",
+          "title_en": "The Last Supper",
+          "year": 1498,
+          "medium": "템페라 및 유채 벽화 (460 x 880 cm)",
+          "museum": "밀라노 산타 마리아 델레 그라치에 성당 (Milan)",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/%C3%9Altima_Cena_-_Da_Vinci_5.jpg/1280px-%C3%9Altima_Cena_-_Da_Vinci_5.jpg",
+          "background_story": "예수가 \"너희 중 하나가 나를 배신할 것이다\"라고 선언한 직후 12제자의 충격과 심리적 요동을 완벽한 원근법 구도로 극화."
+        }
+      ],
+      "artistic_lineage": {
+        "mentor": "안드레아 델 베로키오 (Andrea del Verrocchio 공방 도제)",
+        "contemporaries": [
+          "미켈란젤로 부오나로티 (라이벌)",
+          "라파엘로 산치오"
+        ],
+        "patrons": [
+          "로렌초 데 메디치",
+          "루도비코 스포르차",
+          "체사레 보르자",
+          "프랑수아 1세 (프랑스 국왕)"
+        ]
+      },
+      "famous_quote": "배움은 결코 마음을 지치게 하지 않는다. (Learning never exhausts the mind.)"
+    },
+    {
+      "id": "artist_claude_monet",
+      "urn": "urn:people:person:historical:claude_monet",
+      "art_urn": "urn:art:artist:claude_monet",
+      "name_kr": "클로드 모네",
+      "name_en": "Claude Monet",
+      "name_orig": "Oscar-Claude Monet",
+      "lifespan": "1840 ~ 1926 (향년 86세)",
+      "nationality": "프랑스",
+      "movement": "인상주의 (Impressionism 창시자)",
+      "category": "fine_art_masters",
+      "profile_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Claude_Monet_1899_Nadar_crop.jpg/600px-Claude_Monet_1899_Nadar_crop.jpg",
+      "summary": "빛의 마술사이자 인상파의 창시자. 시시각각 변화하는 빛과 대기의 찰나를 야외(En plein air)에서 캔버스에 영원히 포착한 화가.",
+      "major_works": [
+        {
+          "work_id": "work_impression_sunrise",
+          "title_kr": "인상, 해돋이",
+          "title_en": "Impression, Sunrise",
+          "year": 1872,
+          "medium": "캔버스에 유채 (48 x 63 cm)",
+          "museum": "파리 마르모탕 모네 미술관 (Musée Marmottan Monet)",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Monet_-_Impression%2C_Sunrise.jpg/1280px-Monet_-_Impression%2C_Sunrise.jpg",
+          "background_story": "1874년 제1회 인상파 전시회 출품작으로, '인상주의'라는 사조 명칭이 탄생하게 된 역사적 기원의 작품."
+        },
+        {
+          "work_id": "work_water_lilies",
+          "title_kr": "수련 (수련 연작)",
+          "title_en": "Water Lilies (Nymphéas)",
+          "year": 1916,
+          "medium": "캔버스에 유채 (초대형 파노라마)",
+          "museum": "파리 오랑주리 미술관 (Musée de l'Orangerie)",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Claude_Monet_-_Water_Lilies_-_1919%2C_Metropolitan_Museum_of_Art.jpg/1280px-Claude_Monet_-_Water_Lilies_-_1919%2C_Metropolitan_Museum_of_Art.jpg",
+          "background_story": "지베르니 자택의 일본식 정원 연못에서 백내장으로 시력을 잃어가면서도 붓을 놓지 않고 완성한 빛과 수면의 대서사시."
+        }
+      ],
+      "artistic_lineage": {
+        "mentor": "외젠 부댕 (야외 풍경화의 눈을 뜨게 해준 스승)",
+        "allies": [
+          "피에르 오귀스트 르누아르",
+          "카미유 피사로",
+          "에드가 드가",
+          "알프레드 시슬레"
+        ],
+        "influenced": [
+          "현대 추상표현주의 (잭슨 폴록, 마크 로스코)"
+        ]
+      },
+      "famous_quote": "사람들은 내 작품을 이해하려 애쓰지만, 필요한 것은 오직 사랑하는 것뿐이다."
+    },
+    {
+      "id": "artist_pablo_picasso",
+      "urn": "urn:people:person:historical:pablo_picasso",
+      "art_urn": "urn:art:artist:pablo_picasso",
+      "name_kr": "파블로 피카소",
+      "name_en": "Pablo Picasso",
+      "name_orig": "Pablo Ruiz y Picasso",
+      "lifespan": "1881 ~ 1973 (향년 91세)",
+      "nationality": "스페인 / 프랑스 활동",
+      "movement": "입체주의 (Cubism 창시자)",
+      "category": "fine_art_masters",
+      "profile_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Pablo_picasso_1.jpg/600px-Pablo_picasso_1.jpg",
+      "summary": "20세기 현대 미술을 근본적으로 혁명한 거인. 단일 시점의 르네상스 원근법을 해체하고 다중 시점을 결합한 입체파의 창시자.",
+      "major_works": [
+        {
+          "work_id": "work_guernica",
+          "title_kr": "게르니카",
+          "title_en": "Guernica",
+          "year": 1937,
+          "medium": "캔버스에 유채 (349 x 776 cm 대벽화)",
+          "museum": "마드리드 레이나 소피아 국립미술관 (Museo Reina Sofía)",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Guernica_by_Pablo_Picasso.jpg/1280px-Guernica_by_Pablo_Picasso.jpg",
+          "background_story": "스페인 내전 당시 나치 독일 공군의 게르니카 무차별 폭격을 규탄하며 전쟁의 잔혹성과 인류애의 비극을 흑백 톤으로 고발한 20세기 최고의 반전 평화 걸작."
+        },
+        {
+          "work_id": "work_avignon_demoiselles",
+          "title_kr": "아비뇽의 처녀들",
+          "title_en": "Les Demoiselles d'Avignon",
+          "year": 1907,
+          "medium": "캔버스에 유채 (243.9 x 233.7 cm)",
+          "museum": "뉴욕 근대미술관 (MoMA, New York)",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Les_Demoiselles_d%27Avignon.jpg/1024px-Les_Demoiselles_d%27Avignon.jpg",
+          "background_story": "아프리카 가면 조각에서 영감을 받아 신체를 기하학적 파편으로 해체하며 서양 미술 500년 전통을 전복한 현대미술의 서막."
+        }
+      ],
+      "artistic_lineage": {
+        "collaborator": "조르주 브라크 (입체주의 공동 창시자)",
+        "influenced_by": [
+          "폴 세잔 (근대 회화의 아버지)",
+          "아프리카 원시 부족 가면 예술"
+        ],
+        "friendship_and_rivalry": "앙리 마티스"
+      },
+      "famous_quote": "모든 아이는 예술가다. 문제는 어른이 되어서도 예술가로 남는 것이다."
+    },
+    {
+      "id": "writer_william_shakespeare",
+      "urn": "urn:people:person:historical:william_shakespeare",
+      "art_urn": "urn:art:writer:william_shakespeare",
+      "name_kr": "윌리엄 셰익스피어",
+      "name_en": "William Shakespeare",
+      "lifespan": "1564 ~ 1616 (향년 52세)",
+      "nationality": "영국 (잉글랜드)",
+      "movement": "엘리자베스조 르네상스 문학 (English Renaissance)",
+      "category": "literature_masters",
+      "profile_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Shakespeare.jpg/600px-Shakespeare.jpg",
+      "summary": "영문학뿐만 아니라 인류 언어문화사의 최고봉. 인간 영혼의 가장 깊은 욕망, 질투, 비극, 사랑을 운율과 시적 언어로 완벽히 구현한 대극작가.",
+      "major_works": [
+        {
+          "work_id": "lit_hamlet",
+          "title_kr": "햄릿",
+          "title_en": "Hamlet",
+          "year": 1601,
+          "genre": "4대 비극 (Tragedy)",
+          "synopsis": "덴마크 왕자 햄릿이 부왕을 독살하고 어머니와 재혼한 숙부 클로디어스에게 복수를 결심하며 겪는 실존적 고뇌와 파멸의 비극.",
+          "famous_lines": "사느냐 죽느냐, 그것이 문제로다. (To be, or not to be, that is the question.)",
+          "character_map": [
+            "햄릿 (고뇌하는 왕자)",
+            "오필리어 (비극의 연인)",
+            "클로디어스 (찬탈자)",
+            "거트루드 (왕비)",
+            "레어티즈",
+            "폴로니어스"
+          ]
+        },
+        {
+          "work_id": "lit_romeo_and_juliet",
+          "title_kr": "로미오와 줄리엣",
+          "title_en": "Romeo and Juliet",
+          "year": 1597,
+          "genre": "비극적 로맨스",
+          "synopsis": "베로나의 원수 가문인 몬태규가의 로미오와 캐풀렛가의 줄리엣의 숭고하면서도 비극적인 운명적 사랑.",
+          "famous_lines": "아아 로미오, 로미오! 당신은 어찌하여 로미오인가요? (O Romeo, Romeo! wherefore art thou Romeo?)"
+        },
+        {
+          "work_id": "lit_macbeth",
+          "title_kr": "맥베스",
+          "title_en": "Macbeth",
+          "year": 1606,
+          "genre": "4대 비극",
+          "synopsis": "권력욕에 눈이 멀어 국왕을 살해하고 왕좌를 차지했으나, 끊임없는 죄책감과 환영에 시달리며 파멸해가는 인간 본성의 탐욕."
+        }
+      ],
+      "artistic_lineage": {
+        "theater": "런던 글로브 극장 (The Globe Theatre)",
+        "royal_patronage": [
+          "엘리자베스 1세 여왕",
+          "제임스 1세 국왕"
+        ],
+        "literary_impact": "현대 영어 어휘 1,700개 이상 신조 및 인류 서사 문학의 기본 뼈대 정립"
+      },
+      "famous_quote": "세상은 하나의 무대요, 모든 남녀는 배우에 불과하다. (All the world's a stage, and all the men and women merely players.)"
+    },
+    {
+      "id": "writer_johann_wolfgang_von_goethe",
+      "urn": "urn:people:person:historical:johann_wolfgang_von_goethe",
+      "art_urn": "urn:art:writer:johann_wolfgang_von_goethe",
+      "name_kr": "요한 볼프강 폰 괴테",
+      "name_en": "Johann Wolfgang von Goethe",
+      "lifespan": "1749 ~ 1832 (향년 82세)",
+      "nationality": "독일 (바이마르 공국)",
+      "movement": "질풍노도(Sturm und Drang) 및 바이마르 고전주의",
+      "category": "literature_masters",
+      "profile_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Goethe_%28Stieler_1828%29.jpg/600px-Goethe_%28Stieler_1828%29.jpg",
+      "summary": "독일 문학의 정점이자 세계 문학(Weltliteratur) 개념을 제창한 철인. 60년에 걸쳐 완성한 희곡 <파우스트>로 인간 구원의 지평을 연 거장.",
+      "major_works": [
+        {
+          "work_id": "lit_faust",
+          "title_kr": "파우스트 (1부 & 2부)",
+          "title_en": "Faust",
+          "year": 1808,
+          "genre": "비극 희곡 (Tragedy)",
+          "synopsis": "학문의 한계에 절망한 파우스트 박사가 악마 메피스토펠레스와 영혼을 건 계약을 맺고 세속의 쾌락과 권력을 탐닉하나, 끊임없이 지향하고 행동하는 영혼으로서 신의 은총으로 구원받는 인류 정신의 걸작.",
+          "famous_lines": "인간은 노력하는 한 방황한다. (Es irrt der Mensch, solang er strebt.) / 멈추어라, 너 정말 아름답구나! (Verweile doch! du bist so schön!)"
+        },
+        {
+          "work_id": "lit_young_werther",
+          "title_kr": "젊은 베르테르의 슬픔",
+          "title_en": "The Sorrows of Young Werther",
+          "year": 1774,
+          "genre": "서간체 소설",
+          "synopsis": "약혼자가 있는 여인 로테를 향한 베르테르의 순수하고 격정적인 사랑과 고뇌를 섬세하게 묘사하여 전 유럽에 '베르테르 열풍'을 일으킨 청춘 문학의 원형."
+        }
+      ],
+      "artistic_lineage": {
+        "lifelong_friend": "프리드리히 실러 (Friedrich Schiller)",
+        "philosophical_ties": [
+          "이마누엘 칸트",
+          "스피노자"
+        ],
+        "impact": "19세기 낭만주의 음악(슈베르트, 베토벤, 말러)과 독일 관념론 철학의 영감 원천"
+      },
+      "famous_quote": "눈물 젖은 빵을 먹어보지 않은 사람은 인생의 참맛을 알지 못한다."
+    }
+  ],
+  "last_run_status": "SUCCESS_INCREMENT_ADDED"
+}

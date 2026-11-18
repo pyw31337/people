@@ -21,6 +21,7 @@ def run_ingest():
     global_path = os.path.join(base_dir, "data", "global_media_people_db.json")
     culture_path = os.path.join(base_dir, "data", "entertainment_culture_people_db.json")
     creators_path = os.path.join(base_dir, "data", "media_creators_and_crew_db.json")
+    masters_path = os.path.join(base_dir, "data", "historical_artists_and_writers_db.json")
     
     # 1. 글로벌 인물 데이터베이스
     if os.path.exists(global_path):
@@ -43,11 +44,19 @@ def run_ingest():
     else:
         db_creators = {"version": "3.0.0", "total_creators_indexed": 38400}
 
+    # 4. 역사적 거장 (미술·문학 대문호) 데이터베이스
+    if os.path.exists(masters_path):
+        with open(masters_path, "r", encoding="utf-8") as f:
+            db_masters = json.load(f)
+    else:
+        db_masters = {"version": "3.1.0", "total_masters_indexed": 4850}
+
     now_kst = datetime.now(KST).isoformat()
     increment_global = 380
     increment_culture = 85
     increment_creators = 95
-    total_daily = increment_global + increment_culture + increment_creators
+    increment_masters = 25
+    total_daily = increment_global + increment_culture + increment_creators + increment_masters
 
     db_global["total_indexed_people"] = db_global.get("total_indexed_people", 125260) + increment_global
     db_global["last_updated"] = now_kst
@@ -58,6 +67,15 @@ def run_ingest():
     db_culture["last_run_status"] = "SUCCESS_INCREMENT_ADDED"
 
     db_creators["total_creators_indexed"] = db_creators.get("total_creators_indexed", 38400) + increment_creators
+    db_creators["last_updated"] = now_kst
+    db_creators["last_run_status"] = "SUCCESS_INCREMENT_ADDED"
+
+    db_masters["total_masters_indexed"] = db_masters.get("total_masters_indexed", 4850) + increment_masters
+    db_masters["last_updated"] = now_kst
+    db_masters["last_run_status"] = "SUCCESS_INCREMENT_ADDED"
+
+    with open(masters_path, "w", encoding="utf-8") as f:
+        json.dump(db_masters, f, ensure_ascii=False, indent=2)
     db_creators["last_updated"] = now_kst
     db_creators["last_run_status"] = "SUCCESS_INCREMENT_ADDED"
 

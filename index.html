@@ -369,6 +369,7 @@
       <button class="cat-tab active" onclick="filterCategory('all')">🌐 전체 보기 (전수)</button>
       <button class="cat-tab" onclick="filterCategory('showrunners_pds')">🎬 총괄 연출·PD·감독</button>
       <button class="cat-tab" onclick="filterCategory('writers_screenplay')">✍️ 메인 작가·각본가</button>
+      <button class="cat-tab" onclick="filterCategory('historical_masters')">🎨 역사적 거장·미술·문학 (고흐·다빈치)</button>
       <button class="cat-tab" onclick="filterCategory('broadcasters_mcs')">🎙️ 방송인·MC·개그맨</button>
       <button class="cat-tab" onclick="filterCategory('culture')">🎭 영화·뮤지컬·K-POP</button>
       <button class="cat-tab" onclick="filterCategory('tech_business')">💻 빅테크·AI·기업가</button>
@@ -392,32 +393,36 @@
     let globalList = [];
     let cultureList = [];
     let creatorsList = [];
+    let historicalList = [];
     let mergedList = [];
     let worksDB = [];
     let currentFilter = 'all';
 
     async function loadData() {
       try {
-        const [gRes, cRes, wRes, crRes, hRes] = await Promise.all([
+        const [gRes, cRes, wRes, crRes, hRes, hmRes] = await Promise.all([
           fetch('data/global_media_people_db.json'),
           fetch('data/entertainment_culture_people_db.json'),
           fetch('data/filmography_works_master_db.json'),
           fetch('data/media_creators_and_crew_db.json'),
-          fetch('data/collection_health_pulse.json')
+          fetch('data/collection_health_pulse.json'),
+          fetch('data/historical_artists_and_writers_db.json')
         ]);
         const gData = await gRes.json();
         const cData = await cRes.json();
         const wData = await wRes.json();
         const crData = await crRes.json();
         const hData = await hRes.json();
+        const hmData = await hmRes.json();
         
         globalList = gData.featured_global_profiles || [];
         cultureList = cData.featured_artists || [];
         creatorsList = crData.featured_behind_and_front_profiles || [];
+        historicalList = hmData.featured_masters || [];
         worksDB = wData.works || [];
         
-        // 병합 리스트 생성 (크리에이터/PD/작가 우선 배치)
-        mergedList = [...creatorsList, ...cultureList, ...globalList];
+        // 병합 리스트 생성 (크리에이터/PD/작가 및 역사적 거장 우선 배치)
+        mergedList = [...creatorsList, ...historicalList, ...cultureList, ...globalList];
 
         if (gData.total_indexed_people) {
           document.getElementById('statPeople').innerHTML = `${gData.total_indexed_people.toLocaleString()} <span class="pulse-unit">명</span>`;
@@ -453,6 +458,8 @@
       
       if (currentFilter === 'culture') {
         filtered = cultureList;
+      } else if (currentFilter === 'historical_masters') {
+        filtered = historicalList;
       } else if (currentFilter !== 'all') {
         filtered = mergedList.filter(p => p.category === currentFilter);
       }
@@ -460,9 +467,13 @@
       if (q) {
         filtered = filtered.filter(p => 
           (p.name && p.name.toLowerCase().includes(q)) ||
+          (p.name_kr && p.name_kr.toLowerCase().includes(q)) ||
+          (p.name_en && p.name_en.toLowerCase().includes(q)) ||
           (p.current_role && p.current_role.toLowerCase().includes(q)) ||
+          (p.movement && p.movement.toLowerCase().includes(q)) ||
           (p.career_lineage && p.career_lineage.some(c => c.title.toLowerCase().includes(q))) ||
-          (p.filmography && p.filmography.some(f => f.title.toLowerCase().includes(q)))
+          (p.filmography && p.filmography.some(f => f.title.toLowerCase().includes(q))) ||
+          (p.major_works && p.major_works.some(w => (w.title_kr || '').toLowerCase().includes(q) || (w.title_en || '').toLowerCase().includes(q)))
         );
       }
       renderPeople(filtered);
@@ -475,6 +486,67 @@
         return;
       }
       grid.innerHTML = list.map(p => {
+        const isMaster = p.category === 'fine_art_masters' || p.category === 'literature_masters';
+        if (isMaster) {
+          return `
+            <div class="card" style="border-top: 3px solid #eab308; background: linear-gradient(180deg, rgba(234,179,8,0.06) 0%, rgba(15,23,42,0.85) 100%);">
+              <div class="person-header">
+                <img class="avatar" src="${p.profile_image}" alt="${p.name_kr}" style="border-color: #eab308; object-fit: cover;">
+                <div class="person-info" style="flex:1;">
+                  <h2>
+                    <span>${p.name_kr}</span>
+                    <span style="font-size:11px; color:var(--muted); font-weight:400;">(${p.name_en})</span>
+                  </h2>
+                  <div style="font-size:11px; color:#fde047; font-weight:700;">${p.lifespan}</div>
+                  <div class="person-role" style="color: #fef08a; font-size:12px; margin-top:2px;">${p.movement} · ${p.nationality}</div>
+                </div>
+              </div>
+
+              <div style="font-size:12px; color:#cbd5e1; line-height:1.5; margin-bottom:12px; background:rgba(0,0,0,0.25); padding:8px 10px; border-radius:8px;">
+                ${p.summary}
+              </div>
+
+              <!-- 대표 명화/문학 작품 -->
+              <div class="career-box" style="border-color: rgba(234,179,8,0.3); background: rgba(234,179,8,0.03);">
+                <div style="font-weight:700; color:#fde047; margin-bottom:6px; display:flex; justify-content:space-between;">
+                  <span>🏛️ 대표 명작 & 소장처 (Masterworks)</span>
+                  <span style="font-size:10px; color:#fef08a;">${p.major_works ? p.major_works.length : 0}개 수록</span>
+                </div>
+                ${(p.major_works || []).map(w => `
+                  <div class="career-item" style="border-left:2px solid #eab308; padding-left:8px; margin-bottom:6px;">
+                    <div class="career-title" style="color:#fff; font-weight:700;">
+                      <span>${w.title_kr} <small style="color:var(--muted); font-weight:400;">(${w.title_en || ''})</small></span>
+                      <span style="color:#fde047; font-size:11px;">${w.year}년</span>
+                    </div>
+                    <div class="career-sub" style="color:#cbd5e1; font-size:11px;">
+                      ${w.museum || w.genre || ''} · ${w.medium || w.famous_lines || ''}
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+
+              <!-- 예술적 계보 -->
+              ${p.artistic_lineage ? `
+                <div class="network-box" style="border-top-color:rgba(234,179,8,0.2); font-size:11px;">
+                  ${p.artistic_lineage.influenced_by ? `<div class="network-row"><span class="network-lbl" style="color:#fde047;">🎨 사상적 스승/영향:</span> ${p.artistic_lineage.influenced_by.join(', ')}</div>` : ''}
+                  ${p.artistic_lineage.influenced ? `<div class="network-row"><span class="network-lbl" style="color:#67e8f9;">🌊 후대에 미친 영향:</span> ${Array.isArray(p.artistic_lineage.influenced) ? p.artistic_lineage.influenced.join(', ') : p.artistic_lineage.influenced}</div>` : ''}
+                </div>
+              ` : ''}
+
+              <!-- 명언 -->
+              ${p.famous_quote ? `
+                <div style="font-style:italic; font-size:11px; color:#fef08a; background:rgba(234,179,8,0.1); border-left:3px solid #eab308; padding:6px 10px; border-radius:4px; margin-top:8px;">
+                  "${p.famous_quote}"
+                </div>
+              ` : ''}
+
+              <a href="https://pyw31337.github.io/art/#${p.id}" target="_blank" style="display:block; text-align:center; margin-top:10px; background:linear-gradient(135deg, rgba(234,179,8,0.2), rgba(245,158,11,0.25)); border:1px solid #eab308; color:#fde047; padding:8px 12px; border-radius:8px; text-decoration:none; font-weight:700; font-size:12px; transition:all 0.2s;">
+                🏛️ 렛츠아트(Let's Art) 가상 갤러리 감상 (URN: ${p.art_urn})
+              </a>
+            </div>
+          `;
+        }
+
         const isCreator = p.category === 'showrunners_pds' || p.category === 'writers_screenplay';
         const isBroadcaster = p.category === 'broadcasters_mcs' || p.category === 'anchors_journalists';
         
