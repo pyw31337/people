@@ -1,15 +1,33 @@
 {
   "version": "2.1.0",
-  "last_updated": "2026-11-18T11:45:00+09:00",
-  "total_indexed_people": 124880,
+  "last_updated": "2026-11-18T13:06:00.897090+09:00",
+  "total_indexed_people": 125260,
   "total_relationship_links": 331200,
   "categories_breakdown": {
-    "tech_business": { "name": "빅테크·AI·기업가", "count": 48400 },
-    "politics_policy": { "name": "국내외 정계·관료·외교", "count": 28500 },
-    "finance_vc": { "name": "글로벌 금융·헤지펀드·VC", "count": 18300 },
-    "media_creators": { "name": "언론인·팟캐스트·인플루언서", "count": 14500 },
-    "culture_arts": { "name": "문화·예술·영화·엔터", "count": 9400 },
-    "science_nobel": { "name": "과학·노벨상·학술석학", "count": 5780 }
+    "tech_business": {
+      "name": "빅테크·AI·기업가",
+      "count": 48400
+    },
+    "politics_policy": {
+      "name": "국내외 정계·관료·외교",
+      "count": 28500
+    },
+    "finance_vc": {
+      "name": "글로벌 금융·헤지펀드·VC",
+      "count": 18300
+    },
+    "media_creators": {
+      "name": "언론인·팟캐스트·인플루언서",
+      "count": 14500
+    },
+    "culture_arts": {
+      "name": "문화·예술·영화·엔터",
+      "count": 9400
+    },
+    "science_nobel": {
+      "name": "과학·노벨상·학술석학",
+      "count": 5780
+    }
   },
   "featured_global_profiles": [
     {
@@ -19,10 +37,22 @@
       "birth_year": 1963,
       "category": "tech_business",
       "current_role": "NVIDIA 창업자 겸 CEO",
-      "education": ["오리건 주립대학교 전기공학 학사", "스탠퍼드 대학교 전기공학 석사"],
-      "alumni_network": ["스탠퍼드 공대 동문망", "LSI Logic 초기 엔지니어 그룹"],
-      "kinship_network": ["리사 수 (AMD CEO)와 친척 관계 (먼 친척/외종사촌)"],
-      "core_influence": ["가죽 자켓 트레이드마크", "CUDA 생태계 및 AI 가속기 90% 독점", "글로벌 컴퓨팅 패러다임 주도"],
+      "education": [
+        "오리건 주립대학교 전기공학 학사",
+        "스탠퍼드 대학교 전기공학 석사"
+      ],
+      "alumni_network": [
+        "스탠퍼드 공대 동문망",
+        "LSI Logic 초기 엔지니어 그룹"
+      ],
+      "kinship_network": [
+        "리사 수 (AMD CEO)와 친척 관계 (먼 친척/외종사촌)"
+      ],
+      "core_influence": [
+        "가죽 자켓 트레이드마크",
+        "CUDA 생태계 및 AI 가속기 90% 독점",
+        "글로벌 컴퓨팅 패러다임 주도"
+      ],
       "photo_webp": "https://placehold.co/120x120/1e293b/76b900?text=Jensen",
       "timelapse_count": 6
     },
@@ -33,10 +63,22 @@
       "birth_year": 1971,
       "category": "tech_business",
       "current_role": "Tesla / SpaceX / xAI / Neuralink CEO, X(트위터) 소유주",
-      "education": ["펜실베이니아 대학교 경제학·물리학 학사", "스탠퍼드 응용물리학 박사 중퇴"],
-      "alumni_network": ["페이팔 마피아 (피터 틸, 리드 호프만, 맥스 레브친)"],
-      "kinship_network": ["메이 머스크 (모델·모친)", "킴벌 머스크 (동생·투자자)"],
-      "core_influence": ["X(소셜미디어) 2억 팔로워 여론 주도", "재사용 로켓 및 우주 인프라 독점", "미국 정부효율부(DOGE) 자문"],
+      "education": [
+        "펜실베이니아 대학교 경제학·물리학 학사",
+        "스탠퍼드 응용물리학 박사 중퇴"
+      ],
+      "alumni_network": [
+        "페이팔 마피아 (피터 틸, 리드 호프만, 맥스 레브친)"
+      ],
+      "kinship_network": [
+        "메이 머스크 (모델·모친)",
+        "킴벌 머스크 (동생·투자자)"
+      ],
+      "core_influence": [
+        "X(소셜미디어) 2억 팔로워 여론 주도",
+        "재사용 로켓 및 우주 인프라 독점",
+        "미국 정부효율부(DOGE) 자문"
+      ],
       "photo_webp": "https://placehold.co/120x120/1e293b/38bdf8?text=Elon",
       "timelapse_count": 5
     },
@@ -47,10 +89,20 @@
       "birth_year": 1957,
       "category": "finance_vc",
       "current_role": "소프트뱅크 그룹 회장 겸 CEO",
-      "education": ["UC 버클리 경제학·컴퓨터공학 학사"],
-      "alumni_network": ["버클리 동문 인맥", "알리바바 초기 투자자 연대"],
-      "kinship_network": ["손태장 (Mistletoe 대표·동생)"],
-      "core_influence": ["1000억 달러 비전펀드 창설", "ARM 인수 및 AI 슈퍼인텔리전스(ASI) 펀딩 주도"],
+      "education": [
+        "UC 버클리 경제학·컴퓨터공학 학사"
+      ],
+      "alumni_network": [
+        "버클리 동문 인맥",
+        "알리바바 초기 투자자 연대"
+      ],
+      "kinship_network": [
+        "손태장 (Mistletoe 대표·동생)"
+      ],
+      "core_influence": [
+        "1000억 달러 비전펀드 창설",
+        "ARM 인수 및 AI 슈퍼인텔리전스(ASI) 펀딩 주도"
+      ],
       "photo_webp": "https://placehold.co/120x120/1e293b/f59e0b?text=MasaSon",
       "timelapse_count": 5
     },
@@ -61,9 +113,17 @@
       "birth_year": 1964,
       "category": "tech_business",
       "current_role": "알리바바 그룹(Alibaba) 창업자",
-      "education": ["항저우 사범대학 영문학 학사"],
-      "alumni_network": ["저장성 상인회(절상 연합)", "태극권 및 호반대학 학맥"],
-      "core_influence": ["중국 전자상거래 및 알리페이 핀테크 혁명", "동남아·글로벌 물류 인프라 개척"],
+      "education": [
+        "항저우 사범대학 영문학 학사"
+      ],
+      "alumni_network": [
+        "저장성 상인회(절상 연합)",
+        "태극권 및 호반대학 학맥"
+      ],
+      "core_influence": [
+        "중국 전자상거래 및 알리페이 핀테크 혁명",
+        "동남아·글로벌 물류 인프라 개척"
+      ],
       "photo_webp": "https://placehold.co/120x120/1e293b/ef4444?text=JackMa",
       "timelapse_count": 5
     },
@@ -74,9 +134,18 @@
       "birth_year": 1976,
       "category": "science_nobel",
       "current_role": "구글 딥마인드(Google DeepMind) CEO / 노벨화학상(2024) 수상자",
-      "education": ["케임브리지 대학교 컴퓨터공학 학사", "UCL 인지신경과학 박사"],
-      "alumni_network": ["체스 신동 네트워크", "딥마인드 창업 트리오 (셰인 레그, 무스타파 술레이만)"],
-      "core_influence": ["알파고(AlphaGo) 개발로 AI 혁명 촉발", "알파폴드(AlphaFold) 단백질 구조 예측으로 노벨상 수상"],
+      "education": [
+        "케임브리지 대학교 컴퓨터공학 학사",
+        "UCL 인지신경과학 박사"
+      ],
+      "alumni_network": [
+        "체스 신동 네트워크",
+        "딥마인드 창업 트리오 (셰인 레그, 무스타파 술레이만)"
+      ],
+      "core_influence": [
+        "알파고(AlphaGo) 개발로 AI 혁명 촉발",
+        "알파폴드(AlphaFold) 단백질 구조 예측으로 노벨상 수상"
+      ],
       "photo_webp": "https://placehold.co/120x120/1e293b/a855f7?text=Demis",
       "timelapse_count": 4
     },
@@ -87,12 +156,26 @@
       "birth_year": 1968,
       "category": "tech_business",
       "current_role": "삼성전자 회장",
-      "education": ["경복고등학교", "서울대학교 동양사학과 학사", "게이오기주쿠대 MBA", "하버드 비즈니스스쿨 박사과정"],
-      "alumni_network": ["경복고-서울대 인맥망", "선밸리 콘퍼런스 글로벌 CEO 동문"],
-      "kinship_network": ["이병철(조부) - 이건희(부) - 홍라희(모) - 이부진(동생) - 이서현(동생) 삼성가 혼맥"],
-      "core_influence": ["글로벌 메모리 반도체 1위 지배", "파운드리 및 차세대 HBM/AI 칩 동맹"],
+      "education": [
+        "경복고등학교",
+        "서울대학교 동양사학과 학사",
+        "게이오기주쿠대 MBA",
+        "하버드 비즈니스스쿨 박사과정"
+      ],
+      "alumni_network": [
+        "경복고-서울대 인맥망",
+        "선밸리 콘퍼런스 글로벌 CEO 동문"
+      ],
+      "kinship_network": [
+        "이병철(조부) - 이건희(부) - 홍라희(모) - 이부진(동생) - 이서현(동생) 삼성가 혼맥"
+      ],
+      "core_influence": [
+        "글로벌 메모리 반도체 1위 지배",
+        "파운드리 및 차세대 HBM/AI 칩 동맹"
+      ],
       "photo_webp": "https://placehold.co/120x120/1e293b/1d4ed8?text=JYLee",
       "timelapse_count": 5
     }
-  ]
+  ],
+  "last_run_status": "SUCCESS_INCREMENT_ADDED"
 }
