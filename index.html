@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>렛츠피플 (Let's People) — 글로벌 12.4만 미디어 노출 인물 백과 & 30개년 노화·인맥 온톨로지</title>
+  <title>렛츠피플 (Let's People) — 글로벌 12.4만 인물 백과 & 영화·뮤지컬·K-POP 필모그래피 온톨로지</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
   <style>
     :root {
@@ -19,6 +19,7 @@
       --emerald: #10b981;
       --amber: #f59e0b;
       --cyan: #06b6d4;
+      --rose: #f43f5e;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: "Pretendard Variable", -apple-system, BlinkMacSystemFont, sans-serif; }
     body {
@@ -27,7 +28,7 @@
       line-height: 1.6;
       padding: 20px;
     }
-    .container { max-width: 1340px; margin: 0 auto; }
+    .container { max-width: 1360px; margin: 0 auto; }
     
     /* 헤더 */
     header {
@@ -51,8 +52,8 @@
       border: 1px solid rgba(79, 140, 255, 0.3);
     }
     .pulse-tag {
-      background: rgba(79, 140, 255, 0.15);
-      color: #93c5fd;
+      background: rgba(244, 63, 94, 0.15);
+      color: #fb7185;
       padding: 4px 10px;
       border-radius: 8px;
       font-size: 12px;
@@ -70,7 +71,7 @@
     }
     .search-box:focus { border-color: var(--primary); }
 
-    /* 1. 실시간 수집 관제 펄스 보드 (글로벌 확장) */
+    /* 1. 실시간 수집 관제 펄스 보드 (컬처플로우 연계 확장) */
     .pulse-panel {
       background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 27, 75, 0.8));
       border: 1px solid rgba(79, 140, 255, 0.3);
@@ -146,9 +147,15 @@
       border-color: var(--primary);
       box-shadow: 0 4px 12px rgba(79, 140, 255, 0.3);
     }
+    .cat-tab.culture-active {
+      background: var(--rose);
+      color: #fff;
+      border-color: var(--rose);
+      box-shadow: 0 4px 12px rgba(244, 63, 94, 0.4);
+    }
 
     /* 3. 메인 인터랙티브 작업 영역 */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 20px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px; }
     .card {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -182,10 +189,28 @@
     .network-row { margin-bottom: 4px; }
     .network-lbl { font-weight: 700; color: var(--accent); }
 
+    /* 문화예술 필모그래피/스테이지그래피 박스 */
+    .works-box {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(244, 63, 94, 0.25);
+      border-radius: 8px;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 12px;
+    }
+    .work-item {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+      padding: 4px 0;
+    }
+    .work-item:last-child { border-bottom: none; }
+    .work-title { font-weight: 700; color: #fca5a5; }
+    .work-sub { font-size: 11px; color: var(--muted); }
+
     .timelapse-section { margin-top: 14px; }
     .timelapse-title { font-size: 12px; font-weight: 700; color: var(--purple); margin-bottom: 8px; }
     
-    /* 타임랩스 노화 단계 트랙 */
     .stage-track { display: flex; gap: 6px; margin-top: 6px; }
     .stage-item {
       flex: 1;
@@ -203,46 +228,46 @@
   <div class="container">
     <header>
       <div class="brand">
-        <h1>👤 렛츠피플 (Let's People) <span class="badge">원장 v2.1.0</span></h1>
-        <p style="color: var(--muted); font-size: 14px; margin-top: 4px;">글로벌 12.4만 미디어 노출 인물 백과 · 미·중·일·유럽 인맥망 · 30개년 노화 사진 온톨로지</p>
+        <h1>👤 렛츠피플 (Let's People) <span class="badge">휴먼 인텔리전스 v2.2.0</span></h1>
+        <p style="color: var(--muted); font-size: 14px; margin-top: 4px;">글로벌 12.4만 인물 & 영화배우·가수·뮤지컬 2.4만 명 필모그래피 온톨로지 (컬처플로우 연동)</p>
       </div>
       <div style="display:flex; align-items:center; gap:10px;">
-        <span class="pulse-tag">⚡ 24/7 무인 크론 가동 중</span>
-        <input type="text" id="searchInput" class="search-box" placeholder="글로벌 인물, 기업, 직책 검색...">
+        <span class="pulse-tag">🎭 컬처플로우 연계 허브</span>
+        <input type="text" id="searchInput" class="search-box" placeholder="인물, 배우, 가수, 작품명 검색...">
       </div>
     </header>
 
-    <!-- 1. 실시간 수집 관제 펄스 보드 (글로벌 확장) -->
+    <!-- 1. 실시간 수집 관제 펄스 보드 (컬처플로우 연계 확장) -->
     <div class="pulse-panel">
       <div class="pulse-stat">
         <div class="pulse-label">글로벌 총 누적 인물 원장</div>
         <div class="pulse-val" id="statPeople">124,880 <span class="pulse-unit">명</span></div>
-        <div class="pulse-rate">▲ 국내 7.9만 + 해외 4.5만 미디어 노출 전수</div>
+        <div class="pulse-rate">▲ 정재계·빅테크 9.9만 + 문화예술 2.5만</div>
       </div>
       <div class="pulse-stat">
-        <div class="pulse-label">일간 무인 수집·변동 속도</div>
-        <div class="pulse-val">380~500 <span class="pulse-unit">명 / 일</span></div>
-        <div class="pulse-rate">GitHub Actions 매일 05:00 KST 자동 실행</div>
+        <div class="pulse-label">문화·예술 필모그래피 DB</div>
+        <div class="pulse-val" id="statCulture">24,800 <span class="pulse-unit">명</span></div>
+        <div class="pulse-rate">영화배우 1.1만 / 가수 7.8천 / 뮤지컬 5.8천</div>
       </div>
       <div class="pulse-stat">
-        <div class="pulse-label">다국적 인맥 온톨로지망</div>
+        <div class="pulse-label">다국적 인맥·협업 관계망</div>
         <div class="pulse-val">331,200 <span class="pulse-unit">개 링크</span></div>
-        <div class="pulse-rate">스탠퍼드·하버드 학맥 + 페이팔 마피아 + 절상연합</div>
+        <div class="pulse-rate">감독-배우 콤비 + 작곡 크레딧 + 학맥/혼맥</div>
       </div>
       <div class="pulse-stat">
         <div class="pulse-label">사진 WebP 변환 압축률</div>
         <div class="pulse-val">84.7 <span class="pulse-unit">% 절감</span></div>
-        <div class="pulse-rate">평균 1.2MB ➔ 184KB & Cloudflare R2 즉시 이관</div>
+        <div class="pulse-rate">데뷔초~현재 노화 & R2 오브젝트 이관</div>
       </div>
       
       <!-- 상태 모니터링 & 자동 대응 인디케이터 -->
       <div class="health-bar">
         <div class="status-indicator">
           <span class="dot"></span>
-          <span>수집 파이프라인: 정상 가동 중 (위키데이터 & 네이버 & SEC Form 4)</span>
+          <span>수집 파이프라인: 정상 가동 중 (KOFIC 영화망 & KOPIS 공연예술망 & 위키데이터)</span>
         </div>
         <div style="color: var(--muted);">
-          ⚡ <strong>무료 티어 안전망</strong>: 180일 TTL 중복 방지 필터 & R2 무료 10GB 한도 내 무과금 안착
+          ⚡ <strong>컬처플로우 연동 준비 완료</strong>: <code>urn:culture:artist:*</code> 식별자를 통한 공연·전시 크로스 매핑 가동
         </div>
       </div>
     </div>
@@ -258,20 +283,20 @@
         <div class="spec-box">
           <div class="spec-title">💡 우리만의 독보적인 차별화 데이터 (Moat)</div>
           <div class="spec-desc">
-            단순 텍스트 프로필을 넘어, <strong>[미디어 노출 12만 명 전수 ➔ 30개년 노화 타임랩스 사진 ➔ 글로벌 학맥(스탠퍼드·서울대)·혼맥·투자지분망 ➔ 미디어 발언/사건 타임라인]</strong>을 유기적으로 엮은 <strong>"글로벌 휴먼 인텔리전스 그래프"</strong>를 보유합니다.
+            단순 인물 소개를 넘어, <strong>[영화배우 필모그래피(박스오피스·수상) ➔ 뮤지컬배우 스테이지그래피(KOPIS 전산망·티켓파워) ➔ 가수 디스코그래피(음원차트) ➔ 30개년 노화 사진]</strong>을 통합한 <strong>"전방위 휴먼 인텔리전스 온톨로지"</strong>를 독점 보유합니다.
           </div>
         </div>
         <div class="spec-box">
           <div class="spec-title">🎯 타깃 유저 페르소나 및 핵심 기능</div>
           <div class="spec-desc">
-            <strong>글로벌 탐사보도 기자, 해외 투자 VC 심사역, 대기업 전략/HR팀, 정당 공천 심사단</strong>.
-            ① 슬라이더로 20대부터 60대까지 얼굴 변화를 관찰하는 '노화 타임랩스 뷰어', ② 특정 2인을 입력하면 최단 연결 경로를 시각화하는 '6단계 인맥 탐색기', ③ 글로벌 권력 파벌 지도.
+            <strong>공연/영화 관람객, 캐스팅 디렉터, 팬덤 커뮤니티, 엔터 투자 심사역, 대중문화 저널리스트</strong>.
+            ① 배우/가수의 전 작품 연도별 필모/스테이지 타임라인, ② 특정 감독과 배우 간의 페르소나 협업 클러스터 지도, ③ 컬처플로우 공연 예매 직결 링크.
           </div>
         </div>
         <div class="spec-box">
-          <div class="spec-title">🔗 타 패밀리 서비스와의 데이터 교류 (Federation)</div>
+          <div class="spec-title">🔗 모든 패밀리 서비스의 단일 진실 공급원 (SSOT)</div>
           <div class="spec-desc">
-            뉴스보드(NewsBoard) 기사 내 인물 호버 시 <code>urn:people:person:...</code>로 프로필 카드가 팝업되며, 렛츠로(판검사 기수망) 및 렛츠에셋(글로벌 상장사 등기임원/대주주망)에 단일 진실 공급원(SSOT)으로 인물 데이터를 공급합니다.
+            <strong>"모든 일은 사람이 한다"</strong>는 대원칙에 따라, <strong>컬처플로우(공연인)</strong>, <strong>뉴스보드(사건인물)</strong>, <strong>렛츠로(법조인)</strong>, <strong>렛츠에셋(기업인)</strong>, <strong>렛츠인슈(손사/자문의)</strong> 전반에 단일 진실 공급원(SSOT)으로 인물 데이터를 공급합니다.
           </div>
         </div>
       </div>
@@ -280,9 +305,9 @@
     <!-- 카테고리 필터 바 -->
     <div class="cat-bar" id="catBar">
       <button class="cat-tab active" onclick="filterCategory('all')">🌐 전체 보기 (전수)</button>
+      <button class="cat-tab" onclick="filterCategory('culture')">🎭 문화·예술·공연 (컬처플로우 연계)</button>
       <button class="cat-tab" onclick="filterCategory('tech_business')">💻 빅테크·AI·기업가</button>
       <button class="cat-tab" onclick="filterCategory('finance_vc')">💰 금융·투자·VC</button>
-      <button class="cat-tab" onclick="filterCategory('politics_policy')">🏛️ 국내외 정계·관료</button>
       <button class="cat-tab" onclick="filterCategory('science_nobel')">🧬 과학·노벨상·석학</button>
     </div>
 
@@ -294,19 +319,33 @@
 
   <script>
     let globalList = [];
+    let cultureList = [];
+    let mergedList = [];
     let currentFilter = 'all';
 
     async function loadPeople() {
       try {
-        const res = await fetch('data/global_media_people_db.json');
-        const data = await res.json();
-        globalList = data.featured_global_profiles || [];
+        const [gRes, cRes] = await Promise.all([
+          fetch('data/global_media_people_db.json'),
+          fetch('data/entertainment_culture_people_db.json')
+        ]);
+        const gData = await gRes.json();
+        const cData = await cRes.json();
         
-        if (data.total_indexed_people) {
-          document.getElementById('statPeople').innerHTML = `${data.total_indexed_people.toLocaleString()} <span class="pulse-unit">명</span>`;
+        globalList = gData.featured_global_profiles || [];
+        cultureList = cData.featured_artists || [];
+        
+        // 병합 리스트 생성 (문화예술 인물 우선)
+        mergedList = [...cultureList, ...globalList];
+
+        if (gData.total_indexed_people) {
+          document.getElementById('statPeople').innerHTML = `${gData.total_indexed_people.toLocaleString()} <span class="pulse-unit">명</span>`;
+        }
+        if (cData.total_entertainers_indexed) {
+          document.getElementById('statCulture').innerHTML = `${cData.total_entertainers_indexed.toLocaleString()} <span class="pulse-unit">명</span>`;
         }
 
-        renderPeople(globalList);
+        renderPeople(mergedList);
       } catch (e) {
         document.getElementById('personGrid').innerHTML = '<p style="color:#ef4444">데이터를 불러올 수 없습니다.</p>';
       }
@@ -315,22 +354,31 @@
     function filterCategory(cat) {
       currentFilter = cat;
       document.querySelectorAll('.cat-tab').forEach(b => {
-        b.classList.toggle('active', b.getAttribute('onclick').includes(`'${cat}'`));
+        b.classList.remove('active', 'culture-active');
+        if (b.getAttribute('onclick').includes(`'${cat}'`)) {
+          b.classList.add(cat === 'culture' ? 'culture-active' : 'active');
+        }
       });
       applyFilters();
     }
 
     function applyFilters() {
       const q = document.getElementById('searchInput').value.toLowerCase().trim();
-      let filtered = globalList;
-      if (currentFilter !== 'all') {
-        filtered = filtered.filter(p => p.category === currentFilter);
+      let filtered = mergedList;
+      
+      if (currentFilter === 'culture') {
+        filtered = cultureList;
+      } else if (currentFilter !== 'all') {
+        filtered = mergedList.filter(p => p.category === currentFilter);
       }
+
       if (q) {
         filtered = filtered.filter(p => 
           (p.name && p.name.toLowerCase().includes(q)) ||
           (p.current_role && p.current_role.toLowerCase().includes(q)) ||
-          (p.nationality && p.nationality.toLowerCase().includes(q))
+          (p.filmography && p.filmography.some(f => f.title.toLowerCase().includes(q))) ||
+          (p.stageography && p.stageography.some(s => s.title.toLowerCase().includes(q))) ||
+          (p.discography && p.discography.some(d => d.title_track.toLowerCase().includes(q)))
         );
       }
       renderPeople(filtered);
@@ -342,37 +390,92 @@
         grid.innerHTML = '<p style="color:var(--muted)">검색 결과가 없습니다.</p>';
         return;
       }
-      grid.innerHTML = list.map(p => `
-        <div class="card">
-          <div class="person-header">
-            <img class="avatar" src="${p.photo_webp}" alt="${p.name}">
-            <div class="person-info" style="flex:1;">
-              <h2>
-                <span>${p.name}</span>
-                <span style="font-size:11px; background:rgba(79,140,255,0.15); color:var(--primary); padding:2px 6px; border-radius:4px;">${p.birth_year}년생</span>
-              </h2>
-              <div class="person-role">${p.current_role}</div>
-              <div class="person-nation">🌍 국적: ${p.nationality}</div>
+      grid.innerHTML = list.map(p => {
+        const isCulture = !!p.cultureflow_urn;
+        return `
+          <div class="card" style="${isCulture ? 'border-top: 3px solid var(--rose);' : ''}">
+            <div class="person-header">
+              <img class="avatar" src="${p.photo_webp}" alt="${p.name}" style="${isCulture ? 'border-color: var(--rose);' : ''}">
+              <div class="person-info" style="flex:1;">
+                <h2>
+                  <span>${p.name}</span>
+                  <span style="font-size:11px; background:rgba(79,140,255,0.15); color:var(--primary); padding:2px 6px; border-radius:4px;">${p.birth_year}년생</span>
+                </h2>
+                <div class="person-role" style="${isCulture ? 'color: #fb7185;' : ''}">${p.current_role}</div>
+                ${p.cultureflow_urn ? `
+                  <div style="font-size:11px; color:#f43f5e; font-weight:600;">
+                    🎟️ 컬처플로우 연계: <code>${p.cultureflow_urn}</code>
+                  </div>
+                ` : `<div class="person-nation">🌍 국적: ${p.nationality || '대한민국'}</div>`}
+              </div>
             </div>
-          </div>
-          
-          <div class="network-box">
-            ${p.alumni_network ? `<div class="network-row"><span class="network-lbl">🎓 학맥:</span> ${(p.alumni_network).join(' · ')}</div>` : ''}
-            ${p.kinship_network ? `<div class="network-row"><span class="network-lbl">💍 혼맥/가족:</span> ${(p.kinship_network).join(' · ')}</div>` : ''}
-            <div class="network-row"><span class="network-lbl" style="color:var(--cyan);">⚡ 핵심 영향력:</span> ${(p.core_influence || []).join(' · ')}</div>
-          </div>
+            
+            <!-- 필모그래피 / 스테이지그래피 / 디스코그래피 -->
+            ${p.stageography ? `
+              <div class="works-box">
+                <div style="font-weight:700; color:#38bdf8; margin-bottom:4px;">🎭 대표 뮤지컬·무대 스테이지그래피</div>
+                ${p.stageography.slice(0, 3).map(s => `
+                  <div class="work-item">
+                    <span class="work-title">${s.title}</span>
+                    <span class="work-sub">${s.role} (${s.year})</span>
+                  </div>
+                `).join('')}
+              </div>
+            ` : ''}
 
-          <div class="timelapse-section">
-            <div class="timelapse-title">⏳ 30개년 노화(Aging) 타임랩스 아카이브 (${p.timelapse_count}개 시기 WebP 완비)</div>
-            <div class="stage-track">
-              <div class="stage-item">20대 창업기</div>
-              <div class="stage-item">30대 성장기</div>
-              <div class="stage-item">40대 전성기</div>
-              <div class="stage-item stage-active">현재 노화추적</div>
+            ${p.filmography ? `
+              <div class="works-box">
+                <div style="font-weight:700; color:#fb7185; margin-bottom:4px;">🎬 대표 영화·드라마 필모그래피</div>
+                ${p.filmography.slice(0, 3).map(f => `
+                  <div class="work-item">
+                    <span class="work-title">${f.title}</span>
+                    <span class="work-sub">${f.role} · 관객 ${f.box_office || f.awards}</span>
+                  </div>
+                `).join('')}
+              </div>
+            ` : ''}
+
+            ${p.discography ? `
+              <div class="works-box">
+                <div style="font-weight:700; color:#c084fc; margin-bottom:4px;">🎵 대표 음반 디스코그래피</div>
+                ${p.discography.slice(0, 3).map(d => `
+                  <div class="work-item">
+                    <span class="work-title">${d.album}</span>
+                    <span class="work-sub">${d.title_track} (${d.year})</span>
+                  </div>
+                `).join('')}
+              </div>
+            ` : ''}
+
+            <!-- 인맥 및 협업 네트워크 -->
+            <div class="network-box">
+              ${p.collaborator_network?.directors ? `
+                <div class="network-row"><span class="network-lbl">🎬 협업 감독:</span> ${p.collaborator_network.directors.join(' · ')}</div>
+              ` : ''}
+              ${p.collaborator_network?.producers ? `
+                <div class="network-row"><span class="network-lbl">🎧 프로듀서:</span> ${p.collaborator_network.producers.join(' · ')}</div>
+              ` : ''}
+              ${p.alumni_network ? `
+                <div class="network-row"><span class="network-lbl">🎓 학맥:</span> ${p.alumni_network.join(' · ')}</div>
+              ` : ''}
+              ${p.kinship_network ? `
+                <div class="network-row"><span class="network-lbl">💍 혼맥/가족:</span> ${p.kinship_network.join(' · ')}</div>
+              ` : ''}
+              <div class="network-row"><span class="network-lbl" style="color:var(--cyan);">⚡ 핵심 영향력:</span> ${(p.core_influence || []).join(' · ')}</div>
+            </div>
+
+            <div class="timelapse-section">
+              <div class="timelapse-title">⏳ 30개년 노화(Aging) 타임랩스 아카이브 (${p.timelapse_count || 4}개 시기 WebP 완비)</div>
+              <div class="stage-track">
+                <div class="stage-item">데뷔 신인기</div>
+                <div class="stage-item">대표작 성장기</div>
+                <div class="stage-item">전성기 황금기</div>
+                <div class="stage-item stage-active">현재 노화추적</div>
+              </div>
             </div>
           </div>
-        </div>
-      `).join('');
+        `;
+      }).join('');
     }
 
     document.getElementById('searchInput').addEventListener('input', applyFilters);

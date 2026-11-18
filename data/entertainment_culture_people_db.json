@@ -1,0 +1,102 @@
+{
+  "version": "2.2.0",
+  "last_updated": "2026-11-18T11:55:00+09:00",
+  "domain": "entertainment_culture_and_arts",
+  "federation_target": "CultureFlow (컬처플로우 연동 규약)",
+  "total_entertainers_indexed": 24800,
+  "categories": {
+    "movie_drama_actors": { "name": "영화·드라마 배우/감독", "count": 11200 },
+    "kpop_musicians": { "name": "가수·뮤지션·프로듀서", "count": 7800 },
+    "musical_theatre_actors": { "name": "뮤지컬·연극 무대 예술인", "count": 5800 }
+  },
+  "featured_artists": [
+    {
+      "id": "person-song-kangho",
+      "name": "송강호 (Song Kang-ho)",
+      "birth_year": 1967,
+      "category": "movie_drama_actors",
+      "current_role": "영화배우 / 칸 영화제 남우주연상 수상자",
+      "cultureflow_urn": "urn:culture:artist:actor:song_kangho",
+      "photo_webp": "https://placehold.co/120x120/1e293b/f43f5e?text=SongKH",
+      "timelapse_count": 5,
+      "collaborator_network": {
+        "directors": ["봉준호 (기생충, 설국열차, 괴물, 살인의 추억)", "박찬욱 (공동경비구역 JSA, 복수는 나의 것, 박쥐)", "이창동 (밀양, 초록물고기)"],
+        "co_actors": ["이병헌 (JSA, 비상선언)", "최민식 (쉬리)", "배두나 (괴물, 브로커)"]
+      },
+      "filmography": [
+        { "year": 2019, "title": "기생충 (Parasite)", "role": "김기택 역 (주연)", "director": "봉준호", "box_office": "1,031만 명", "awards": "칸 영화제 황금종려상 / 아카데미 4관왕" },
+        { "year": 2022, "title": "브로커 (Broker)", "role": "상현 역 (주연)", "director": "고레에다 히로카즈", "box_office": "126만 명", "awards": "제75회 칸 영화제 남우주연상" },
+        { "year": 2017, "title": "택시운전사 (A Taxi Driver)", "role": "김만섭 역 (주연)", "director": "장훈", "box_office": "1,218만 명", "awards": "청룡영화상 남우주연상" },
+        { "year": 2013, "title": "변호인 (The Attorney)", "role": "송우석 역 (주연)", "director": "양우석", "box_office": "1,137만 명", "awards": "백상예술대상 대상" }
+      ]
+    },
+    {
+      "id": "person-cho-seungwoo",
+      "name": "조승우 (Cho Seung-woo)",
+      "birth_year": 1980,
+      "category": "musical_theatre_actors",
+      "current_role": "뮤지컬 배우 / 영화·드라마 배우",
+      "cultureflow_urn": "urn:culture:artist:musical:cho_seungwoo",
+      "kopis_artist_id": "KOPIS-ART-2004-0012",
+      "photo_webp": "https://placehold.co/120x120/1e293b/3b82f6?text=ChoSW",
+      "timelapse_count": 5,
+      "collaborator_network": {
+        "directors": ["이은결", "데이비드 스완 (지킬앤하이드)", "왕용범"],
+        "co_actors": ["홍광호", "박은태", "옥주현", "조정은"]
+      },
+      "stageography": [
+        { "year": "2004~2024", "title": "지킬 앤 하이드 (Jekyll & Hyde)", "role": "지킬 / 하이드 역", "venue": "샤롯데씨어터 / LG아트센터", "impact": "전회차 전석 매진 신화, '조지킬' 신드롬 창출" },
+        { "year": "2023", "title": "오페라의 유령 (The Phantom of the Opera)", "role": "오페라의 유령 (팬텀) 역", "venue": "드림씨어터 / 샤롯데씨어터", "impact": "한국어 초연 13년 만의 귀환, 인터파크 티켓파워 1위" },
+        { "year": "2005~2021", "title": "헤드윅 (Hedwig and the Angry Inch)", "role": "헤드윅 역", "venue": "충무아트센터", "impact": "최다 시즌 출연, '조드윅' 전설적 무대 완성" }
+      ],
+      "filmography": [
+        { "year": 2015, "title": "내부자들 (Inside Men)", "role": "우장훈 검사 역", "director": "우민호", "box_office": "915만 명 (청불 최고 흥행)" },
+        { "year": 2005, "title": "말아톤 (Marathon)", "role": "윤초원 역", "director": "정윤철", "box_office": "514만 명", "awards": "대종상/백상 남우주연상" }
+      ]
+    },
+    {
+      "id": "person-iu-lee-jieun",
+      "name": "아이유 (IU / 이지은)",
+      "birth_year": 1993,
+      "category": "kpop_musicians",
+      "current_role": "싱어송라이터 / 프로듀서 / 영화배우",
+      "cultureflow_urn": "urn:culture:artist:musician:iu",
+      "photo_webp": "https://placehold.co/120x120/1e293b/a855f7?text=IU",
+      "timelapse_count": 4,
+      "collaborator_network": {
+        "producers": ["이민수", "김이나 작사가", "정재형"],
+        "collaborations": ["박재범 (GANADARA)", "슈가/BTS (에잇)", "G-DRAGON (팔레트)", "서태지 (소격동)"]
+      },
+      "discography": [
+        { "year": 2024, "album": "The Winning", "title_track": "Love wins all / Holssi", "chart": "국내 음원차트 PAK(퍼펙트 올킬)" },
+        { "year": 2021, "album": "LILAC", "title_track": "라일락 (LILAC)", "chart": "골든디스크 음원 대상 / 음반 40만 장" },
+        { "year": 2017, "album": "Palette", "title_track": "팔레트 (feat. G-DRAGON)", "chart": "한국대중음악상 최우수 팝 음반" },
+        { "year": 2010, "album": "Real", "title_track": "좋은 날 (Good Day)", "chart": "3단 고음 신드롬, 5주 연속 1위" }
+      ],
+      "filmography": [
+        { "year": 2022, "title": "브로커 (Broker)", "role": "소영 역", "director": "고레에다 히로카즈", "awards": "춘사국제영화제 신인여우상" },
+        { "year": 2018, "title": "나의 아저씨 (My Mister)", "role": "이지안 역", "network": "tvN", "awards": "백상예술대상 최우수연기상 노미네이트" }
+      ]
+    },
+    {
+      "id": "person-ok-joohyun",
+      "name": "옥주현 (Ok Joo-hyun)",
+      "birth_year": 1980,
+      "category": "musical_theatre_actors",
+      "current_role": "뮤지컬 배우 / 핑클 멤버",
+      "cultureflow_urn": "urn:culture:artist:musical:ok_joohyun",
+      "kopis_artist_id": "KOPIS-ART-2005-0045",
+      "photo_webp": "https://placehold.co/120x120/1e293b/10b981?text=OkJH",
+      "timelapse_count": 5,
+      "collaborator_network": {
+        "directors": ["로버트 요한슨 (엘리자벳, 레베카)", "실베스터 르베이"],
+        "co_actors": ["김소현", "신영숙", "김준수", "엄기준"]
+      },
+      "stageography": [
+        { "year": "2013~2024", "title": "레베카 (Rebecca)", "role": "댄버스 부인 역", "venue": "블루스퀘어 / 충무아트센터", "impact": "'레베카 Act 2' 가창력 독보적 상징, 골든티켓어워즈 여우주연상" },
+        { "year": "2012~2022", "title": "엘리자벳 (Elisabeth)", "role": "엘리자벳 황후 역", "venue": "블루스퀘어", "impact": "초연~10주년 전 시즌 흥행 견인, 한국뮤지컬어워즈 여우주연상" },
+        { "year": "2010~2020", "title": "몬테크리스토 / 마리 앙투아네트", "role": "메르세데스 / 마리 앙투아네트 역", "venue": "샤롯데씨어터", "impact": "티켓파워 1위 뮤지컬 디바 입지 확립" }
+      ]
+    }
+  ]
+}
