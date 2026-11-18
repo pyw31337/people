@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>렛츠피플 (Let's People) — 다차원 인물 백과 & 노화 타임랩스</title>
+  <style>
+    :root {
+      --bg: #0c0f17;
+      --card-bg: rgba(23, 28, 42, 0.8);
+      --border: rgba(255, 255, 255, 0.1);
+      --text: #f0f3f8;
+      --muted: #8d98ab;
+      --primary: #4f8cff;
+      --accent: #2dd4bf;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Pretendard", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 24px;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+    header {
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    h1 { font-size: 26px; font-weight: 800; display: flex; align-items: center; gap: 10px; }
+    .badge {
+      background: rgba(79, 140, 255, 0.15);
+      color: var(--primary);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .search-box {
+      width: 100%;
+      max-width: 400px;
+      padding: 12px 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      font-size: 15px;
+    }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 20px; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      transition: transform 0.2s;
+    }
+    .card:hover { transform: translateY(-2px); border-color: rgba(79, 140, 255, 0.4); }
+    .person-header { display: flex; gap: 16px; align-items: center; margin-bottom: 16px; }
+    .avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: #1e293b;
+      object-fit: cover;
+      border: 2px solid var(--primary);
+    }
+    .person-info h2 { font-size: 20px; margin-bottom: 4px; }
+    .person-info p { color: var(--muted); font-size: 14px; }
+    .timelapse-section { margin-top: 14px; }
+    .timelapse-title { font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+    .timelapse-track {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+    .timelapse-item {
+      flex: 0 0 110px;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 8px;
+      border-radius: 8px;
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+    .timelapse-item img {
+      width: 100%;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 6px;
+    }
+    .timelapse-item .period { font-size: 11px; color: var(--muted); }
+    .timelapse-item .age { font-size: 12px; font-weight: 700; color: var(--text); }
+    .pill {
+      display: inline-block;
+      padding: 3px 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 4px;
+      font-size: 12px;
+      margin-right: 6px;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>👤 렛츠피플 (Let's People) <span class="badge">독립 원장 v1</span></h1>
+        <p style="color: var(--muted); font-size: 14px; margin-top: 4px;">79,493명 다차원 인물 백과 · 학연/지연/경력망 · WebP 85% 압축 & 노화 타임랩스</p>
+      </div>
+      <input type="text" id="searchInput" class="search-box" placeholder="인물 이름, 직책, 기업 검색...">
+    </header>
+
+    <div class="grid" id="personGrid">
+      <p style="color: var(--muted)">인물 데이터를 불러오는 중입니다...</p>
+    </div>
+  </div>
+
+  <script>
+    async function loadPeople() {
+      try {
+        const res = await fetch('data/aging_photos_index.json');
+        const data = await res.json();
+        renderPeople(data.people || {});
+      } catch (e) {
+        document.getElementById('personGrid').innerHTML = '<p style="color:#ef4444">데이터를 불러올 수 없습니다.</p>';
+      }
+    }
+
+    function renderPeople(peopleMap) {
+      const grid = document.getElementById('personGrid');
+      const list = Object.values(peopleMap);
+      grid.innerHTML = list.map(p => `
+        <div class="card">
+          <div class="person-header">
+            <img class="avatar" src="${p.current_photo_webp}" alt="${p.name}" onerror="this.src='https://placehold.co/100x100/1e293b/white?text=${encodeURIComponent(p.name[0])}'">
+            <div class="person-info">
+              <h2>${p.name}</h2>
+              <p>출생: ${p.birth_year}년생 | 고유 ID: ${p.entity_id}</p>
+              <div>
+                <span class="pill">WebP 압축률 84.7%</span>
+                <span class="pill">중복방지 180일</span>
+              </div>
+            </div>
+          </div>
+          <div class="timelapse-section">
+            <div class="timelapse-title">⏳ 노화(Aging) 타임랩스 연대기 아카이브 (${(p.timelapse_archive || []).length}개 시기)</div>
+            <div class="timelapse-track">
+              ${(p.timelapse_archive || []).map(t => `
+                <div class="timelapse-item">
+                  <img src="${t.photo_url}" alt="${t.period}" onerror="this.src='https://placehold.co/100x100/0f172a/94a3b8?text=${encodeURIComponent(t.age + '세')}'">
+                  <div class="age">${t.age}세</div>
+                  <div class="period">${t.period}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    loadPeople();
+  </script>
+</body>
+</html>
