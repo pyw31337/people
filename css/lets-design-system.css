@@ -1,0 +1,439 @@
+/**
+ * Let's Design System (LDS v1.0.0)
+ * 렛츠 패밀리 서비스 공통 디자인 시스템 CSS 라이브러리
+ * - 8-Point Grid 여백 체계
+ * - Pretendard Variable 기반 타이포그래피 & WCAG 2.1 AA/AAA 4.5:1+ 대비
+ * - 320px 모바일 완벽 지원 & 세로 적층(Stacking) 구조
+ * - 무스크롤바 가로 드래그/스와이프 캐러셀
+ * - iOS Safari PWA Safe Area 여백 관리
+ * - OS 네이티브 UI 퇴출 & 커스텀 컴포넌트
+ */
+
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+
+:root {
+  --lds-version: "1.1.0";
+  --lds-focus: #1d4ed8;
+  --lds-safe-top: env(safe-area-inset-top, 0px);
+  --lds-safe-right: env(safe-area-inset-right, 0px);
+  --lds-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --lds-safe-left: env(safe-area-inset-left, 0px);
+  /* 8-Point Grid Spacing Tokens */
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-64: 64px;
+
+  /* Typography Scale */
+  --font-family-base: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  
+  --fs-xs: 11px;
+  --fs-sm: 13px;
+  --fs-md: 15px;
+  --fs-lg: 17px;
+  --fs-xl: 20px;
+  --fs-2xl: 24px;
+  --fs-3xl: 32px;
+  --fs-display: clamp(28px, 4vw, 40px);
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+
+  --lh-tight: 1.25;
+  --lh-snug: 1.45;
+  --lh-body: 1.6;
+
+  /* Core Neutral Palette (High-Contrast Clean Light Mode) */
+  --bg-page: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-subtle: #f1f5f9;
+  --bg-hover: #e2e8f0;
+
+  --border-subtle: #e2e8f0;
+  --border-strong: #cbd5e1;
+  --border-active: #94a3b8;
+
+  --text-primary: #0f172a;   /* WCAG AAA 15.8:1 */
+  --text-secondary: #334155; /* WCAG AAA 9.6:1 */
+  --text-muted: #64748b;     /* WCAG AA 4.6:1 */
+  --text-inverse: #ffffff;
+
+  /* Service Signature Colors */
+  --color-people: #e11d48;
+  --color-people-bg: #ffe4e6;
+  --color-asset: #4f46e5;
+  --color-asset-bg: #eef2ff;
+  --color-law: #2563eb;
+  --color-law-bg: #eff6ff;
+  --color-insu: #059669;
+  --color-insu-bg: #ecfdf5;
+  --color-art: #d97706;
+  --color-art-bg: #fef3c7;
+  --color-culture: #0284c7;
+  --color-culture-bg: #f0f9ff;
+  --color-view: #06b6d4;
+  --color-view-bg: #ecfeff;
+  --color-meat: #ef4444;
+  --color-meat-bg: #fef2f2;
+  --color-camp: #10b981;
+  --color-camp-bg: #d1fae5;
+  --color-calendar: #6366f1;
+  --color-calendar-bg: #e0e7ff;
+
+  /* Elevation Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+  --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
+
+  /* Corner Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-base: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* CSS Reset & Baseline */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  font-family: var(--font-family-base);
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+}
+
+body {
+  min-height: 100vh;
+  line-height: var(--lh-body);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+  /* iOS Safari PWA Safe-Area Handling */
+  padding-top: max(var(--space-20), env(safe-area-inset-top));
+  padding-bottom: max(var(--space-48), env(safe-area-inset-bottom));
+  padding-left: max(var(--space-16), env(safe-area-inset-left));
+  padding-right: max(var(--space-16), env(safe-area-inset-right));
+  overflow-x: hidden;
+}
+
+/* All interactive elements share a visible keyboard/touch focus state. */
+:where(button, a, input, textarea, select, [role="button"], [tabindex]):focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--lds-focus) 55%, transparent);
+  outline-offset: 2px;
+}
+
+/* Keep labels intact on narrow screens; stack the data before forcing wraps. */
+.lds-nowrap { white-space: nowrap; }
+.lds-text-balance { text-wrap: balance; }
+.lds-visually-hidden { position:absolute !important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+/* Custom form controls: native controls are visually normalized, not removed
+   from the accessibility tree. */
+.lds-select, .lds-input { min-height: 44px; border: 1px solid var(--border-strong); border-radius: var(--radius-md); background: var(--bg-surface); color: var(--text-primary); padding: 0 var(--space-12); font: inherit; }
+.lds-select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--text-secondary) 50%), linear-gradient(135deg, var(--text-secondary) 50%, transparent 50%); background-position: calc(100% - 16px) 19px, calc(100% - 11px) 19px; background-size: 5px 5px, 5px 5px; background-repeat: no-repeat; padding-right: 36px; }
+
+.lds-tooltip { position: relative; }
+.lds-tooltip::after { content: attr(data-tooltip); position: absolute; z-index: 40; left: 50%; bottom: calc(100% + var(--space-8)); transform: translate(-50%, 4px); opacity: 0; pointer-events: none; width: max-content; max-width: min(320px, calc(100vw - 32px)); padding: var(--space-8) var(--space-12); border-radius: var(--radius-md); background: var(--text-primary); color: var(--text-inverse); font-size: var(--fs-sm); line-height: var(--lh-snug); box-shadow: var(--shadow-lg); transition: opacity var(--transition-fast), transform var(--transition-fast); }
+.lds-tooltip:hover::after, .lds-tooltip:focus-visible::after, .lds-tooltip[data-open="true"]::after { opacity: 1; transform: translate(-50%, 0); }
+
+.lds-notification-drawer { position: fixed; z-index: 100; inset: var(--lds-safe-top) var(--lds-safe-right) var(--lds-safe-bottom) auto; width: min(380px, calc(100vw - 16px)); background: var(--bg-surface); box-shadow: var(--shadow-xl); transform: translateX(105%); transition: transform var(--transition-base); padding: var(--space-24); overflow: auto; }
+.lds-notification-drawer[data-open="true"] { transform: translateX(0); }
+
+@media (max-width: 639px) {
+  body { padding-left: max(var(--space-16), var(--lds-safe-left)); padding-right: max(var(--space-16), var(--lds-safe-right)); padding-bottom: max(var(--space-32), var(--lds-safe-bottom)); }
+  .lds-card { padding: var(--space-16); }
+}
+@media (max-width: 359px) {
+  .lds-container { min-width: 0; }
+  .lds-btn { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}
+
+/* Max Container */
+.lds-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* 4-2-1 Responsive Column Grid */
+.lds-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-20);
+}
+@media (max-width: 1023px) {
+  .lds-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-16);
+  }
+}
+@media (max-width: 639px) {
+  .lds-grid-4 {
+    grid-template-columns: 1fr;
+    gap: var(--space-16);
+  }
+}
+
+/* 세로 적층(Vertical Stacking) 유틸리티 - 가로폭 좁아질 때 글줄 꺾임 방지 */
+.lds-stack-on-mobile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-12);
+}
+@media (max-width: 639px) {
+  .lds-stack-on-mobile {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-8);
+  }
+}
+
+/* 가로 스크롤 통제 & 마우스 드래그 / 터치 스와이프 캐러셀 */
+.lds-carousel {
+  display: flex;
+  gap: var(--space-12);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y;
+  cursor: grab;
+  padding-bottom: var(--space-4);
+}
+.lds-carousel::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+.lds-carousel.is-dragging {
+  cursor: grabbing !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+/* 카드 컴포넌트 */
+.lds-card {
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-20);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+}
+.lds-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-strong);
+}
+
+/* 커스텀 버튼 (No OS Native Look) */
+.lds-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  padding: var(--space-12) var(--space-20);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  min-height: 44px; /* Fitts's Law 44px Touch Target */
+  touch-action: manipulation;
+}
+.lds-btn-primary {
+  background: var(--text-primary);
+  color: var(--text-inverse);
+  border-color: var(--text-primary);
+}
+.lds-btn-primary:hover {
+  background: #334155;
+  border-color: #334155;
+}
+.lds-btn-secondary {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border-color: var(--border-subtle);
+}
+.lds-btn-secondary:hover {
+  background: var(--bg-subtle);
+  border-color: var(--border-strong);
+}
+
+/* 탭 / 칩 필터 */
+.lds-chip {
+  padding: var(--space-6) var(--space-12);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-6);
+  white-space: nowrap;
+}
+.lds-chip:hover {
+  background: var(--bg-subtle);
+  color: var(--text-primary);
+}
+.lds-chip.is-active {
+  background: var(--text-primary);
+  color: var(--text-inverse);
+  border-color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* 상태 뱃지 */
+.lds-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  padding: var(--space-2) var(--space-8);
+  border-radius: var(--radius-full);
+  line-height: var(--lh-snug);
+  white-space: nowrap;
+}
+
+/* 커스텀 인풋 필드 */
+.lds-input {
+  width: 100%;
+  padding: var(--space-12) var(--space-16);
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--border-strong);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-size: var(--fs-md);
+  font-family: inherit;
+  outline: none;
+  transition: all var(--transition-fast);
+  min-height: 44px;
+}
+.lds-input:focus {
+  border-color: var(--color-law);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* 커스텀 모달 */
+.lds-modal-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-16);
+}
+.lds-modal-backdrop.is-open {
+  display: flex;
+}
+.lds-modal-box {
+  background: var(--bg-surface);
+  border-radius: var(--radius-xl);
+  max-width: 560px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-xl);
+  padding: var(--space-32);
+  position: relative;
+}
+@media (max-width: 639px) {
+  .lds-modal-box {
+    padding: var(--space-20);
+    border-radius: var(--radius-lg);
+  }
+}
+.lds-modal-close {
+  position: absolute;
+  top: var(--space-16);
+  right: var(--space-16);
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+  color: var(--text-muted);
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+.lds-modal-close:hover {
+  background: var(--bg-subtle);
+  color: var(--text-primary);
+}
+
+/* 알림 센터 벨 (Notification Bell) */
+.lds-bell-btn {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all var(--transition-fast);
+}
+.lds-bell-btn:hover {
+  background: var(--bg-subtle);
+  border-color: var(--border-strong);
+}
+.lds-bell-dot {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-people);
+  box-shadow: 0 0 0 2px var(--bg-surface);
+}
