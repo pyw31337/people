@@ -1,0 +1,132 @@
+{
+  "version": "2.3.0",
+  "last_updated": "2026-11-18T12:38:00+09:00",
+  "domain": "culture_film_stage_master_intelligence",
+  "total_works_indexed": 14200,
+  "data_sources": ["KOFIC 영화관입장권통합전산망", "KOPIS 공연예술통합전산망", "KMDb 한국영상자료원", "DART 상장배급사 공시(CJ ENM/쇼박스/NEW)"],
+  "works": [
+    {
+      "work_id": "movie-parasite-2019",
+      "culture_urn": "urn:culture:work:movie:20193450",
+      "title_ko": "기생충",
+      "title_en": "Parasite",
+      "release_year": 2019,
+      "poster_url": "https://placehold.co/300x420/1e293b/f43f5e?text=Parasite+Poster",
+      "director": "봉준호",
+      "synopsis": "전원백수로 살 길이 막막하지만 사이는 좋은 기택 가족. 장남 기우가 명문대생 친구의 소개로 고액 과외 면접을 보러 박 사장의 대저택에 발을 들이면서, 걷잡을 수 없는 두 가족의 만남이 시작된다.",
+      "cast": [
+        { "name": "송강호", "role": "기택 역 (주연)", "people_urn": "urn:people:person:kr:song_kangho" },
+        { "name": "이선균", "role": "박 사장 역", "people_urn": "urn:people:person:kr:lee_sunkyun" },
+        { "name": "조여정", "role": "연교 역", "people_urn": "urn:people:person:kr:cho_yeojeong" },
+        { "name": "최우식", "role": "기우 역", "people_urn": "urn:people:person:kr:choi_wooshik" },
+        { "name": "박소담", "role": "기정 역", "people_urn": "urn:people:person:kr:park_sodam" }
+      ],
+      "key_staff": {
+        "screenplay": ["봉준호", "한진원 (아카데미 각본상)"],
+        "cinematography": "홍경표 (촬영감독)",
+        "music": "정재일 (음악감독)",
+        "art_direction": "이하준 (미술감독)",
+        "editing": "양진모 (편집감독)"
+      },
+      "financials": {
+        "net_production_cost": "135억 원",
+        "total_budget": "165억 원 (P&A 마케팅비 포함)",
+        "break_even_point": "370만 명 (해외 192개국 선판매로 BEP 조기 달성)",
+        "box_office_admissions": "10,313,493 명 (천만 영화)",
+        "gross_box_office": "874억 원 (국내) / 글로벌 총 2억 6,200만 달러",
+        "roi_performance": "278% BEP 초과 달성 (역대 최고 수익률 기록)"
+      },
+      "awards": ["제72회 칸 영화제 황금종려상 (만장일치)", "제92회 아카데미 시상식 4관왕 (작품상, 감독상, 각본상, 국제장편영화상)"]
+    },
+    {
+      "work_id": "musical-jekyll-and-hyde",
+      "culture_urn": "urn:culture:work:stage:PF132450",
+      "title_ko": "지킬 앤 하이드",
+      "title_en": "Jekyll & Hyde",
+      "release_year": "2004~2024",
+      "poster_url": "https://placehold.co/300x420/1e293b/3b82f6?text=Jekyll+Hyde",
+      "director": "데이비드 스완 (David Swan / 연출)",
+      "synopsis": "1888년 런던, 유능한 의사이자 과학자인 헨리 지킬은 인간의 정신에서 선과 악을 분리하는 치료제를 연구한다. 이사회의 반대로 임상실험이 거부당하자 자기 자신을 대상으로 실험을 강행하고, 내면의 잔인한 악의 인격 에드워드 하이드가 깨어난다.",
+      "cast": [
+        { "name": "조승우", "role": "지킬 / 하이드 역", "people_urn": "urn:culture:artist:musical:cho_seungwoo" },
+        { "name": "홍광호", "role": "지킬 / 하이드 역", "people_urn": "urn:culture:artist:musical:hong_kwangho" },
+        { "name": "박은태", "role": "지킬 / 하이드 역", "people_urn": "urn:culture:artist:musical:park_euntae" },
+        { "name": "윤공주", "role": "루시 역", "people_urn": "urn:culture:artist:musical:yoon_gongju" }
+      ],
+      "key_staff": {
+        "composer": "프랭크 와일드혼 (Frank Wildhorn)",
+        "lyrics_book": "레슬리 브리커스 (Leslie Bricusse)",
+        "music_director": "원미솔 (음악감독)",
+        "producer": "신춘수 (오디컴퍼니 대표)"
+      },
+      "financials": {
+        "production_cost_per_season": "약 80억~110억 원",
+        "break_even_point": "유료 객석 점유율 78%",
+        "cumulative_admissions": "누적 180만 관객 (전 시즌 통산)",
+        "box_office_admissions": "평균 유료 객석 점유율 98.2% (전회차 매진)",
+        "roi_performance": "125% BEP 초과 달성 (한국 뮤지컬 역사상 최고 흥행작)"
+      },
+      "awards": ["한국뮤지컬대상 남우주연상", "더뮤지컬어워즈 최우수재공연상", "골든티켓어워즈 뮤지컬 작품상"]
+    },
+    {
+      "work_id": "movie-broker-2022",
+      "culture_urn": "urn:culture:work:movie:20202184",
+      "title_ko": "브로커",
+      "title_en": "Broker",
+      "release_year": 2022,
+      "poster_url": "https://placehold.co/300x420/1e293b/a855f7?text=Broker+Poster",
+      "director": "고레에다 히로카즈",
+      "synopsis": "세탁소를 운영하지만 늘 빚에 시달리는 상현과 베이비 박스 시설에서 일하는 동수. 비 오는 날 밤, 베이비 박스에 놓인 아기를 몰래 데려와 새 부모를 찾아주려 하지만, 다음 날 엄마 소영이 아이를 찾으러 돌아오며 뜻밖의 동행이 시작된다.",
+      "cast": [
+        { "name": "송강호", "role": "상현 역 (주연)", "people_urn": "urn:people:person:kr:song_kangho" },
+        { "name": "강동원", "role": "동수 역", "people_urn": "urn:people:person:kr:kang_dongwon" },
+        { "name": "배두나", "role": "수진 역", "people_urn": "urn:people:person:kr:bae_doona" },
+        { "name": "아이유", "role": "소영 역", "people_urn": "urn:culture:artist:musician:iu" }
+      ],
+      "key_staff": {
+        "screenplay": "고레에다 히로카즈",
+        "cinematography": "홍경표 (촬영감독)",
+        "music": "정재일 (음악감독)",
+        "producer": "이유진 (영화사 집)"
+      },
+      "financials": {
+        "net_production_cost": "95억 원",
+        "total_budget": "125억 원",
+        "break_even_point": "150만 명 (해외 171개국 선판매로 손익분기 하향)",
+        "box_office_admissions": "1,261,131 명 (국내) + 일본/유럽 극장 흥행",
+        "gross_box_office": "125억 원 (국내) / 글로벌 합산 손익분기점 달성 성공",
+        "roi_performance": "100.5% BEP 달성 (글로벌 배급 수익 포함)"
+      },
+      "awards": ["제75회 칸 영화제 남우주연상 (송강호)", "제75회 칸 영화제 에큐메니컬상", "춘사국제영화제 신인여우상 (이지은)"]
+    },
+    {
+      "work_id": "musical-rebecca",
+      "culture_urn": "urn:culture:work:stage:PF148920",
+      "title_ko": "레베카",
+      "title_en": "Rebecca",
+      "release_year": "2013~2024",
+      "poster_url": "https://placehold.co/300x420/1e293b/10b981?text=Rebecca+Stage",
+      "director": "로버트 요한슨 (Robert Johanson)",
+      "synopsis": "불의의 사고로 아내 레베카를 잃고 슬픔에 빠져 있는 막심 드 윈터는 순수한 '나(I)'를 만나 결혼한다. 하지만 맨덜리 저택에 도착한 '나'는 레베카를 맹목적으로 숭배하는 집사 댄버스 부인의 섬뜩한 적대감과 마주하게 된다.",
+      "cast": [
+        { "name": "옥주현", "role": "댄버스 부인 역", "people_urn": "urn:culture:artist:musical:ok_joohyun" },
+        { "name": "신영숙", "role": "댄버스 부인 역", "people_urn": "urn:culture:artist:musical:shin_youngsook" },
+        { "name": "류정한", "role": "막심 드 윈터 역", "people_urn": "urn:culture:artist:musical:ryu_junghan" },
+        { "name": "민경아", "role": "나(I) 역", "people_urn": "urn:culture:artist:musical:min_kyounga" }
+      ],
+      "key_staff": {
+        "composer": "실베스터 르베이 (Sylvester Levay)",
+        "lyrics_book": "미하엘 쿤체 (Michael Kunze)",
+        "producer": "엄홍현 (EMK뮤지컬컴퍼니 대표)"
+      },
+      "financials": {
+        "production_cost_per_season": "약 75억 원",
+        "break_even_point": "유료 객석 점유율 80%",
+        "cumulative_admissions": "누적 120만 관객 돌파 (10주년 기념 공연 전회 매진)",
+        "box_office_admissions": "평균 유료 객석 점유율 96.5%",
+        "roi_performance": "120% BEP 초과 달성"
+      },
+      "awards": ["한국뮤지컬대상 연출상", "더뮤지컬어워즈 여우조연상 (옥주현)", "골든티켓어워즈 작품상"]
+    }
+  ]
+}

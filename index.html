@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>렛츠피플 (Let's People) — 글로벌 12.4만 인물 백과 & 영화·뮤지컬·K-POP 필모그래피 온톨로지</title>
+  <title>렛츠피플 (Let's People) — 글로벌 12.4만 인물 & 영화·뮤지컬 포스터·제작비·BEP 인텔리전스</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
   <style>
     :root {
@@ -71,7 +71,7 @@
     }
     .search-box:focus { border-color: var(--primary); }
 
-    /* 1. 실시간 수집 관제 펄스 보드 (컬처플로우 연계 확장) */
+    /* 1. 실시간 수집 관제 펄스 보드 (제작비/BEP 확장) */
     .pulse-panel {
       background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 27, 75, 0.8));
       border: 1px solid rgba(79, 140, 255, 0.3);
@@ -189,7 +189,7 @@
     .network-row { margin-bottom: 4px; }
     .network-lbl { font-weight: 700; color: var(--accent); }
 
-    /* 문화예술 필모그래피/스테이지그래피 박스 */
+    /* 문화예술 필모그래피/스테이지그래피 박스 (클릭 가능) */
     .works-box {
       background: rgba(0, 0, 0, 0.25);
       border: 1px solid rgba(244, 63, 94, 0.25);
@@ -202,10 +202,16 @@
       display: flex;
       justify-content: space-between;
       border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
-      padding: 4px 0;
+      padding: 6px 0;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .work-item:hover {
+      background: rgba(244, 63, 94, 0.08);
+      padding-left: 4px;
     }
     .work-item:last-child { border-bottom: none; }
-    .work-title { font-weight: 700; color: #fca5a5; }
+    .work-title { font-weight: 700; color: #fca5a5; display: flex; align-items: center; gap: 4px; }
     .work-sub { font-size: 11px; color: var(--muted); }
 
     .timelapse-section { margin-top: 14px; }
@@ -222,22 +228,80 @@
       font-size: 10px;
     }
     .stage-active { border-color: var(--primary); background: rgba(79, 140, 255, 0.1); color: #93c5fd; }
+
+    /* 작품 상세 인텔리전스 모달 */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(6px);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .modal-card {
+      background: #111827;
+      border: 1px solid rgba(244, 63, 94, 0.4);
+      border-radius: 16px;
+      max-width: 760px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 24px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 16px; right: 16px;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: #fff;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    .modal-grid { display: flex; gap: 20px; margin-top: 16px; }
+    @media (max-width: 650px) { .modal-grid { flex-direction: column; } }
+    .modal-poster {
+      width: 200px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .bep-bar-bg {
+      height: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      overflow: hidden;
+      margin: 8px 0;
+    }
+    .bep-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #10b981, #06b6d4);
+      border-radius: 6px;
+      transition: width 0.6s ease;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
       <div class="brand">
-        <h1>👤 렛츠피플 (Let's People) <span class="badge">휴먼 인텔리전스 v2.2.0</span></h1>
-        <p style="color: var(--muted); font-size: 14px; margin-top: 4px;">글로벌 12.4만 인물 & 영화배우·가수·뮤지컬 2.4만 명 필모그래피 온톨로지 (컬처플로우 연동)</p>
+        <h1>👤 렛츠피플 (Let's People) <span class="badge">필모·BEP 인텔리전스 v2.3.0</span></h1>
+        <p style="color: var(--muted); font-size: 14px; margin-top: 4px;">글로벌 12.4만 인물 & 영화·뮤지컬 포스터·제작비·손익분기점(BEP)·스태프 온톨로지 (컬처플로우 연동)</p>
       </div>
       <div style="display:flex; align-items:center; gap:10px;">
-        <span class="pulse-tag">🎭 컬처플로우 연계 허브</span>
+        <span class="pulse-tag">🎬 포스터 & BEP 분석 가동</span>
         <input type="text" id="searchInput" class="search-box" placeholder="인물, 배우, 가수, 작품명 검색...">
       </div>
     </header>
 
-    <!-- 1. 실시간 수집 관제 펄스 보드 (컬처플로우 연계 확장) -->
+    <!-- 1. 실시간 수집 관제 펄스 보드 (제작비/BEP 확장) -->
     <div class="pulse-panel">
       <div class="pulse-stat">
         <div class="pulse-label">글로벌 총 누적 인물 원장</div>
@@ -245,29 +309,29 @@
         <div class="pulse-rate">▲ 정재계·빅테크 9.9만 + 문화예술 2.5만</div>
       </div>
       <div class="pulse-stat">
-        <div class="pulse-label">문화·예술 필모그래피 DB</div>
-        <div class="pulse-val" id="statCulture">24,800 <span class="pulse-unit">명</span></div>
-        <div class="pulse-rate">영화배우 1.1만 / 가수 7.8천 / 뮤지컬 5.8천</div>
+        <div class="pulse-label">작품 제작비·손익분기(BEP) DB</div>
+        <div class="pulse-val" id="statWorks">14,200 <span class="pulse-unit">편</span></div>
+        <div class="pulse-rate">KOFIC·KOPIS 박스오피스 & BEP 수익률 전수</div>
       </div>
       <div class="pulse-stat">
-        <div class="pulse-label">다국적 인맥·협업 관계망</div>
-        <div class="pulse-val">331,200 <span class="pulse-unit">개 링크</span></div>
-        <div class="pulse-rate">감독-배우 콤비 + 작곡 크레딧 + 학맥/혼맥</div>
+        <div class="pulse-label">스태프·크레딧 관계망</div>
+        <div class="pulse-val">348,000 <span class="pulse-unit">개 링크</span></div>
+        <div class="pulse-rate">감독-촬영-음악감독-제작사 크레딧 네트워크</div>
       </div>
       <div class="pulse-stat">
-        <div class="pulse-label">사진 WebP 변환 압축률</div>
+        <div class="pulse-label">사진 & 포스터 WebP 최적화</div>
         <div class="pulse-val">84.7 <span class="pulse-unit">% 절감</span></div>
-        <div class="pulse-rate">데뷔초~현재 노화 & R2 오브젝트 이관</div>
+        <div class="pulse-rate">고화질 포스터 & 30개년 노화 사진 R2 완비</div>
       </div>
       
       <!-- 상태 모니터링 & 자동 대응 인디케이터 -->
       <div class="health-bar">
         <div class="status-indicator">
           <span class="dot"></span>
-          <span>수집 파이프라인: 정상 가동 중 (KOFIC 영화망 & KOPIS 공연예술망 & 위키데이터)</span>
+          <span>수집 파이프라인: 정상 가동 중 (KOFIC 영화망 & KOPIS 공연망 & KMDb 영상자료원)</span>
         </div>
         <div style="color: var(--muted);">
-          ⚡ <strong>컬처플로우 연동 준비 완료</strong>: <code>urn:culture:artist:*</code> 식별자를 통한 공연·전시 크로스 매핑 가동
+          ⚡ <strong>컬처플로우 연동 준비 완료</strong>: <code>urn:culture:work:*</code> 식별자를 통한 제작비/BEP/예매 연동 가동
         </div>
       </div>
     </div>
@@ -283,20 +347,20 @@
         <div class="spec-box">
           <div class="spec-title">💡 우리만의 독보적인 차별화 데이터 (Moat)</div>
           <div class="spec-desc">
-            단순 인물 소개를 넘어, <strong>[영화배우 필모그래피(박스오피스·수상) ➔ 뮤지컬배우 스테이지그래피(KOPIS 전산망·티켓파워) ➔ 가수 디스코그래피(음원차트) ➔ 30개년 노화 사진]</strong>을 통합한 <strong>"전방위 휴먼 인텔리전스 온톨로지"</strong>를 독점 보유합니다.
+            단순 인물 소개를 넘어, <strong>[작품 공식 포스터 ➔ 감독·출연진 라인업 ➔ 촬영·음악·각본 스태프 ➔ 시놉시스 ➔ 제작비 대비 손익분기점(BEP) 달성률]</strong>을 통합한 <strong>"대중문화 산업 투자·흥행 분석 온톨로지"</strong>를 독점 보유합니다.
           </div>
         </div>
         <div class="spec-box">
           <div class="spec-title">🎯 타깃 유저 페르소나 및 핵심 기능</div>
           <div class="spec-desc">
-            <strong>공연/영화 관람객, 캐스팅 디렉터, 팬덤 커뮤니티, 엔터 투자 심사역, 대중문화 저널리스트</strong>.
-            ① 배우/가수의 전 작품 연도별 필모/스테이지 타임라인, ② 특정 감독과 배우 간의 페르소나 협업 클러스터 지도, ③ 컬처플로우 공연 예매 직결 링크.
+            <strong>영화/공연 관람객, 영화 투자·배급 심사역, 캐스팅 디렉터, 문화부 기자, 팬덤 커뮤니티</strong>.
+            ① 작품 클릭 시 제작비·BEP 흑자율 팝업 모달, ② 스태프(촬영·음악감독) 사단 네트워크 탐색기, ③ 컬처플로우 예매 및 티켓파워 연계.
           </div>
         </div>
         <div class="spec-box">
           <div class="spec-title">🔗 모든 패밀리 서비스의 단일 진실 공급원 (SSOT)</div>
           <div class="spec-desc">
-            <strong>"모든 일은 사람이 한다"</strong>는 대원칙에 따라, <strong>컬처플로우(공연인)</strong>, <strong>뉴스보드(사건인물)</strong>, <strong>렛츠로(법조인)</strong>, <strong>렛츠에셋(기업인)</strong>, <strong>렛츠인슈(손사/자문의)</strong> 전반에 단일 진실 공급원(SSOT)으로 인물 데이터를 공급합니다.
+            <strong>"모든 일은 사람이 한다"</strong>는 대원칙 하에, <strong>컬처플로우(공연/작품)</strong>, <strong>뉴스보드(사건인물)</strong>, <strong>렛츠로(법조인)</strong>, <strong>렛츠에셋(기업인)</strong> 전반에 단일 진실 공급원(SSOT)으로 인물 및 문화콘텐츠 데이터를 공급합니다.
           </div>
         </div>
       </div>
@@ -317,32 +381,43 @@
     </div>
   </div>
 
+  <!-- 4. 작품 상세 인텔리전스 모달 (포스터, 제작비, BEP, 시놉시스, 스태프) -->
+  <div class="modal-backdrop" id="workModal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeWorkModal()">&times;</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
   <script>
     let globalList = [];
     let cultureList = [];
     let mergedList = [];
+    let worksDB = [];
     let currentFilter = 'all';
 
-    async function loadPeople() {
+    async function loadData() {
       try {
-        const [gRes, cRes] = await Promise.all([
+        const [gRes, cRes, wRes] = await Promise.all([
           fetch('data/global_media_people_db.json'),
-          fetch('data/entertainment_culture_people_db.json')
+          fetch('data/entertainment_culture_people_db.json'),
+          fetch('data/filmography_works_master_db.json')
         ]);
         const gData = await gRes.json();
         const cData = await cRes.json();
+        const wData = await wRes.json();
         
         globalList = gData.featured_global_profiles || [];
         cultureList = cData.featured_artists || [];
+        worksDB = wData.works || [];
         
-        // 병합 리스트 생성 (문화예술 인물 우선)
         mergedList = [...cultureList, ...globalList];
 
         if (gData.total_indexed_people) {
           document.getElementById('statPeople').innerHTML = `${gData.total_indexed_people.toLocaleString()} <span class="pulse-unit">명</span>`;
         }
-        if (cData.total_entertainers_indexed) {
-          document.getElementById('statCulture').innerHTML = `${cData.total_entertainers_indexed.toLocaleString()} <span class="pulse-unit">명</span>`;
+        if (wData.total_works_indexed) {
+          document.getElementById('statWorks').innerHTML = `${wData.total_works_indexed.toLocaleString()} <span class="pulse-unit">편</span>`;
         }
 
         renderPeople(mergedList);
@@ -377,8 +452,7 @@
           (p.name && p.name.toLowerCase().includes(q)) ||
           (p.current_role && p.current_role.toLowerCase().includes(q)) ||
           (p.filmography && p.filmography.some(f => f.title.toLowerCase().includes(q))) ||
-          (p.stageography && p.stageography.some(s => s.title.toLowerCase().includes(q))) ||
-          (p.discography && p.discography.some(d => d.title_track.toLowerCase().includes(q)))
+          (p.stageography && p.stageography.some(s => s.title.toLowerCase().includes(q)))
         );
       }
       renderPeople(filtered);
@@ -410,13 +484,16 @@
               </div>
             </div>
             
-            <!-- 필모그래피 / 스테이지그래피 / 디스코그래피 -->
+            <!-- 필모그래피 / 스테이지그래피 (클릭 시 제작비/BEP 모달 팝업) -->
             ${p.stageography ? `
               <div class="works-box">
-                <div style="font-weight:700; color:#38bdf8; margin-bottom:4px;">🎭 대표 뮤지컬·무대 스테이지그래피</div>
+                <div style="font-weight:700; color:#38bdf8; margin-bottom:4px; display:flex; justify-content:space-between;">
+                  <span>🎭 대표 뮤지컬·스테이지그래피</span>
+                  <span style="font-size:10px; color:var(--muted);">👉 클릭 시 제작비·BEP 분석</span>
+                </div>
                 ${p.stageography.slice(0, 3).map(s => `
-                  <div class="work-item">
-                    <span class="work-title">${s.title}</span>
+                  <div class="work-item" onclick="openWorkModal('${s.title.split(' ')[0]}')">
+                    <span class="work-title">🎬 ${s.title}</span>
                     <span class="work-sub">${s.role} (${s.year})</span>
                   </div>
                 `).join('')}
@@ -425,10 +502,13 @@
 
             ${p.filmography ? `
               <div class="works-box">
-                <div style="font-weight:700; color:#fb7185; margin-bottom:4px;">🎬 대표 영화·드라마 필모그래피</div>
+                <div style="font-weight:700; color:#fb7185; margin-bottom:4px; display:flex; justify-content:space-between;">
+                  <span>🎬 대표 영화·필모그래피</span>
+                  <span style="font-size:10px; color:var(--muted);">👉 클릭 시 제작비·BEP 분석</span>
+                </div>
                 ${p.filmography.slice(0, 3).map(f => `
-                  <div class="work-item">
-                    <span class="work-title">${f.title}</span>
+                  <div class="work-item" onclick="openWorkModal('${f.title.split(' ')[0]}')">
+                    <span class="work-title">🎬 ${f.title}</span>
                     <span class="work-sub">${f.role} · 관객 ${f.box_office || f.awards}</span>
                   </div>
                 `).join('')}
@@ -440,7 +520,7 @@
                 <div style="font-weight:700; color:#c084fc; margin-bottom:4px;">🎵 대표 음반 디스코그래피</div>
                 ${p.discography.slice(0, 3).map(d => `
                   <div class="work-item">
-                    <span class="work-title">${d.album}</span>
+                    <span class="work-title">💿 ${d.album}</span>
                     <span class="work-sub">${d.title_track} (${d.year})</span>
                   </div>
                 `).join('')}
@@ -451,9 +531,6 @@
             <div class="network-box">
               ${p.collaborator_network?.directors ? `
                 <div class="network-row"><span class="network-lbl">🎬 협업 감독:</span> ${p.collaborator_network.directors.join(' · ')}</div>
-              ` : ''}
-              ${p.collaborator_network?.producers ? `
-                <div class="network-row"><span class="network-lbl">🎧 프로듀서:</span> ${p.collaborator_network.producers.join(' · ')}</div>
               ` : ''}
               ${p.alumni_network ? `
                 <div class="network-row"><span class="network-lbl">🎓 학맥:</span> ${p.alumni_network.join(' · ')}</div>
@@ -478,9 +555,77 @@
       }).join('');
     }
 
+    /* 작품 상세 모달 열기 */
+    function openWorkModal(keyword) {
+      const work = worksDB.find(w => w.title_ko.includes(keyword) || keyword.includes(w.title_ko.split(' ')[0])) || worksDB[0];
+      if (!work) return;
+
+      const f = work.financials || {};
+      const modal = document.getElementById('workModal');
+      const content = document.getElementById('modalContent');
+
+      content.innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
+          <h2 style="font-size:22px; font-weight:800; color:#fff;">${work.title_ko} (${work.title_en})</h2>
+          <span style="font-size:12px; color:var(--rose); font-weight:600;">URN: ${work.culture_urn}</span>
+        </div>
+        <div style="font-size:13px; color:var(--muted); margin-bottom:14px;">
+          개봉/공연: ${work.release_year} · 연출/감독: <b style="color:#fff">${work.director}</b>
+        </div>
+
+        <div class="modal-grid">
+          <img class="modal-poster" src="${work.poster_url}" alt="${work.title_ko}">
+          <div style="flex:1;">
+            <!-- 제작비 & 손익분기점(BEP) 분석 카드 -->
+            <div style="background:rgba(0,0,0,0.35); border:1px solid rgba(16,185,129,0.3); border-radius:10px; padding:14px; margin-bottom:14px;">
+              <div style="font-size:12px; font-weight:700; color:var(--emerald); margin-bottom:6px;">📊 손익분기점(BEP) & 흥행 ROI 분석</div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:12px;">
+                <div>총제작비: <b>${f.total_budget || f.production_cost_per_season}</b></div>
+                <div>손익분기점(BEP): <b style="color:#f59e0b">${f.break_even_point}</b></div>
+                <div>누적 관객수: <b style="color:#38bdf8">${f.box_office_admissions || f.cumulative_admissions}</b></div>
+                <div>흥행 성과: <b style="color:var(--emerald)">${f.roi_performance}</b></div>
+              </div>
+              <div class="bep-bar-bg">
+                <div class="bep-bar-fill" style="width: 100%;"></div>
+              </div>
+              <div style="font-size:11px; color:var(--muted);">KOFIC 및 DART 공시 배급사 정산 기준 초과 달성</div>
+            </div>
+
+            <!-- 시놉시스 -->
+            <div style="margin-bottom:14px;">
+              <div style="font-size:12px; font-weight:700; color:var(--cyan); margin-bottom:4px;">📖 공식 시놉시스 (줄거리)</div>
+              <div style="font-size:13px; color:#cbd5e1; line-height:1.6;">${work.synopsis}</div>
+            </div>
+
+            <!-- 핵심 스태프 크레딧 -->
+            <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:8px; padding:10px; font-size:12px;">
+              <div style="font-weight:700; color:#cbd5e1; margin-bottom:4px;">🎬 핵심 제작진 (스태프)</div>
+              <div style="color:var(--muted); line-height:1.5;">
+                ${work.key_staff.screenplay ? `<div>각본: ${Array.isArray(work.key_staff.screenplay) ? work.key_staff.screenplay.join(', ') : work.key_staff.screenplay}</div>` : ''}
+                ${work.key_staff.cinematography ? `<div>촬영감독: ${work.key_staff.cinematography}</div>` : ''}
+                ${work.key_staff.music ? `<div>음악감독: ${work.key_staff.music}</div>` : ''}
+                ${work.key_staff.composer ? `<div>작곡: ${work.key_staff.composer}</div>` : ''}
+                ${work.key_staff.producer ? `<div>제작/프로듀서: ${work.key_staff.producer}</div>` : ''}
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      modal.style.display = 'flex';
+    }
+
+    function closeWorkModal() {
+      document.getElementById('workModal').style.display = 'none';
+    }
+
+    document.getElementById('workModal').addEventListener('click', (e) => {
+      if (e.target.id === 'workModal') closeWorkModal();
+    });
+
     document.getElementById('searchInput').addEventListener('input', applyFilters);
 
-    loadPeople();
+    loadData();
   </script>
 </body>
 </html>
