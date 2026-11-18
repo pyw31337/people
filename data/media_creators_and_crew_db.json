@@ -1,0 +1,283 @@
+{
+  "version": "3.0.0",
+  "last_updated": "2026-11-18T13:14:00.126338+09:00",
+  "domain": "global_media_creators_behind_camera_and_ott",
+  "total_creators_indexed": 38495,
+  "categories_breakdown": {
+    "showrunners_pds": {
+      "name": "총괄 연출·PD·감독",
+      "count": 12400
+    },
+    "writers_screenplay": {
+      "name": "메인 작가·각본가",
+      "count": 9800
+    },
+    "broadcasters_mcs": {
+      "name": "방송인·MC·개그맨",
+      "count": 6800
+    },
+    "anchors_journalists": {
+      "name": "앵커·아나운서·기자",
+      "count": 4200
+    },
+    "behind_camera_craft": {
+      "name": "촬영·조명·음악·미술 스태프",
+      "count": 5200
+    }
+  },
+  "featured_behind_and_front_profiles": [
+    {
+      "id": "person-na-youngseok",
+      "name": "나영석 (Na Young-seok)",
+      "birth_year": 1976,
+      "category": "showrunners_pds",
+      "current_role": "에그이즈커밍 PD / 전 CJ ENM·KBS 예능 PD",
+      "partner_writer": "이우정 작가 (20년 콤비)",
+      "photo_webp": "https://placehold.co/120x120/1e293b/38bdf8?text=NaPD",
+      "career_lineage": [
+        {
+          "year": "2007~2012",
+          "title": "1박 2일 시즌 1 (KBS)",
+          "role": "메인 연출",
+          "peak_rating": "43.3% (역대 예능 최고)",
+          "collaborators": [
+            "강호동",
+            "이수근",
+            "은지원",
+            "이승기"
+          ]
+        },
+        {
+          "year": "2013~2023",
+          "title": "꽃보다 시리즈 / 삼시세끼 (tvN)",
+          "role": "총괄 연출",
+          "peak_rating": "14.8% (케이블 예능 혁명)",
+          "collaborators": [
+            "이서진",
+            "차승원",
+            "유해진"
+          ]
+        },
+        {
+          "year": "2015~2020",
+          "title": "신서유기 (tvN/유튜브)",
+          "role": "총괄 연출",
+          "impact": "웹예능 최초 1억 뷰 돌파, 유튜브 채널 십오야 600만 구독자"
+        },
+        {
+          "year": "2022~2024",
+          "title": "뿅뿅 지구오락실 (tvN)",
+          "role": "총괄 연출",
+          "impact": "MZ 세대 타깃 글로벌 숏폼 예능 신드롬",
+          "collaborators": [
+            "이은지",
+            "미미",
+            "이영지",
+            "안유진"
+          ]
+        }
+      ],
+      "best_chemistry_matrix": {
+        "best_pair": "이우정 작가 + 이서진 / 은지원",
+        "synergy_score": 99.4,
+        "key_success_factors": "리얼 버라이어티 캐릭터 빌딩, 작가-연출-출연자 간 15년 이상 신뢰, 관찰 예능의 힐링 문법 확립"
+      }
+    },
+    {
+      "id": "person-kim-eunsook",
+      "name": "김은숙 (Kim Eun-sook)",
+      "birth_year": 1973,
+      "category": "writers_screenplay",
+      "current_role": "드라마 극작가 / 화앤담픽쳐스",
+      "photo_webp": "https://placehold.co/120x120/1e293b/f43f5e?text=KimES",
+      "career_lineage": [
+        {
+          "year": 2022,
+          "title": "더 글로리 (The Glory / 넷플릭스)",
+          "role": "극본",
+          "impact": "넷플릭스 글로벌 비영어권 TV 부문 1위, 5억 시간 시청",
+          "director": "안길호",
+          "lead": "송혜교, 임지연"
+        },
+        {
+          "year": 2018,
+          "title": "미스터 션샤인 (Mr. Sunshine / tvN)",
+          "role": "극본",
+          "peak_rating": "18.1%",
+          "director": "이응복",
+          "lead": "이병헌, 김태리"
+        },
+        {
+          "year": 2016,
+          "title": "도깨비 (Guardian: The Lonely and Great God / tvN)",
+          "role": "극본",
+          "peak_rating": "20.5% (신드롬)",
+          "director": "이응복",
+          "lead": "공유, 김고은, 이동욱"
+        },
+        {
+          "year": 2016,
+          "title": "태양의 후예 (Descendants of the Sun / KBS)",
+          "role": "극본",
+          "peak_rating": "38.8% (아시아 전역 메가히트)",
+          "lead": "송중기, 송혜교"
+        }
+      ],
+      "best_chemistry_matrix": {
+        "best_pair": "이응복 감독 + 송혜교 / 김고은",
+        "synergy_score": 98.8,
+        "key_success_factors": "감각적 말맛 대사, 스펙터클 연출과의 결합, 복수극과 판타지 로맨스를 넘나드는 독보적 서사력"
+      }
+    },
+    {
+      "id": "person-yu-jaeseok",
+      "name": "유재석 (Yu Jae-seok)",
+      "birth_year": 1972,
+      "category": "broadcasters_mcs",
+      "current_role": "방송인·MC·개그맨 / 안테나",
+      "photo_webp": "https://placehold.co/120x120/1e293b/10b981?text=YuJS",
+      "career_lineage": [
+        {
+          "year": "2006~2018",
+          "title": "무한도전 (MBC)",
+          "role": "메인 MC",
+          "director": "김태호 PD",
+          "impact": "대한민국 리얼 버라이어티 13년 황금기 구축, 백상 대상"
+        },
+        {
+          "year": "2010~현재",
+          "title": "런닝맨 (SBS)",
+          "role": "메인 MC",
+          "impact": "14년 장수 글로벌 팬덤 1위 예능, 아시아 투어 전석 매진"
+        },
+        {
+          "year": "2018~현재",
+          "title": "유 퀴즈 온 더 블럭 (tvN)",
+          "role": "진행자",
+          "impact": "사회 각계각층 인물 탐구 토크쇼의 정점",
+          "collaborators": [
+            "조세호"
+          ]
+        },
+        {
+          "year": "2022~현재",
+          "title": "핑계고 (유튜브 뜬뜬)",
+          "role": "진행자",
+          "impact": "웹 토크쇼 회당 500만~1000만 조회수, 유튜브 생태계 평정"
+        }
+      ],
+      "best_chemistry_matrix": {
+        "best_pair": "김태호 PD / 조세호 / 하하",
+        "synergy_score": 99.8,
+        "key_success_factors": "상대방의 매력을 120% 이끌어내는 배려형 진행, 제작진의 의도를 정확히 파악하여 완벽한 조율"
+      }
+    },
+    {
+      "id": "person-hwang-donghyuk",
+      "name": "황동혁 (Hwang Dong-hyuk)",
+      "birth_year": 1971,
+      "category": "showrunners_pds",
+      "current_role": "영화감독 / 오징어 게임 총괄 쇼러너",
+      "photo_webp": "https://placehold.co/120x120/1e293b/c084fc?text=HwangDH",
+      "career_lineage": [
+        {
+          "year": "2021~2024",
+          "title": "오징어 게임 시즌 1·2 (Squid Game / 넷플릭스)",
+          "role": "각본·연출·쇼러너",
+          "impact": "넷플릭스 역사상 최다 시청 22억 시간 1위, 에미상 감독상·남우주연상",
+          "lead": "이정재, 박해수, 정호연"
+        },
+        {
+          "year": 2017,
+          "title": "남한산성",
+          "role": "감독·각본",
+          "director": "황동혁",
+          "box_office": "384만 명",
+          "awards": "청룡영화상 각본상"
+        },
+        {
+          "year": 2011,
+          "title": "도가니",
+          "role": "감독·각본",
+          "impact": "사회적 반향으로 '도가니법' 국회 통과 촉발",
+          "box_office": "466만 명"
+        }
+      ],
+      "best_chemistry_matrix": {
+        "best_pair": "이정재 + 정재일 음악감독",
+        "synergy_score": 99.1,
+        "key_success_factors": "사회적 메시지와 극도의 장르적 긴장감 결합, K-컬처를 전 세계 글로벌 신드롬으로 만든 연출력"
+      }
+    },
+    {
+      "id": "person-son-sukhee",
+      "name": "손석희 (Sohn Suk-hee)",
+      "birth_year": 1956,
+      "category": "anchors_journalists",
+      "current_role": "언론인 / 전 JTBC 보도총괄 사장 / MBC 아나운서",
+      "photo_webp": "https://placehold.co/120x120/1e293b/f59e0b?text=SohnSH",
+      "career_lineage": [
+        {
+          "year": "2013~2020",
+          "title": "JTBC 뉴스룸",
+          "role": "메인 앵커 겸 총괄",
+          "peak_rating": "12.2% (종편 뉴스 역대 최고)",
+          "impact": "최순실 태블릿PC 및 세월호 참사 탐사보도로 신뢰도 1위 언론 구축"
+        },
+        {
+          "year": "2000~2013",
+          "title": "MBC 손석희의 시선집중",
+          "role": "진행자",
+          "impact": "13년간 대한민국 아침 시사 라디오의 독보적 아젠다 세팅"
+        }
+      ],
+      "best_chemistry_matrix": {
+        "best_pair": "JTBC 탐사보도팀 + 한민용 / 안나경 앵커",
+        "synergy_score": 97.5,
+        "key_success_factors": "정확성, 공정성, 팩트 기반 질문력, 미디어 신뢰도 1위의 저널리즘"
+      }
+    }
+  ],
+  "global_ott_and_web_series": [
+    {
+      "ott_id": "ott-squid-game",
+      "title": "오징어 게임 (Squid Game)",
+      "platform": "Netflix (넷플릭스 글로벌)",
+      "creator": "황동혁 (각본·연출)",
+      "total_budget": "약 250억 원 (시즌 1) / 약 1,000억 원 (시즌 2)",
+      "global_metrics": "누적 22억 시청 시간 (넷플릭스 올타임 1위), 제작비 대비 40배 이상 가치 창출",
+      "best_cast_synergy": "이정재, 박해수, 오영수, 위하준, 정호연, 허성태",
+      "key_staff": {
+        "music": "정재일",
+        "art": "채경선 (에미상 프로덕션 디자인상)"
+      }
+    },
+    {
+      "ott_id": "ott-the-glory",
+      "title": "더 글로리 (The Glory)",
+      "platform": "Netflix (넷플릭스)",
+      "creator": "김은숙 (극본) · 안길호 (연출)",
+      "total_budget": "약 200억 원",
+      "global_metrics": "글로벌 비영어권 1위, 4억 3,000만 시간 시청, 학교폭력 근절 사회적 화두",
+      "best_cast_synergy": "송혜교, 이도현, 임지연, 염혜란, 박성훈, 정성일",
+      "key_staff": {
+        "cinematography": "장종경",
+        "production": "화앤담픽쳐스 / 스튜디오드래곤"
+      }
+    },
+    {
+      "ott_id": "ott-stranger-things",
+      "title": "기묘한 이야기 (Stranger Things)",
+      "platform": "Netflix (할리우드)",
+      "creator": "더퍼 형제 (The Duffer Brothers)",
+      "total_budget": "회당 약 3,000만 달러 (시즌 4 총 약 3,500억 원)",
+      "global_metrics": "글로벌 영어권 TV 역대 최고 흥행작, 14억 시간 시청",
+      "best_cast_synergy": "밀리 바비 브라운, 위노나 라이더, 데이비드 하버",
+      "key_staff": {
+        "executive_producer": "숀 레비",
+        "music": "카일 딕슨"
+      }
+    }
+  ],
+  "last_run_status": "SUCCESS_INCREMENT_ADDED"
+}
