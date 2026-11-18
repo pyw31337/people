@@ -2,16 +2,17 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>렛츠피플 (Let's People) — 글로벌 12만 미디어 노출 인물 백과 & 30개년 노화·인맥 온톨로지</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>렛츠피플 (Let's People) — 글로벌 12.4만 미디어 노출 인물 백과 & 30개년 노화·인맥 온톨로지</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
   <style>
     :root {
-      --bg: #0c0f17;
-      --card-bg: rgba(23, 28, 42, 0.85);
-      --card-hover: rgba(30, 41, 59, 0.95);
-      --border: rgba(255, 255, 255, 0.1);
-      --text: #f0f3f8;
-      --muted: #8d98ab;
+      --bg: #090c14;
+      --card-bg: rgba(20, 26, 40, 0.9);
+      --card-hover: rgba(28, 36, 56, 0.95);
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #f8fafc;
+      --muted: #94a3b8;
       --primary: #4f8cff;
       --accent: #2dd4bf;
       --purple: #c084fc;
@@ -19,15 +20,14 @@
       --amber: #f59e0b;
       --cyan: #06b6d4;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: "Pretendard Variable", -apple-system, BlinkMacSystemFont, sans-serif; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Pretendard", sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
-      padding: 24px;
+      padding: 20px;
     }
-    .container { max-width: 1320px; margin: 0 auto; }
+    .container { max-width: 1340px; margin: 0 auto; }
     
     /* 헤더 */
     header {
@@ -40,7 +40,7 @@
       flex-wrap: wrap;
       gap: 16px;
     }
-    .brand h1 { font-size: 26px; font-weight: 800; display: flex; align-items: center; gap: 10px; }
+    .brand h1 { font-size: 24px; font-weight: 800; display: flex; align-items: center; gap: 10px; }
     .badge {
       background: rgba(79, 140, 255, 0.18);
       color: var(--primary);
@@ -50,19 +50,29 @@
       font-weight: 600;
       border: 1px solid rgba(79, 140, 255, 0.3);
     }
+    .pulse-tag {
+      background: rgba(79, 140, 255, 0.15);
+      color: #93c5fd;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+    }
     .search-box {
-      width: 320px;
-      padding: 10px 14px;
-      background: rgba(0, 0, 0, 0.3);
+      width: 280px;
+      padding: 8px 12px;
+      background: rgba(0, 0, 0, 0.35);
       border: 1px solid var(--border);
       border-radius: 8px;
       color: var(--text);
-      font-size: 14px;
+      font-size: 13px;
+      outline: none;
     }
+    .search-box:focus { border-color: var(--primary); }
 
-    /* 1. 실시간 수집 관제 펄스 보드 (글로벌 인물 확장) */
+    /* 1. 실시간 수집 관제 펄스 보드 (글로벌 확장) */
     .pulse-panel {
-      background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 27, 75, 0.7));
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 27, 75, 0.8));
       border: 1px solid rgba(79, 140, 255, 0.3);
       border-radius: 14px;
       padding: 20px;
@@ -70,9 +80,10 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       gap: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
     .pulse-stat {
-      background: rgba(0, 0, 0, 0.25);
+      background: rgba(0, 0, 0, 0.3);
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 14px;
@@ -97,7 +108,7 @@
     .status-indicator { display: flex; align-items: center; gap: 8px; font-weight: 700; color: var(--emerald); }
     .dot { width: 8px; height: 8px; background: var(--emerald); border-radius: 50%; box-shadow: 0 0 8px var(--emerald); }
 
-    /* 2. 제품 스펙 & 차별화 데이터 소개 섹션 (기획자·디자이너용) */
+    /* 2. 제품 스펙 & 차별화 데이터 소개 섹션 */
     .spec-panel {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -133,6 +144,7 @@
       background: var(--primary);
       color: #fff;
       border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(79, 140, 255, 0.3);
     }
 
     /* 3. 메인 인터랙티브 작업 영역 */
@@ -172,57 +184,50 @@
 
     .timelapse-section { margin-top: 14px; }
     .timelapse-title { font-size: 12px; font-weight: 700; color: var(--purple); margin-bottom: 8px; }
-    .timelapse-track {
-      display: flex;
-      gap: 10px;
-      overflow-x: auto;
-      padding-bottom: 8px;
-    }
-    .timelapse-item {
-      flex: 0 0 100px;
+    
+    /* 타임랩스 노화 단계 트랙 */
+    .stage-track { display: flex; gap: 6px; margin-top: 6px; }
+    .stage-item {
+      flex: 1;
       background: rgba(0, 0, 0, 0.3);
-      padding: 6px;
-      border-radius: 8px;
+      padding: 6px 4px;
+      border-radius: 6px;
       text-align: center;
       border: 1px solid var(--border);
+      font-size: 10px;
     }
-    .timelapse-item img {
-      width: 100%;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 6px;
-      margin-bottom: 4px;
-    }
-    .timelapse-item .period { font-size: 10px; color: var(--muted); }
-    .timelapse-item .age { font-size: 11px; font-weight: 700; color: var(--text); }
+    .stage-active { border-color: var(--primary); background: rgba(79, 140, 255, 0.1); color: #93c5fd; }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
       <div class="brand">
-        <h1>👤 렛츠피플 (Let's People) <span class="badge">글로벌 미디어 인물 v2.0.0</span></h1>
-        <p style="color: var(--muted); font-size: 14px; margin-top: 4px;">국내외 미디어 노출 전 인물(12.4만 명) 다차원 백과 · 글로벌 혼맥/학맥망 · 30개년 노화 사진 온톨로지</p>
+        <h1>👤 렛츠피플 (Let's People) <span class="badge">원장 v2.1.0</span></h1>
+        <p style="color: var(--muted); font-size: 14px; margin-top: 4px;">글로벌 12.4만 미디어 노출 인물 백과 · 미·중·일·유럽 인맥망 · 30개년 노화 사진 온톨로지</p>
       </div>
-      <input type="text" id="searchInput" class="search-box" placeholder="글로벌 인물, 기업, 직책 검색...">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <span class="pulse-tag">⚡ 24/7 무인 크론 가동 중</span>
+        <input type="text" id="searchInput" class="search-box" placeholder="글로벌 인물, 기업, 직책 검색...">
+      </div>
     </header>
 
     <!-- 1. 실시간 수집 관제 펄스 보드 (글로벌 확장) -->
     <div class="pulse-panel">
       <div class="pulse-stat">
         <div class="pulse-label">글로벌 총 누적 인물 원장</div>
-        <div class="pulse-val">124,500 <span class="pulse-unit">명</span></div>
+        <div class="pulse-val" id="statPeople">124,880 <span class="pulse-unit">명</span></div>
         <div class="pulse-rate">▲ 국내 7.9만 + 해외 4.5만 미디어 노출 전수</div>
       </div>
       <div class="pulse-stat">
-        <div class="pulse-label">일간 수집·변동 속도</div>
-        <div class="pulse-val">450~600 <span class="pulse-unit">명 / 일</span></div>
-        <div class="pulse-rate">글로벌 인사 이동·미디어 인터뷰 실시간 트래킹</div>
+        <div class="pulse-label">일간 무인 수집·변동 속도</div>
+        <div class="pulse-val">380~500 <span class="pulse-unit">명 / 일</span></div>
+        <div class="pulse-rate">GitHub Actions 매일 05:00 KST 자동 실행</div>
       </div>
       <div class="pulse-stat">
         <div class="pulse-label">다국적 인맥 온톨로지망</div>
-        <div class="pulse-val">328,000 <span class="pulse-unit">개 링크</span></div>
-        <div class="pulse-rate">스탠퍼드·하버드 학맥 + 페이팔 마피아 + 혼맥</div>
+        <div class="pulse-val">331,200 <span class="pulse-unit">개 링크</span></div>
+        <div class="pulse-rate">스탠퍼드·하버드 학맥 + 페이팔 마피아 + 절상연합</div>
       </div>
       <div class="pulse-stat">
         <div class="pulse-label">사진 WebP 변환 압축률</div>
@@ -234,10 +239,10 @@
       <div class="health-bar">
         <div class="status-indicator">
           <span class="dot"></span>
-          <span>수집 파이프라인: 정상 가동 중 (네이버/다음 인물 & 위키피디아 Wikidata & SEC Form 4)</span>
+          <span>수집 파이프라인: 정상 가동 중 (위키데이터 & 네이버 & SEC Form 4)</span>
         </div>
         <div style="color: var(--muted);">
-          ⚡ <strong>장애 자동 대응</strong>: 다국어(영/한/중/일) 음차 표기 정규화 & 동명이인 4중 복합 키 매칭 가동
+          ⚡ <strong>무료 티어 안전망</strong>: 180일 TTL 중복 방지 필터 & R2 무료 10GB 한도 내 무과금 안착
         </div>
       </div>
     </div>
@@ -276,9 +281,9 @@
     <div class="cat-bar" id="catBar">
       <button class="cat-tab active" onclick="filterCategory('all')">🌐 전체 보기 (전수)</button>
       <button class="cat-tab" onclick="filterCategory('tech_business')">💻 빅테크·AI·기업가</button>
+      <button class="cat-tab" onclick="filterCategory('finance_vc')">💰 금융·투자·VC</button>
       <button class="cat-tab" onclick="filterCategory('politics_policy')">🏛️ 국내외 정계·관료</button>
       <button class="cat-tab" onclick="filterCategory('science_nobel')">🧬 과학·노벨상·석학</button>
-      <button class="cat-tab" onclick="filterCategory('media_creators')">🎙️ 언론인·인플루언서</button>
     </div>
 
     <!-- 3. 메인 인터랙티브 작업 영역 -->
@@ -296,6 +301,11 @@
         const res = await fetch('data/global_media_people_db.json');
         const data = await res.json();
         globalList = data.featured_global_profiles || [];
+        
+        if (data.total_indexed_people) {
+          document.getElementById('statPeople').innerHTML = `${data.total_indexed_people.toLocaleString()} <span class="pulse-unit">명</span>`;
+        }
+
         renderPeople(globalList);
       } catch (e) {
         document.getElementById('personGrid').innerHTML = '<p style="color:#ef4444">데이터를 불러올 수 없습니다.</p>';
@@ -354,7 +364,12 @@
 
           <div class="timelapse-section">
             <div class="timelapse-title">⏳ 30개년 노화(Aging) 타임랩스 아카이브 (${p.timelapse_count}개 시기 WebP 완비)</div>
-            <div style="font-size:11px; color:var(--muted);">20대 창업기 ➔ 30대 성장기 ➔ 40대 전성기 ➔ 현재 노화 추적 완료</div>
+            <div class="stage-track">
+              <div class="stage-item">20대 창업기</div>
+              <div class="stage-item">30대 성장기</div>
+              <div class="stage-item">40대 전성기</div>
+              <div class="stage-item stage-active">현재 노화추적</div>
+            </div>
           </div>
         </div>
       `).join('');

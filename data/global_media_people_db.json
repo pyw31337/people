@@ -1,15 +1,15 @@
 {
-  "version": "2.0.0",
-  "last_updated": "2026-11-18T11:22:00+09:00",
-  "total_indexed_people": 124500,
-  "total_relationship_links": 328000,
+  "version": "2.1.0",
+  "last_updated": "2026-11-18T11:45:00+09:00",
+  "total_indexed_people": 124880,
+  "total_relationship_links": 331200,
   "categories_breakdown": {
-    "tech_business": { "name": "빅테크·AI·기업가", "count": 48200 },
-    "politics_policy": { "name": "국내외 정계·관료·외교", "count": 28400 },
-    "finance_vc": { "name": "글로벌 금융·헤지펀드·VC", "count": 18200 },
+    "tech_business": { "name": "빅테크·AI·기업가", "count": 48400 },
+    "politics_policy": { "name": "국내외 정계·관료·외교", "count": 28500 },
+    "finance_vc": { "name": "글로벌 금융·헤지펀드·VC", "count": 18300 },
     "media_creators": { "name": "언론인·팟캐스트·인플루언서", "count": 14500 },
     "culture_arts": { "name": "문화·예술·영화·엔터", "count": 9400 },
-    "science_nobel": { "name": "과학·노벨상·학술석학", "count": 5800 }
+    "science_nobel": { "name": "과학·노벨상·학술석학", "count": 5780 }
   },
   "featured_global_profiles": [
     {
@@ -41,6 +41,33 @@
       "timelapse_count": 5
     },
     {
+      "id": "person-masayoshi-son",
+      "name": "손정의 (Masayoshi Son)",
+      "nationality": "일본 / 한국계",
+      "birth_year": 1957,
+      "category": "finance_vc",
+      "current_role": "소프트뱅크 그룹 회장 겸 CEO",
+      "education": ["UC 버클리 경제학·컴퓨터공학 학사"],
+      "alumni_network": ["버클리 동문 인맥", "알리바바 초기 투자자 연대"],
+      "kinship_network": ["손태장 (Mistletoe 대표·동생)"],
+      "core_influence": ["1000억 달러 비전펀드 창설", "ARM 인수 및 AI 슈퍼인텔리전스(ASI) 펀딩 주도"],
+      "photo_webp": "https://placehold.co/120x120/1e293b/f59e0b?text=MasaSon",
+      "timelapse_count": 5
+    },
+    {
+      "id": "person-jack-ma",
+      "name": "마윈 (Jack Ma)",
+      "nationality": "중국",
+      "birth_year": 1964,
+      "category": "tech_business",
+      "current_role": "알리바바 그룹(Alibaba) 창업자",
+      "education": ["항저우 사범대학 영문학 학사"],
+      "alumni_network": ["저장성 상인회(절상 연합)", "태극권 및 호반대학 학맥"],
+      "core_influence": ["중국 전자상거래 및 알리페이 핀테크 혁명", "동남아·글로벌 물류 인프라 개척"],
+      "photo_webp": "https://placehold.co/120x120/1e293b/ef4444?text=JackMa",
+      "timelapse_count": 5
+    },
+    {
       "id": "person-demis-hassabis",
       "name": "데미스 하사비스 (Demis Hassabis)",
       "nationality": "영국",
@@ -66,30 +93,6 @@
       "core_influence": ["글로벌 메모리 반도체 1위 지배", "파운드리 및 차세대 HBM/AI 칩 동맹"],
       "photo_webp": "https://placehold.co/120x120/1e293b/1d4ed8?text=JYLee",
       "timelapse_count": 5
-    },
-    {
-      "id": "person-sam-altman",
-      "name": "샘 알트만 (Sam Altman)",
-      "nationality": "미국",
-      "birth_year": 1985,
-      "category": "tech_business",
-      "current_role": "OpenAI CEO / 전 Y Combinator 대표",
-      "education": ["스탠퍼드 대학교 컴퓨터공학 중퇴"],
-      "alumni_network": ["Y Combinator 글로벌 스타트업 동문망", "피터 틸 펠로우십"],
-      "core_influence": ["ChatGPT로 생성형 AI 대중화 촉발", "초지능 AGI 인프라 투자 펀딩"],
-      "photo_webp": "https://placehold.co/120x120/1e293b/10b981?text=Altman",
-      "timelapse_count": 4
-    },
-    {
-      "id": "person-joe-rogan",
-      "name": "조 로건 (Joe Rogan)",
-      "nationality": "미국",
-      "birth_year": 1967,
-      "category": "media_creators",
-      "current_role": "팟캐스트 'The Joe Rogan Experience' 진행자 / UFC 해설위원",
-      "core_influence": ["회당 1,500만 청취자 보유 전 세계 1위 팟캐스트", "대선 후보 및 빅테크 리더 필수 출연 여론 형성자"],
-      "photo_webp": "https://placehold.co/120x120/1e293b/f59e0b?text=Rogan",
-      "timelapse_count": 4
     }
   ]
 }
