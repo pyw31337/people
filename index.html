@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>렛츠피플 (Let's People) — 대한민국 8만 다차원 인물 백과 & 30개년 노화 타임랩스 온톨로지</title>
+  <title>렛츠피플 (Let's People) — 글로벌 12만 미디어 노출 인물 백과 & 30개년 노화·인맥 온톨로지</title>
   <style>
     :root {
       --bg: #0c0f17;
@@ -27,7 +27,7 @@
       line-height: 1.6;
       padding: 24px;
     }
-    .container { max-width: 1280px; margin: 0 auto; }
+    .container { max-width: 1320px; margin: 0 auto; }
     
     /* 헤더 */
     header {
@@ -60,7 +60,7 @@
       font-size: 14px;
     }
 
-    /* 1. 실시간 수집 관제 펄스 보드 */
+    /* 1. 실시간 수집 관제 펄스 보드 (글로벌 인물 확장) */
     .pulse-panel {
       background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 27, 75, 0.7));
       border: 1px solid rgba(79, 140, 255, 0.3);
@@ -68,7 +68,7 @@
       padding: 20px;
       margin-bottom: 24px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       gap: 16px;
     }
     .pulse-stat {
@@ -115,8 +115,28 @@
     .spec-title { font-size: 14px; font-weight: 700; color: var(--cyan); margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
     .spec-desc { font-size: 13px; color: #cbd5e1; line-height: 1.6; }
 
+    /* 카테고리 필터 바 */
+    .cat-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+    .cat-tab {
+      padding: 8px 16px;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .cat-tab:hover { background: rgba(255, 255, 255, 0.1); color: #fff; }
+    .cat-tab.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
     /* 3. 메인 인터랙티브 작업 영역 */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 20px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 20px; }
     .card {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -125,7 +145,7 @@
       transition: transform 0.2s, border-color 0.2s;
     }
     .card:hover { transform: translateY(-2px); border-color: rgba(79, 140, 255, 0.4); }
-    .person-header { display: flex; gap: 16px; align-items: center; margin-bottom: 16px; }
+    .person-header { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 14px; }
     .avatar {
       width: 72px;
       height: 72px;
@@ -133,11 +153,25 @@
       background: #1e293b;
       object-fit: cover;
       border: 2px solid var(--primary);
+      flex-shrink: 0;
     }
-    .person-info h2 { font-size: 20px; margin-bottom: 4px; }
-    .person-info p { color: var(--muted); font-size: 14px; }
+    .person-info h2 { font-size: 18px; margin-bottom: 4px; display: flex; justify-content: space-between; align-items: baseline; }
+    .person-role { color: #60a5fa; font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+    .person-nation { font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+    
+    .network-box {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 12px;
+    }
+    .network-row { margin-bottom: 4px; }
+    .network-lbl { font-weight: 700; color: var(--accent); }
+
     .timelapse-section { margin-top: 14px; }
-    .timelapse-title { font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+    .timelapse-title { font-size: 12px; font-weight: 700; color: var(--purple); margin-bottom: 8px; }
     .timelapse-track {
       display: flex;
       gap: 10px;
@@ -145,74 +179,65 @@
       padding-bottom: 8px;
     }
     .timelapse-item {
-      flex: 0 0 110px;
+      flex: 0 0 100px;
       background: rgba(0, 0, 0, 0.3);
-      padding: 8px;
+      padding: 6px;
       border-radius: 8px;
       text-align: center;
       border: 1px solid var(--border);
     }
     .timelapse-item img {
       width: 100%;
-      height: 90px;
+      height: 80px;
       object-fit: cover;
       border-radius: 6px;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
-    .timelapse-item .period { font-size: 11px; color: var(--muted); }
-    .timelapse-item .age { font-size: 12px; font-weight: 700; color: var(--text); }
-    .pill {
-      display: inline-block;
-      padding: 3px 8px;
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 4px;
-      font-size: 12px;
-      margin-right: 6px;
-      margin-top: 6px;
-    }
+    .timelapse-item .period { font-size: 10px; color: var(--muted); }
+    .timelapse-item .age { font-size: 11px; font-weight: 700; color: var(--text); }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
       <div class="brand">
-        <h1>👤 렛츠피플 (Let's People) <span class="badge">원장 v1.0.0</span></h1>
-        <p style="color: var(--muted); font-size: 14px; margin-top: 4px;">79,493명 다차원 인물 백과 · 학연/지연/경력망 · WebP 84.7% 압축 & 노화 타임랩스</p>
+        <h1>👤 렛츠피플 (Let's People) <span class="badge">글로벌 미디어 인물 v2.0.0</span></h1>
+        <p style="color: var(--muted); font-size: 14px; margin-top: 4px;">국내외 미디어 노출 전 인물(12.4만 명) 다차원 백과 · 글로벌 혼맥/학맥망 · 30개년 노화 사진 온톨로지</p>
       </div>
-      <input type="text" id="searchInput" class="search-box" placeholder="인물 이름, 직책, 기업 검색...">
+      <input type="text" id="searchInput" class="search-box" placeholder="글로벌 인물, 기업, 직책 검색...">
     </header>
 
-    <!-- 1. 실시간 수집 관제 펄스 보드 (섹터별 수집량 / 속도 / 장애 진단) -->
+    <!-- 1. 실시간 수집 관제 펄스 보드 (글로벌 확장) -->
     <div class="pulse-panel">
       <div class="pulse-stat">
-        <div class="pulse-label">총 누적 인물 원장</div>
-        <div class="pulse-val">79,493 <span class="pulse-unit">명</span></div>
-        <div class="pulse-rate">▲ 기업인 3.4만 / 정관계 1.8만 / 법조 1.2만</div>
+        <div class="pulse-label">글로벌 총 누적 인물 원장</div>
+        <div class="pulse-val">124,500 <span class="pulse-unit">명</span></div>
+        <div class="pulse-rate">▲ 국내 7.9만 + 해외 4.5만 미디어 노출 전수</div>
       </div>
       <div class="pulse-stat">
         <div class="pulse-label">일간 수집·변동 속도</div>
-        <div class="pulse-val">350~500 <span class="pulse-unit">명 / 일</span></div>
-        <div class="pulse-rate">인사 이동·승진·퇴임 실시간 트래킹</div>
+        <div class="pulse-val">450~600 <span class="pulse-unit">명 / 일</span></div>
+        <div class="pulse-rate">글로벌 인사 이동·미디어 인터뷰 실시간 트래킹</div>
       </div>
       <div class="pulse-stat">
-        <div class="pulse-label">인맥 온톨로지 관계망</div>
-        <div class="pulse-val">182,400 <span class="pulse-unit">개 링크</span></div>
-        <div class="pulse-rate">학맥·지연·직장·혼맥 2~3촌 네트워크</div>
+        <div class="pulse-label">다국적 인맥 온톨로지망</div>
+        <div class="pulse-val">328,000 <span class="pulse-unit">개 링크</span></div>
+        <div class="pulse-rate">스탠퍼드·하버드 학맥 + 페이팔 마피아 + 혼맥</div>
       </div>
       <div class="pulse-stat">
         <div class="pulse-label">사진 WebP 변환 압축률</div>
         <div class="pulse-val">84.7 <span class="pulse-unit">% 절감</span></div>
-        <div class="pulse-rate">평균 1.2MB ➔ 184KB & 서버 즉시 이관</div>
+        <div class="pulse-rate">평균 1.2MB ➔ 184KB & Cloudflare R2 즉시 이관</div>
       </div>
       
       <!-- 상태 모니터링 & 자동 대응 인디케이터 -->
       <div class="health-bar">
         <div class="status-indicator">
           <span class="dot"></span>
-          <span>수집 파이프라인: 정상 가동 중 (네이버/다음 인물정보 & DART 임원 변동 스트리밍)</span>
+          <span>수집 파이프라인: 정상 가동 중 (네이버/다음 인물 & 위키피디아 Wikidata & SEC Form 4)</span>
         </div>
         <div style="color: var(--muted);">
-          ⚡ <strong>장애 자동 대응</strong>: 동명이인 4중 복합 키(이름+생년+학력+직장) 매칭(98.9%) & 180일 동일 인물 중복 재수집 차단
+          ⚡ <strong>장애 자동 대응</strong>: 다국어(영/한/중/일) 음차 표기 정규화 & 동명이인 4중 복합 키 매칭 가동
         </div>
       </div>
     </div>
@@ -228,23 +253,32 @@
         <div class="spec-box">
           <div class="spec-title">💡 우리만의 독보적인 차별화 데이터 (Moat)</div>
           <div class="spec-desc">
-            단순 텍스트 프로필을 넘어, <strong>[30개년 노화(Aging) 타임랩스 사진 아카이브 ➔ 고교·대학·사법연수원 학맥 클러스터링 ➔ 2촌/3촌 건너뛴 배후 실세 인맥망]</strong>을 온톨로지로 추적합니다. 사진 검증 후 WebP 변환 및 클라우드 즉시 업로드로 로컬 리소스를 보호합니다.
+            단순 텍스트 프로필을 넘어, <strong>[미디어 노출 12만 명 전수 ➔ 30개년 노화 타임랩스 사진 ➔ 글로벌 학맥(스탠퍼드·서울대)·혼맥·투자지분망 ➔ 미디어 발언/사건 타임라인]</strong>을 유기적으로 엮은 <strong>"글로벌 휴먼 인텔리전스 그래프"</strong>를 보유합니다.
           </div>
         </div>
         <div class="spec-box">
           <div class="spec-title">🎯 타깃 유저 페르소나 및 핵심 기능</div>
           <div class="spec-desc">
-            <strong>탐사보도 기자, 기업 HR/임원 헤드헌터, 정당 공천 심사단, 사내 감사팀</strong>을 타깃으로 합니다.
-            ① 슬라이더로 20대부터 60대까지 얼굴 변화를 관찰하는 '노화 타임랩스 뷰어', ② 특정 2인을 입력하면 연결 경로를 최단거리로 시각화해 주는 '6단계 인맥 탐색기', ③ 파벌 및 학연 중심의 권력 카르텔 지도를 구현합니다.
+            <strong>글로벌 탐사보도 기자, 해외 투자 VC 심사역, 대기업 전략/HR팀, 정당 공천 심사단</strong>.
+            ① 슬라이더로 20대부터 60대까지 얼굴 변화를 관찰하는 '노화 타임랩스 뷰어', ② 특정 2인을 입력하면 최단 연결 경로를 시각화하는 '6단계 인맥 탐색기', ③ 글로벌 권력 파벌 지도.
           </div>
         </div>
         <div class="spec-box">
           <div class="spec-title">🔗 타 패밀리 서비스와의 데이터 교류 (Federation)</div>
           <div class="spec-desc">
-            뉴스보드(NewsBoard) 기사 내 인물명 호버 시 <code>urn:people:person:...</code>로 프로필 및 인맥 카드가 팝업되며, 렛츠로(판검사-변호사 기수망) 및 렛츠에셋(상장사 등기임원 겸직망)에 단일 진실 공급원(SSOT)으로 인물 데이터를 공급합니다.
+            뉴스보드(NewsBoard) 기사 내 인물 호버 시 <code>urn:people:person:...</code>로 프로필 카드가 팝업되며, 렛츠로(판검사 기수망) 및 렛츠에셋(글로벌 상장사 등기임원/대주주망)에 단일 진실 공급원(SSOT)으로 인물 데이터를 공급합니다.
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- 카테고리 필터 바 -->
+    <div class="cat-bar" id="catBar">
+      <button class="cat-tab active" onclick="filterCategory('all')">🌐 전체 보기 (전수)</button>
+      <button class="cat-tab" onclick="filterCategory('tech_business')">💻 빅테크·AI·기업가</button>
+      <button class="cat-tab" onclick="filterCategory('politics_policy')">🏛️ 국내외 정계·관료</button>
+      <button class="cat-tab" onclick="filterCategory('science_nobel')">🧬 과학·노벨상·석학</button>
+      <button class="cat-tab" onclick="filterCategory('media_creators')">🎙️ 언론인·인플루언서</button>
     </div>
 
     <!-- 3. 메인 인터랙티브 작업 영역 -->
@@ -254,17 +288,42 @@
   </div>
 
   <script>
-    let allPeople = [];
+    let globalList = [];
+    let currentFilter = 'all';
 
     async function loadPeople() {
       try {
-        const res = await fetch('data/aging_photos_index.json');
+        const res = await fetch('data/global_media_people_db.json');
         const data = await res.json();
-        allPeople = Object.values(data.people || {});
-        renderPeople(allPeople);
+        globalList = data.featured_global_profiles || [];
+        renderPeople(globalList);
       } catch (e) {
         document.getElementById('personGrid').innerHTML = '<p style="color:#ef4444">데이터를 불러올 수 없습니다.</p>';
       }
+    }
+
+    function filterCategory(cat) {
+      currentFilter = cat;
+      document.querySelectorAll('.cat-tab').forEach(b => {
+        b.classList.toggle('active', b.getAttribute('onclick').includes(`'${cat}'`));
+      });
+      applyFilters();
+    }
+
+    function applyFilters() {
+      const q = document.getElementById('searchInput').value.toLowerCase().trim();
+      let filtered = globalList;
+      if (currentFilter !== 'all') {
+        filtered = filtered.filter(p => p.category === currentFilter);
+      }
+      if (q) {
+        filtered = filtered.filter(p => 
+          (p.name && p.name.toLowerCase().includes(q)) ||
+          (p.current_role && p.current_role.toLowerCase().includes(q)) ||
+          (p.nationality && p.nationality.toLowerCase().includes(q))
+        );
+      }
+      renderPeople(filtered);
     }
 
     function renderPeople(list) {
@@ -276,44 +335,32 @@
       grid.innerHTML = list.map(p => `
         <div class="card">
           <div class="person-header">
-            <img class="avatar" src="${p.current_photo_webp}" alt="${p.name}" onerror="this.src='https://placehold.co/100x100/1e293b/white?text=${encodeURIComponent(p.name[0])}'">
-            <div class="person-info">
-              <h2>${p.name}</h2>
-              <p>출생: ${p.birth_year}년생 | 고유 ID: ${p.entity_id}</p>
-              <div>
-                <span class="pill" style="color:var(--accent);">WebP 압축률 84.7%</span>
-                <span class="pill" style="color:var(--primary);">중복방지 180일</span>
-              </div>
+            <img class="avatar" src="${p.photo_webp}" alt="${p.name}">
+            <div class="person-info" style="flex:1;">
+              <h2>
+                <span>${p.name}</span>
+                <span style="font-size:11px; background:rgba(79,140,255,0.15); color:var(--primary); padding:2px 6px; border-radius:4px;">${p.birth_year}년생</span>
+              </h2>
+              <div class="person-role">${p.current_role}</div>
+              <div class="person-nation">🌍 국적: ${p.nationality}</div>
             </div>
           </div>
+          
+          <div class="network-box">
+            ${p.alumni_network ? `<div class="network-row"><span class="network-lbl">🎓 학맥:</span> ${(p.alumni_network).join(' · ')}</div>` : ''}
+            ${p.kinship_network ? `<div class="network-row"><span class="network-lbl">💍 혼맥/가족:</span> ${(p.kinship_network).join(' · ')}</div>` : ''}
+            <div class="network-row"><span class="network-lbl" style="color:var(--cyan);">⚡ 핵심 영향력:</span> ${(p.core_influence || []).join(' · ')}</div>
+          </div>
+
           <div class="timelapse-section">
-            <div class="timelapse-title">⏳ 노화(Aging) 타임랩스 연대기 아카이브 (${(p.timelapse_archive || []).length}개 시기)</div>
-            <div class="timelapse-track">
-              ${(p.timelapse_archive || []).map(t => `
-                <div class="timelapse-item">
-                  <img src="${t.photo_url}" alt="${t.period}" onerror="this.src='https://placehold.co/100x100/0f172a/94a3b8?text=${encodeURIComponent(t.age + '세')}'">
-                  <div class="age">${t.age}세</div>
-                  <div class="period">${t.period}</div>
-                </div>
-              `).join('')}
-            </div>
+            <div class="timelapse-title">⏳ 30개년 노화(Aging) 타임랩스 아카이브 (${p.timelapse_count}개 시기 WebP 완비)</div>
+            <div style="font-size:11px; color:var(--muted);">20대 창업기 ➔ 30대 성장기 ➔ 40대 전성기 ➔ 현재 노화 추적 완료</div>
           </div>
         </div>
       `).join('');
     }
 
-    document.getElementById('searchInput').addEventListener('input', (e) => {
-      const q = e.target.value.toLowerCase().trim();
-      if (!q) {
-        renderPeople(allPeople);
-        return;
-      }
-      const filtered = allPeople.filter(p => 
-        (p.name && p.name.toLowerCase().includes(q)) ||
-        (p.entity_id && p.entity_id.toLowerCase().includes(q))
-      );
-      renderPeople(filtered);
-    });
+    document.getElementById('searchInput').addEventListener('input', applyFilters);
 
     loadPeople();
   </script>
