@@ -1,78 +1,95 @@
-# 렛츠 패밀리 통합 디자인 시스템 (Let's Design System, LDS v2.3.0)
+# 렛츠 패밀리 통합 디자인 시스템 (Let's Design System, LDS v2.4.0)
 > **최종 개정일**: 2026-11-19  
-> **기준 레퍼런스**: Taste Skill 분석 결과 ("Tactile Modernism & Digital Craft"), Dieter Rams 물리적 에르고노믹스, Swiss Editorial Grid, Linear/Raycast 마이크로 인터랙션  
-> **적용 대상**: `Let's Hub`, `Let's People`, `Let's Law`, `Let's Insu`, `Let's Asset`, `Let's Art`, `Let's View`, `MeatTracker`, `Let's Camp` 등 생태계 전 서비스
+> **기준 철학**: Dieter Rams 물리적 에르고노믹스, Swiss Editorial Typography, Taste Skill ("Tactile Modernism & Digital Craft")  
+> **적용 대상**: `Let's Hub`, `Let's People`, `Let's Law`, `Let's Insu`, `Let's Asset` (`Let's Market` & `Let's Land`), `Let's Art`, `Let's View`, `MeatTracker`, `Let's Camp` 등 생태계 전 서비스
 
 ---
 
-## 1. Taste Archetype: Tactile Modernism & Digital Craft
+## 1. 서피스 플러시 & 섀도우 시맨틱 위계 (Surface-Flush & Elevation Hierarchy)
 
-### 1.1 스퀘어클 벤토 & 단순 라운드 박스 남발 탈피 원칙
-- **박스 중첩(Box-in-Box) 원천 배제**:
-  - 흰색 라운드 상자 안에 또 다른 흰색 라운드 상자를 계속해서 중첩 배치하는 획일적 박스 디자인을 엄격히 금지합니다.
-  - 구획을 나눌 때는 박스 테두리를 반복하지 않고, **Swiss Grid Dividers(1px 정밀 헤어라인 구분선: `rgba(0,0,0,0.06)`)**와 **오프셋 타이포그래피**로 자연스러운 공간 위계를 만듭니다.
-- **물리적 서피스 깊이감 (Tactile Depth & Recessed Insets)**:
-  - 트랙 및 그룹 컨테이너는 솟아오른 흰색 박스 대신, 은은하게 파여 있는 **선큰 트랙 (Sunken Recessed Well: `background: #eceef2; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); border-radius: 14px;`)**으로 설계합니다.
-  - 그 위에 얹히는 활성 탭 및 제어 버튼은 물리적 스위치처럼 살짝 솟아오른 **택타일 리프트(Tactile Lift: `background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,1); border: 1px solid rgba(0,0,0,0.06);`)**를 적용합니다.
-- **림 라이팅 (Rim Lighting Shader)**:
-  - 주요 카드 및 헤더 상단에 섬세한 림 라이트(`box-shadow: 0 1px 3px rgba(0,0,0,0.02), inset 0 1px 0 rgba(255,255,255,0.95)`)를 부여하여 아날로그 금속/글래스 하드웨어의 감각을 살립니다.
-
-### 1.2 고정폭 타뷸러 숫자 (Tabular Figures Standard)
-- 대시보드의 실시간 수집량, 처리율, 타임스탬프, 인퍼런스 건수, 체납액 등 모든 메트릭 수치에는 반드시 **`font-variant-numeric: tabular-nums;`** 속성을 강제합니다.
-- 숫자가 카운트업되거나 변할 때 텍스트 폭이 좌우로 흔들리는(jittering) 현상을 원천 방지하여 시각적 안정감을 보장합니다.
-
-### 1.3 스프링 피직스 트랜지션 (Spring Physics)
-- 기계적인 선형(Linear) 페이드를 금지하고, 실제 물리적 탄성을 모사한 **감쇠 스프링 커브(`cubic-bezier(0.16, 1, 0.3, 1)`)**를 기본 모션으로 사용합니다.
-
----
-
-## 2. 가로 캐러셀 및 마우스 드래그·터치 스와이프 인터랙션 표준 (Horizontal Carousel Standard)
-
-> **핵심 원칙**: 렛츠 생태계 내의 모든 가로 캐러셀(서비스 내비게이션 바, 카테고리 필 트랙, 세그먼트 메뉴 등)은 **마우스 포인터 드래그와 모바일 터치 스와이프가 100% 무결하게 동작**해야 합니다.
+> [!IMPORTANT]
+> **플로팅(Floating) 그림자 남발 금지 원칙**:  
+> 배경색(`var(--bg-page): #f7f8fa` vs `var(--bg-surface): #ffffff`)과 1px 헤어라인 디바이더로 이미 영역 간의 위계와 구획이 명확합니다.  
+> 모든 박스에 상시 그림자(`box-shadow`)를 남발하여 대시보드 전체가 공중에 붕 떠 보이는 현상을 엄격히 금지합니다. 그림자는 기능적으로 "떠다니거나", 사용자의 "마우스 롤오버 인터랙션", "주의 집중 모달"에서만 의미 있게 사용됩니다.
 
 ```
-┌────────────────────────────────────────────────────────────────────────┐
-│  [마우스 드래그] ───►  cursor: grab ─(다운)─► cursor: grabbing          │
-│  [오클릭 방지]   ───►  이동거리 > 4px 이면 click 이벤트 캡처 차단      │
-│  [터치 스와이프] ───►  -webkit-overflow-scrolling: touch & 관성 스크롤   │
-│  [선택 피드백]   ───►  scrollIntoView({ behavior: 'smooth', inline: 'center' }) │
-└────────────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ Level 0: Flush Surface (기본 안착 평면)                                       │
+│   - 메트릭 카드, 정보 패널, 장치 카드, 쿼터 패널                               │
+│   - box-shadow: none; border: 1px solid rgba(0,0,0,0.06);                      │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ Level 1: Interactive Rollover (호버 인터랙션)                                │
+│   - 마우스 hover 상태에서만 미세 리프트 및 부드러운 그림자 반응                 │
+│   - box-shadow: 0 4px 16px rgba(0,0,0,0.05); transform: translateY(-2px);     │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ Level 2: Functional Sticky / Floating Control (스크롤 동적 바)              │
+│   - 스크롤 시 화면 상단/하단에 고정되어 따라다니는 컨트롤 바                   │
+│   - box-shadow: 0 2px 10px rgba(0,0,0,0.04);                                  │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ Level 3: Modal & Security Gate Overlay (전체 주의 집중)                      │
+│   - 관리자 마스터 보안 잠금창, 암호 변경 모달, PC 이관 다이얼로그               │
+│   - box-shadow: 0 20px 48px rgba(0,0,0,0.12);                                  │
+└──────────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 2.1 마우스 드래그 (Mouse Drag-to-Scroll)
-- `pointerdown`, `pointermove`, `pointerup`, `pointercancel` 이벤트 기반 1:1 드래그 스크롤.
-- 커서 어포던스: 마우스 호버 시 `cursor: grab;`, 드래그 중 `cursor: grabbing; user-select: none;` 자동 적용.
-- **오클릭 방지 (Drag Click-Suppression)**:
-  - 사용자가 메뉴를 넘기려고 가로로 4px 이상 드래그한 경우, 마우스를 뗄 때 자식 버튼/링크의 `click` 이벤트가 트리거되지 않도록 `preventDefault()`, `stopPropagation()`을 캡처 단계에서 자동 차단합니다.
+---
 
-### 2.2 모바일 터치 스와이프 (Touch Momentum)
-- `-webkit-overflow-scrolling: touch; scroll-behavior: smooth; touch-action: pan-x pan-y;`를 부여하여 네이티브 모바일 앱과 동일한 관성 스크롤을 제공합니다.
-- 스크롤바는 가려져 깔끔한 외관을 유지(`scrollbar-width: none; &::-webkit-scrollbar { display: none; }`)하면서도 부드러운 스와이프를 보장합니다.
+## 2. 상단 헤더 기능의 3대 시맨틱 클러스터링 표준 (Clustered Header Governance)
 
-### 2.3 활성 아이템 자동 중앙 정렬
-- 탭이나 카테고리를 클릭하거나 라우팅으로 선택되었을 때, 해당 요소가 시야 밖으로 벗어나지 않도록 항상 가로 트랙의 정중앙으로 부드럽게 스크롤합니다:
-  ```javascript
-  activeElement.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-  ```
+헤더의 수많은 액션 버튼들이 무분별하게 일렬 나열되면 인지 부하가 발생합니다. 기능의 성격에 따라 **3대 기능 클러스터**로 명확히 묶어 인지도를 극대화합니다:
+
+1. **[운영 · 사활 관제 (Operations)]**:
+   - 실시간 펄스 인디케이터 (`pulse-pill`)
+   - 15개 서비스 61개 파이프라인 실시간 사활 스캔 (`runSentinelSweep()`)
+   - 대시보드 지표 및 로그 즉시 새로고침 (`refreshDashboardData()`)
+2. **[데이터 · 이관 백업 (Data & Migration)]**:
+   - 실시간 관제 JSON 스냅샷 내보내기 (`exportPulseJson()`)
+   - 타 PC 무중단 작업 환경 인계 패키지 (`openHandoffModal()`)
+3. **[보안 · 계정 관리 (Security & Access)]**:
+   - 마스터 보안 관리자 암호 변경 (`openChangePasswordModal()`)
+   - 관제 콘솔 즉시 잠금 (`lockSecurityGate()`)
 
 ---
 
-## 3. 인물 온톨로지 전수 도시에 표준 (Universal People Dossier Standard)
+## 3. 가로 캐러셀 & 드래그/스와이프 인터랙션 표준 (Tactile Carousel v2.4.0)
 
-렛츠피플(`Let's People`) 및 관련 서비스에 등재되는 모든 인물(기업인, 고액 체납자, 연출진/PD, 작가, 문화예술인, 법조인 등)은 다음 **7대 공통 영역을 반드시 균일하게 수집·관리**합니다:
+> **핵심 원칙**: 가로 캐러셀 내의 버튼/링크 클릭이 100% 정상 작동해야 하며, 마우스 드래그와 모바일 스와이프가 상호 간섭 없이 부드럽게 공존해야 합니다.
 
-1. **이력 (History & Origins)**: 출생지, 생애 배경, 가계/가족 배경, 병역 등
-2. **경력 (Career Track Record)**: 주요 직책, 전직, 대표이사/임원 재직 이력, 사업체 운영 이력
-3. **학력 (Education)**: 출신 고등학교, 대학교, 대학원, 전공 및 수료 내역
-4. **학연 (Alumni Network)**: 동문 네트워크, 주요 재계·문화계 학연 클러스터
-5. **지연 (Regional Network)**: 출신 지역, 연고지 및 주요 활동 권역 클러스터
-6. **범죄 이력 (Criminal Record & Regulatory Sanctions)**: 경제범죄(횡령·배임, 자본시장법 위반), 형사처벌, 과징금/행정제재 내역 (무결 인물은 `CLEAN` 명시)
-7. **체납 이력 (Tax Delinquency Record)**: 체납 세목, 체납액, 체납 기간, 관할 지자체/세무서, 행정제재(출국금지/감치/압류) 상태 (성실 납세자는 `CLEAN` 명시)
+- **모바일 터치 (100% Native Momentum)**:
+  - `-webkit-overflow-scrolling: touch; overflow-x: auto;`를 사용하여 iOS/Android 네이티브 스와이프를 방해 없이 그대로 지원합니다.
+- **데스크톱 마우스 드래그 (Jitter-Tolerant Drag)**:
+  - 마우스 클릭 시 생기는 손떨림(1~5px 미세 지터)으로 인해 클릭 이벤트가 씹히는 문제를 원천 해결하기 위해 **10px 이상 실질 이동 시에만 드래그 모드로 진입**합니다.
+  - 마우스 다운 후 10px 미만인 상태에서 마우스를 떼면 버튼/링크의 `click` 및 `onclick` 이벤트가 캡처 차단 없이 100% 정상 실행됩니다.
+  - 10px 이상 드래그 후 마우스를 뗐을 때만 오클릭 방지를 위해 해당 드래그 제스처의 클릭 1회만 방지합니다.
 
 ---
 
-## 4. 로컬 에지 AI & 무중단 PC 인계 (Local AI & Handoff Standard)
+## 4. 인물 온톨로지 단어 단순화 & 8대 표준 체계 (Universal People Dossier Standard)
 
-- **Ollama 모델 2종 규격**: `qwen2.5vl:3b` (3.2 GB 비전 OCR), `llama3.2:1b` (1.3 GB 문화 지능 브리핑 로컬 요약).
-- **9대 로컬 LaunchAgents 데몬 사활 감시**: Apple Silicon 온디바이스 에지 연산 (100% Zero-Cloud-Cost).
-- **원클릭 PC 인계 시스템**: 새 머신에서 `./scripts/restore_on_new_pc.sh` 1줄로 환경 완전 복구 지원.
+사용자 경험과 인지 효율을 위해 복합어를 지양하고 **가장 포괄적이고 직관적인 한 단어**로 명칭을 단순화 및 일원화합니다:
+
+| 기존 복합어 | **개편 표준 명칭** | 범위 및 개념 정의 |
+| :--- | :--- | :--- |
+| **학력 학연** | **`학연`** | 출신 고교·대학·대학원 학력 + 동문 선후배(기수/학번) 네트워크 망 망라 |
+| **범죄 사법** | **`범죄`** | 횡령·배임, 자본시장법 위반, 형사 처벌, 과징금/행정제재 전수 |
+| **체납 제재** | **`체납`** | 국세·지방세·과징금 체납액, 체납 기간, 관할 세무서, 강제징수/압류 상태 |
+| **이력 가계** | **`이력`**, **`재산`** | 생애 배경·출생·가계는 `이력`으로, 자산·지분·부동산은 `재산`으로 명확히 분리 |
+
+### 8대 표준 인카드 / 모달 탭 구조
+1. **`이력`**: 생애 배경, 출생지, 본관, 병역, 가계 기본 배경
+2. **`경력`**: 주요 직책, 전직 및 현직, 창업/임원 재직 궤적, **이직 이력 온톨로지 연계**
+3. **`재산`**: 보유 주식 지분, 상장/비상장 기업 가치, 부동산, 추정 순자산 규모, **기업 매출/시총 연계**
+4. **`학연`**: 출신 학교, 전공, 학위, **선후배 학번/기수 동문 클러스터**
+5. **`지연`**: 출생지, 고향, 연고지, 주요 활동 권역 클러스터
+6. **`인척`**: 배우자(와이프) 관계망, 배우자의 지인, **처가(장인/장모/처남/사돈) 인척 관계망**
+7. **`범죄`**: 경제범죄, 형사 전과, 금융당국 제재 이력 (무결 시 `CLEAN` 명시)
+8. **`체납`**: 고액·상습 체납액, 체납 세목, 체납 기간, **재산 대비 체납 및 은닉/강제징수 가능성 연계**
+
+---
+
+## 5. 렛츠에셋 로드맵: 금융 vs 현물 분립 구조 (`Let's Market` & `Let's Land`)
+
+향후 `Let's Asset`은 데이터 축적 규모에 따라 2대 전문 서비스로 독립 분립됩니다:
+1. **`Let's Market (금융투자)`**: 상장 주식, 지분 공시(DART), 채권, 펀드, 기업 재무/매출/영업이익/시가총액 온톨로지.
+2. **`Let's Land (현물투자 · 가칭)`**: 상업용 빌딩, 토지, 고급 주택, 실거래가, 공시지가, 부동산 담보/체납 압류 온톨로지.
+- **현재 전략**: 우선 `Let's Asset` 및 `Let's People`에 인물-기업 자산/매출/체납 연계 데이터를 집중 축적하고, 온톨로지 접점을 긴밀하게 맵핑하여 향후 분립 시 즉각적인 독립 서비스 런칭을 보장합니다.

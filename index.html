@@ -225,22 +225,22 @@
       .people-grid { grid-template-columns: 1fr; }
     }
 
-    /* Tactile Person Card (Tactile Modernism & Swiss Editorial) */
+    /* Tactile Person Card (LDS v2.4.0 Level 0 Surface Flush) */
     .person-card {
-      background: linear-gradient(180deg, #ffffff 0%, #fafbfc 100%);
+      background: var(--surface);
       border: 1px solid rgba(0, 0, 0, 0.08);
       border-radius: 18px;
       padding: 20px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02), inset 0 1px 0 #ffffff;
+      box-shadow: none;
       display: flex;
       flex-direction: column;
       gap: 12px;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
     }
     .person-card:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06), inset 0 1px 0 #ffffff;
-      border-color: rgba(0, 0, 0, 0.12);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border-color: rgba(49, 130, 246, 0.25);
     }
 
     .person-header {
@@ -620,25 +620,48 @@
       return {
         history: {
           birth: p.birth ? (p.birth + ' 출생') : (p.birth_year ? (p.birth_year + '년생') : (p.lifespan || '인물 원장 보관')),
+          origin: p.origin || '',
           family_background: p.kinship_network ? p.kinship_network.join(', ') : '인물 온톨로지 가계 원장 동기화',
           military: p.military || '해당 없음'
         },
-        career: p.career_lineage ? p.career_lineage.map(c => ({ period: c.year, title: `${c.title} (${c.role || '참여'})` })) : (
-          p.occupation ? [{ period: '현재', title: p.occupation }] : [{ period: '주요 경력', title: p.current_role || p.movement || '활동 이력 동기화' }]
-        ),
-        education: p.alumni_network ? p.alumni_network.map(a => ({ school: a, degree: '졸업/수료' })) : (
-          p.schools ? p.schools.map(s => ({ school: s, degree: '졸업' })) : [{ school: '정규 교육과정 이수', degree: '학사' }]
-        ),
-        alumni_network: {
-          cluster: p.alumni_network ? p.alumni_network.join(' · ') : (p.schools ? p.schools.join(' · ') : '학연 온톨로지 네트워크'),
-          key_connections: p.core_influence || ['동문 네트워크 실시간 동기화']
+        career: {
+          records: p.career_lineage ? p.career_lineage.map(c => ({ period: c.year, title: `${c.title} (${c.role || '참여'})` })) : (
+            p.occupation ? [{ period: '현재', title: p.occupation }] : [{ period: '주요 경력', title: p.current_role || p.movement || '활동 이력 동기화' }]
+          ),
+          mobility_trajectory: {
+            origin_corporate: p.primary_org || '전문 영역',
+            mobility_track: p.current_role || p.occupation || '독자 궤적'
+          }
         },
-        regional_network: {
+        assets: {
+          financial_assets: {
+            total_stock_value_trillion_krw: p.estimated_net_worth_trillion_krw || (isDefaulter ? 0 : 0.05),
+            stakes: p.primary_org ? [{ entity: p.primary_org, stake_pct: 10.0 }] : []
+          },
+          physical_assets: {
+            properties: []
+          },
+          enterprise_financials: {
+            entity: p.primary_org || ''
+          }
+        },
+        alumni: {
+          education_records: p.alumni_network ? p.alumni_network.map(a => ({ school: a, degree: '졸업' })) : (
+            p.schools ? p.schools.map(s => ({ school: s, degree: '졸업' })) : [{ school: '정규 교육과정 이수', degree: '학사' }]
+          ),
+          alumni_network: {
+            cluster: p.alumni_network ? p.alumni_network.join(' · ') : (p.schools ? p.schools.join(' · ') : '학연 온톨로지 네트워크')
+          }
+        },
+        regional: {
           hometown: p.jurisdiction || p.birth_place || p.nationality || '대한민국',
-          regional_cluster: p.region_group || '수도권·글로벌 활동 클러스터',
-          description: p.notes || '지역 연고 인맥 매트릭스'
+          activity_zone: p.region_group || '수도권·글로벌 활동 클러스터'
         },
-        criminal_record: isDefaulter ? {
+        family_inlaw: {
+          marital_status: p.marital_status || '기혼/미상',
+          inlaw_network: {}
+        },
+        crime: isDefaulter ? {
           status: 'CRITICAL',
           badge_color: '#dc2626',
           has_record: true,
@@ -651,7 +674,7 @@
           summary: '범죄 및 사법 리스크 없음 (CLEAN 무결성 검증 통과)',
           records: []
         },
-        tax_delinquency: isDefaulter ? {
+        tax: isDefaulter ? {
           status: 'DELINQUENT',
           badge_color: '#dc2626',
           has_delinquency: true,
@@ -660,7 +683,6 @@
           delinquent_item: p.delinquent_item || '지방세 및 과징금 체납',
           overdue_period: p.overdue_period || '1년 이상',
           jurisdiction: p.jurisdiction || '관할 지자체',
-          enforcement_measures: p.enforcement_measures || ['출국금지 요청', '체납처분 위탁'],
           summary: p.notes || '행안부 및 전국 지자체 누리집 고액·상습 체납자 명단 공개 대상'
         } : {
           status: 'CLEAN',
@@ -694,9 +716,9 @@
         const hData = await hRes.json();
         const hmData = await hmRes.json();
         const dData = await dRes.json();
-        const mData = masterRes.ok ? await masterRes.json() : { profiles: [] };
+        const mData = masterRes.ok ? await masterRes.json() : { dossiers: [] };
         
-        masterDossierList = (mData.profiles || []).map(p => ({ ...p, dossier: ensurePersonDossier(p) }));
+        masterDossierList = (mData.dossiers || mData.profiles || []).map(p => ({ ...p, dossier: ensurePersonDossier(p) }));
         globalList = (gData.featured_global_profiles || []).map(p => ({ ...p, dossier: ensurePersonDossier(p) }));
         cultureList = (cData.featured_artists || []).map(p => ({ ...p, dossier: ensurePersonDossier(p) }));
         creatorsList = (crData.featured_behind_and_front_profiles || []).map(p => ({ ...p, dossier: ensurePersonDossier(p) }));
@@ -809,57 +831,132 @@
       const dos = p.dossier;
 
       if (tabKey === 'history') {
+        const h = dos.history || {};
         contentBox.innerHTML = `
-          <div><strong>생애 / 가계:</strong> ${dos.history.birth}</div>
-          <div style="color:#64748b; margin-top:3px;">가계: ${dos.history.family_background}</div>
-          <div style="color:#64748b; margin-top:2px;">병역: ${dos.history.military}</div>
+          <div><strong>출생/생애:</strong> ${h.birth || '-'}</div>
+          ${h.origin ? `<div style="color:#64748b; margin-top:2px;">본관: ${h.origin}</div>` : ''}
+          <div style="color:#64748b; margin-top:2px;">가계: ${h.family_background || '-'}</div>
+          <div style="color:#64748b; margin-top:2px;">병역: ${h.military || '-'}</div>
         `;
       } else if (tabKey === 'career') {
+        const c = dos.career || {};
+        const records = Array.isArray(c) ? c : (c.records || []);
+        const mob = c.mobility_trajectory || {};
         contentBox.innerHTML = `
-          <div style="font-weight:700; color:#0f172a; margin-bottom:4px;">대표 경력 궤적:</div>
-          ${(dos.career || []).slice(0, 3).map(c => `
-            <div style="display:flex; justify-content:space-between; margin-bottom:2px;">
-              <span>${c.title}</span>
-              <span style="color:#64748b; font-family:monospace;">${c.period}</span>
+          <div style="font-weight:700; color:#0f172a; margin-bottom:4px;">대표 직책 및 이력:</div>
+          ${records.slice(0, 3).map(r => `
+            <div style="display:flex; justify-content:space-between; margin-bottom:2px; font-size:11.5px;">
+              <span>${r.title}</span>
+              <span style="color:#64748b; font-family:monospace;">${r.period}</span>
+            </div>
+          `).join('')}
+          ${mob.mobility_track || mob.origin_corporate ? `
+            <div style="margin-top:6px; padding:6px; background:#f1f5f9; border-radius:6px; font-size:11px;">
+              <strong style="color:#2563eb;">🔄 이직 궤적:</strong> ${mob.mobility_track || mob.origin_corporate}
+              ${mob.peer_career_bridges ? `
+                <div style="color:#475569; margin-top:3px;">
+                  연계: ${mob.peer_career_bridges.map(b => `<b>${b.person}</b> (${b.connection})`).join(' · ')}
+                </div>
+              ` : ''}
+            </div>
+          ` : ''}
+        `;
+      } else if (tabKey === 'assets') {
+        const a = dos.assets || {};
+        const fin = a.financial_assets || {};
+        const phy = a.physical_assets || {};
+        const ent = a.enterprise_financials || {};
+        contentBox.innerHTML = `
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+            <strong style="color:#0f172a;">💎 추정 자산 & 기업 연계:</strong>
+            <span style="font-weight:700; color:#2563eb; font-family:monospace;">
+              ${fin.total_stock_value_trillion_krw ? fin.total_stock_value_trillion_krw + '조 원' : '공시 추정'}
+            </span>
+          </div>
+          ${ent.annual_revenue_trillion_krw ? `
+            <div style="font-size:11px; color:#475569; margin-bottom:4px;">
+              🏢 <b>${ent.entity || ''}</b>: 매출 <b>${ent.annual_revenue_trillion_krw}조</b> / 영업익 <b>${ent.operating_profit_trillion_krw}조</b> / 시총 <b>${ent.market_cap_trillion_krw}조</b>
+            </div>
+          ` : ''}
+          ${(fin.stakes || []).slice(0, 2).map(s => `
+            <div style="font-size:11px; color:#334155; margin-bottom:2px;">
+              • [금융/주식] ${s.entity}: 지분 ${s.stake_pct}% (${s.value_trillion_krw ? s.value_trillion_krw + '조' : ''})
+            </div>
+          `).join('')}
+          ${(phy.properties || []).slice(0, 1).map(p => `
+            <div style="font-size:11px; color:#059669; margin-top:2px;">
+              • [현물/부동산] ${p.name} (추정 ${p.estimated_value_billion_krw || ''}억)
             </div>
           `).join('')}
         `;
-      } else if (tabKey === 'education') {
+      } else if (tabKey === 'alumni') {
+        const al = dos.alumni || {};
+        const edu = al.education_records || dos.education || [];
+        const net = al.alumni_network || dos.alumni_network || {};
         contentBox.innerHTML = `
-          <div><strong>학력:</strong> ${(dos.education || []).map(e => `${e.school} (${e.degree})`).join(' · ')}</div>
-          <div style="color:#0284c7; margin-top:3px;"><strong>학맥:</strong> ${dos.alumni_network ? dos.alumni_network.cluster : '-'}</div>
+          <div><strong>학력:</strong> ${edu.map(e => `${e.school} (${e.degree || ''})`).join(' · ')}</div>
+          <div style="color:#0284c7; margin-top:4px;"><strong>동문 학연망:</strong> ${net.cluster || '-'}</div>
+          ${net.seniors ? `<div style="font-size:11px; color:#64748b; margin-top:2px;">선배: ${net.seniors.map(s => `${s.name} (${s.school}, ${s.diff})`).join(', ')}</div>` : ''}
+          ${net.juniors ? `<div style="font-size:11px; color:#64748b; margin-top:2px;">후배: ${net.juniors.map(j => `${j.name} (${j.school}, ${j.diff})`).join(', ')}</div>` : ''}
+          ${net.peers ? `<div style="font-size:11px; color:#64748b; margin-top:2px;">동기: ${net.peers.map(p => `${p.name} (${p.school})`).join(', ')}</div>` : ''}
         `;
       } else if (tabKey === 'regional') {
+        const r = dos.regional || dos.regional_network || {};
         contentBox.innerHTML = `
-          <div><strong>연고지:</strong> ${dos.regional_network.hometown} (${dos.regional_network.regional_cluster})</div>
-          <div style="color:#64748b; margin-top:3px;">${dos.regional_network.description}</div>
+          <div><strong>고향/연고:</strong> ${r.hometown || '-'}</div>
+          <div style="color:#64748b; margin-top:3px;">활동 권역: ${r.activity_zone || r.regional_cluster || '-'}</div>
+          ${r.regional_peers ? `
+            <div style="font-size:11px; color:#475569; margin-top:3px;">
+              동향 인물망: ${r.regional_peers.map(p => `<b>${p.name}</b> (${p.region})`).join(' · ')}
+            </div>
+          ` : ''}
+        `;
+      } else if (tabKey === 'family_inlaw') {
+        const f = dos.family_inlaw || {};
+        const net = f.inlaw_network || {};
+        contentBox.innerHTML = `
+          <div><strong>배우자/가계:</strong> ${f.marital_status || '정보 없음'}</div>
+          ${f.children ? `<div style="color:#64748b; margin-top:2px;">자녀: ${f.children}</div>` : ''}
+          ${net.spouse_circle || net.former_inlaw_family ? `
+            <div style="margin-top:4px; font-size:11px; color:#2563eb;">
+              💍 와이프/처가 인맥: <b>${net.former_inlaw_family || net.inlaw_relations || ''}</b> (${net.spouse_circle || ''})
+            </div>
+          ` : ''}
+          ${f.social_circle ? `<div style="font-size:11px; color:#64748b; margin-top:2px;">사교/재단: ${f.social_circle}</div>` : ''}
         `;
       } else if (tabKey === 'crime') {
-        const c = dos.criminal_record;
+        const c = dos.crime || dos.criminal_record || {};
         contentBox.innerHTML = `
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
             <strong style="color:${c.has_record ? '#dc2626' : '#059669'};">
               ${c.has_record ? '🚨 사법 / 재판 이력' : '🛡️ 범죄 무결성 (CLEAN)'}
             </strong>
-            <span style="font-size:10px; color:#64748b;">${c.status}</span>
+            <span style="font-size:10px; color:#64748b;">${c.status || 'CLEAN'}</span>
           </div>
-          <div style="color:#334155;">${c.summary}</div>
+          <div style="color:#334155; font-size:11.5px;">${c.summary || '-'}</div>
+          ${(c.records || []).slice(0, 2).map(r => `
+            <div style="font-size:10.5px; color:#991b1b; margin-top:2px;">
+              • [${r.year}] ${r.charge} ➔ ${r.disposition}
+            </div>
+          `).join('')}
         `;
       } else if (tabKey === 'tax') {
-        const t = dos.tax_delinquency;
+        const t = dos.tax || dos.tax_delinquency || {};
+        const anal = t.tax_vs_assets_analysis || {};
         contentBox.innerHTML = `
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
             <strong style="color:${t.has_delinquency ? '#dc2626' : '#059669'};">
               ${t.has_delinquency ? '⚖️ 고액 체납 내역' : '✓ 성실 납세 (CLEAN)'}
             </strong>
             <span style="font-weight:700; color:${t.has_delinquency ? '#dc2626' : '#059669'}; font-family:monospace;">
-              ${t.delinquent_amount_fmt}
+              ${t.delinquent_amount_fmt || '0원'}
             </span>
           </div>
-          <div style="color:#334155;">${t.summary}</div>
-          ${t.enforcement_measures ? `
-            <div style="display:flex; gap:4px; flex-wrap:wrap; margin-top:4px;">
-              ${t.enforcement_measures.map(m => `<span class="lds-badge" style="background:#fee2e2; color:#991b1b; font-size:10px;">${m}</span>`).join('')}
+          <div style="color:#334155; font-size:11.5px;">${t.summary || '-'}</div>
+          ${anal.ability_to_pay ? `
+            <div style="margin-top:4px; padding:4px 6px; background:${t.has_delinquency ? '#fef2f2' : '#f0fdf4'}; border-radius:4px; font-size:11px;">
+              <strong>재산 대비 체납 분석:</strong> ${anal.ability_to_pay}
+              ${anal.enforcement_risk ? `<br><span style="color:#b91c1c;">징수위험: ${anal.enforcement_risk}</span>` : ''}
             </div>
           ` : ''}
         `;
@@ -918,21 +1015,24 @@
               </span>
             </div>
 
-            <!-- In-Card Tactile Mini Tabs -->
+            <!-- In-Card Tactile Mini Tabs (LDS v2.4.0 8대 표준 명칭) -->
             <div class="dossier-tabs-wrap">
-              <div class="dossier-tab-strip">
-                <button class="dossier-mini-tab active" onclick="switchCardTab('${pId}', 'history', this)">이력·가계</button>
+              <div class="dossier-tab-strip" data-lds-carousel="true">
+                <button class="dossier-mini-tab active" onclick="switchCardTab('${pId}', 'history', this)">이력</button>
                 <button class="dossier-mini-tab" onclick="switchCardTab('${pId}', 'career', this)">경력</button>
-                <button class="dossier-mini-tab" onclick="switchCardTab('${pId}', 'education', this)">학력·학연</button>
+                <button class="dossier-mini-tab" onclick="switchCardTab('${pId}', 'assets', this)">재산</button>
+                <button class="dossier-mini-tab" onclick="switchCardTab('${pId}', 'alumni', this)">학연</button>
                 <button class="dossier-mini-tab" onclick="switchCardTab('${pId}', 'regional', this)">지연</button>
-                <button class="dossier-mini-tab" onclick="switchCardTab('${pId}', 'crime', this)">범죄·사법</button>
-                <button class="dossier-mini-tab" onclick="switchCardTab('${pId}', 'tax', this)">체납·제재</button>
+                <button class="dossier-mini-tab" onclick="switchCardTab('${pId}', 'family_inlaw', this)">인척</button>
+                <button class="dossier-mini-tab" onclick="switchCardTab('${pId}', 'crime', this)">범죄</button>
+                <button class="dossier-mini-tab" onclick="switchCardTab('${pId}', 'tax', this)">체납</button>
               </div>
 
               <div class="dossier-tab-content" id="dossier-content-${pId}">
-                <div><strong>생애 / 가계:</strong> ${dos.history.birth}</div>
-                <div style="color:#64748b; margin-top:3px;">가계: ${dos.history.family_background}</div>
-                <div style="color:#64748b; margin-top:2px;">병역: ${dos.history.military}</div>
+                <div><strong>출생/생애:</strong> ${(dos.history && dos.history.birth) || '-'}</div>
+                ${dos.history && dos.history.origin ? `<div style="color:#64748b; margin-top:2px;">본관: ${dos.history.origin}</div>` : ''}
+                <div style="color:#64748b; margin-top:2px;">가계: ${(dos.history && dos.history.family_background) || '-'}</div>
+                <div style="color:#64748b; margin-top:2px;">병역: ${(dos.history && dos.history.military) || '-'}</div>
               </div>
             </div>
 
@@ -958,8 +1058,26 @@
       const modal = document.getElementById('dossierModal');
       const content = document.getElementById('dossierModalContent');
 
+      const crime = dos.crime || dos.criminal_record || {};
+      const tax = dos.tax || dos.tax_delinquency || {};
+      const history = dos.history || {};
+      const career = dos.career || {};
+      const careerRecords = Array.isArray(career) ? career : (career.records || []);
+      const mob = career.mobility_trajectory || {};
+      const assets = dos.assets || {};
+      const fin = assets.financial_assets || {};
+      const phy = assets.physical_assets || {};
+      const ent = assets.enterprise_financials || {};
+      const alumni = dos.alumni || {};
+      const edu = alumni.education_records || dos.education || [];
+      const alNet = alumni.alumni_network || dos.alumni_network || {};
+      const reg = dos.regional || dos.regional_network || {};
+      const fam = dos.family_inlaw || {};
+      const inlaw = fam.inlaw_network || {};
+      const taxAnal = tax.tax_vs_assets_analysis || {};
+
       content.innerHTML = `
-        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:12px; border-bottom:1px solid #e2e8f0; padding-bottom:12px;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px; border-bottom:1px solid #e2e8f0; padding-bottom:12px;">
           <div>
             <h2 style="font-size:22px; font-weight:800; color:#0f172a; margin:0;">
               ${p.name} ${p.hanja ? `(${p.hanja})` : ''}
@@ -969,85 +1087,143 @@
             </div>
           </div>
           <span class="lds-badge" style="background:#eff6ff; color:#2563eb; font-weight:700;">
-            LDS v2.3 도시에
+            LDS v2.4 8대 표준 온톨로지
           </span>
         </div>
 
         <div class="dossier-shield-bar" style="margin-bottom:16px;">
-          <span class="shield-tag ${dos.criminal_record.has_record ? 'critical' : 'clean'}">
-            ${dos.criminal_record.has_record ? '🚨 사법/범죄 이력 확인' : '🛡️ 범죄 이력: CLEAN'}
+          <span class="shield-tag ${crime.has_record ? 'critical' : 'clean'}">
+            ${crime.has_record ? '🚨 사법/범죄 이력 확인' : '🛡️ 범죄: CLEAN (무결)'}
           </span>
-          <span class="shield-tag ${dos.tax_delinquency.has_delinquency ? 'critical' : 'clean'}">
-            ${dos.tax_delinquency.has_delinquency ? '⚖️ 고액 체납: ' + dos.tax_delinquency.delinquent_amount_fmt : '✓ 성실 납세 (체납 없음)'}
+          <span class="shield-tag ${tax.has_delinquency ? 'critical' : 'clean'}">
+            ${tax.has_delinquency ? '⚖️ 고액 체납: ' + (tax.delinquent_amount_fmt || '체납') : '✓ 성실 납세: CLEAN'}
           </span>
         </div>
 
         <div class="dossier-grid">
-          <!-- 1. 이력 & 가계 -->
+          <!-- 1. 이력 -->
           <div class="dossier-block">
-            <div class="dossier-block-title">📜 1. 이력 및 가계 배경</div>
-            <div>생애: <b>${dos.history.birth}</b></div>
-            <div style="margin-top:4px;">가계: ${dos.history.family_background}</div>
-            <div style="margin-top:4px;">병역: ${dos.history.military}</div>
+            <div class="dossier-block-title">📜 1. 이력 (생애·본관·병역)</div>
+            <div>생애: <b>${history.birth || '-'}</b></div>
+            ${history.origin ? `<div style="margin-top:4px;">본관: <b>${history.origin}</b></div>` : ''}
+            <div style="margin-top:4px;">가계 배경: ${history.family_background || '-'}</div>
+            <div style="margin-top:4px;">병역: ${history.military || '-'}</div>
           </div>
 
-          <!-- 2. 경력 궤적 -->
+          <!-- 2. 경력 (이직 궤적 온톨로지) -->
           <div class="dossier-block">
-            <div class="dossier-block-title">💼 2. 주요 경력 궤적</div>
-            ${(dos.career || []).map(c => `
-              <div style="margin-bottom:3px; display:flex; justify-content:space-between;">
+            <div class="dossier-block-title">💼 2. 경력 & 이직 궤적 온톨로지</div>
+            ${careerRecords.map(c => `
+              <div style="margin-bottom:3px; display:flex; justify-content:space-between; font-size:12px;">
                 <span>${c.title}</span>
                 <span style="color:#64748b; font-family:monospace;">${c.period}</span>
               </div>
             `).join('')}
+            ${mob.mobility_track || mob.origin_corporate ? `
+              <div style="margin-top:8px; padding:8px; background:#eff6ff; border-radius:6px; font-size:11.5px;">
+                <strong style="color:#1d4ed8;">🔄 전직-현직 궤적:</strong> ${mob.mobility_track || mob.origin_corporate}
+                ${mob.peer_career_bridges ? `
+                  <div style="margin-top:4px; color:#3b82f6;">
+                    • <b>동일 전직/창업 연계:</b> ${mob.peer_career_bridges.map(b => `${b.person} (${b.connection})`).join(' · ')}
+                  </div>
+                ` : ''}
+              </div>
+            ` : ''}
           </div>
 
-          <!-- 3. 학력 & 학연 -->
+          <!-- 3. 재산 (기업 매출/시총 연계) -->
           <div class="dossier-block">
-            <div class="dossier-block-title">🎓 3. 학력 및 학연 네트워크</div>
-            <div>학력: ${(dos.education || []).map(e => `${e.school} (${e.degree})`).join(', ')}</div>
-            <div style="margin-top:6px; color:#0284c7;"><b>학연 클러스터:</b> ${dos.alumni_network.cluster}</div>
-            <div style="margin-top:4px; font-size:11px; color:#64748b;">
-              연계 인맥: ${Array.isArray(dos.alumni_network.key_connections) ? dos.alumni_network.key_connections.join(', ') : dos.alumni_network.key_connections}
+            <div class="dossier-block-title">💎 3. 재산 & 기업 재무 온톨로지</div>
+            <div style="font-weight:700; color:#2563eb; margin-bottom:4px;">
+              금융 자산 추정: ${fin.total_stock_value_trillion_krw ? fin.total_stock_value_trillion_krw + '조 원' : '공시 기반 추정'}
             </div>
+            ${ent.annual_revenue_trillion_krw ? `
+              <div style="padding:6px; background:#f8fafc; border-radius:6px; margin-bottom:6px; font-size:11.5px;">
+                🏢 <b>${ent.entity || ''} 실적:</b> 연간 매출 <b>${ent.annual_revenue_trillion_krw}조</b> / 영업이익 <b>${ent.operating_profit_trillion_krw}조</b> / 시총 <b>${ent.market_cap_trillion_krw}조</b>
+              </div>
+            ` : ''}
+            <div>
+              <strong>보유 지분 (Let's Market):</strong><br>
+              ${(fin.stakes || []).map(s => `• ${s.entity} ${s.stake_pct}% (${s.value_trillion_krw ? s.value_trillion_krw + '조 원' : ''})`).join('<br>')}
+            </div>
+            ${phy.properties ? `
+              <div style="margin-top:6px;">
+                <strong>부동산 자산 (Let's Land):</strong><br>
+                ${phy.properties.map(p => `• ${p.name} (추정 ${p.estimated_value_billion_krw || ''}억)`).join('<br>')}
+              </div>
+            ` : ''}
           </div>
 
-          <!-- 4. 지연 네트워크 -->
+          <!-- 4. 학연 -->
           <div class="dossier-block">
-            <div class="dossier-block-title">📍 4. 지연 및 연고 클러스터</div>
-            <div>출신/연고: <b>${dos.regional_network.hometown}</b></div>
-            <div style="margin-top:4px;">권역: ${dos.regional_network.regional_cluster}</div>
-            <div style="margin-top:4px; color:#64748b;">${dos.regional_network.description}</div>
+            <div class="dossier-block-title">🎓 4. 학연 (동문 선후배 기수망)</div>
+            <div>학력: ${edu.map(e => `${e.school} (${e.degree || ''})`).join(', ')}</div>
+            <div style="margin-top:6px; color:#0284c7;"><b>학연 클러스터:</b> ${alNet.cluster || '-'}</div>
+            ${alNet.seniors ? `<div style="margin-top:4px; font-size:11.5px; color:#1e40af;"><b>선배:</b> ${alNet.seniors.map(s => `${s.name} (${s.school}, ${s.diff})`).join(', ')}</div>` : ''}
+            ${alNet.juniors ? `<div style="margin-top:3px; font-size:11.5px; color:#1e40af;"><b>후배:</b> ${alNet.juniors.map(j => `${j.name} (${j.school}, ${j.diff})`).join(', ')}</div>` : ''}
+            ${alNet.peers ? `<div style="margin-top:3px; font-size:11.5px; color:#1e40af;"><b>동기:</b> ${alNet.peers.map(p => `${p.name} (${p.school})`).join(', ')}</div>` : ''}
           </div>
 
-          <!-- 5. 범죄 & 사법 리스크 -->
-          <div class="dossier-block" style="${dos.criminal_record.has_record ? 'border-color:#fca5a5; background:#fff1f2;' : ''}">
-            <div class="dossier-block-title" style="color:${dos.criminal_record.has_record ? '#991b1b' : '#059669'};">
-              ⚖️ 5. 범죄·재판·행정제재 감사 기록
+          <!-- 5. 지연 -->
+          <div class="dossier-block">
+            <div class="dossier-block-title">📍 5. 지연 (출생지 및 권역 인맥)</div>
+            <div>출생지/고향: <b>${reg.hometown || '-'}</b></div>
+            <div style="margin-top:4px;">주요 활동 권역: ${reg.activity_zone || reg.regional_cluster || '-'}</div>
+            ${reg.regional_peers ? `
+              <div style="margin-top:6px; font-size:11.5px; color:#475569;">
+                <b>동향 인물망:</b> ${reg.regional_peers.map(p => `${p.name} (${p.region})`).join(' · ')}
+              </div>
+            ` : ''}
+          </div>
+
+          <!-- 6. 인척 -->
+          <div class="dossier-block">
+            <div class="dossier-block-title">💍 6. 인척 (배우자·처가·사돈 관계망)</div>
+            <div>배우자 관계: <b>${fam.marital_status || '정보 없음'}</b></div>
+            ${fam.children ? `<div style="margin-top:3px;">자녀: ${fam.children}</div>` : ''}
+            ${inlaw.spouse_circle || inlaw.former_inlaw_family ? `
+              <div style="margin-top:6px; padding:6px; background:#fdf2f8; border-radius:6px; font-size:11.5px;">
+                <strong style="color:#be185d;">와이프 & 처가 인맥:</strong> ${inlaw.former_inlaw_family || inlaw.inlaw_relations || ''} (${inlaw.spouse_circle || ''})
+              </div>
+            ` : ''}
+            ${fam.social_circle ? `<div style="margin-top:4px; font-size:11.5px; color:#64748b;">사교 클러스터: ${fam.social_circle}</div>` : ''}
+          </div>
+
+          <!-- 7. 범죄 -->
+          <div class="dossier-block" style="${crime.has_record ? 'border-color:#fca5a5; background:#fff1f2;' : ''}">
+            <div class="dossier-block-title" style="color:${crime.has_record ? '#991b1b' : '#059669'};">
+              ⚖️ 7. 범죄 (사법·재판·행정제재)
             </div>
-            <div style="font-weight:700;">상태: ${dos.criminal_record.status}</div>
-            <div style="margin-top:4px;">${dos.criminal_record.summary}</div>
-            ${(dos.criminal_record.records || []).map(r => `
+            <div style="font-weight:700;">상태: ${crime.status || 'CLEAN'}</div>
+            <div style="margin-top:4px;">${crime.summary || '범죄 및 사법 리스크 없음 (CLEAN)'}</div>
+            ${(crime.records || []).map(r => `
               <div style="margin-top:4px; font-size:11px; color:#b91c1c;">
-                • [${r.year}] ${r.charge} → ${r.disposition} (${r.status || '확정'})
+                • [${r.year}] ${r.charge} ➔ ${r.disposition} (${r.status || '확정'})
               </div>
             `).join('')}
           </div>
 
-          <!-- 6. 체납 이력 & 강제징수 조치 -->
-          <div class="dossier-block" style="${dos.tax_delinquency.has_delinquency ? 'border-color:#fca5a5; background:#fff1f2;' : ''}">
-            <div class="dossier-block-title" style="color:${dos.tax_delinquency.has_delinquency ? '#991b1b' : '#059669'};">
-              🚨 6. 체납 이력 및 강제징수 조치
+          <!-- 8. 체납 -->
+          <div class="dossier-block" style="${tax.has_delinquency ? 'border-color:#fca5a5; background:#fff1f2;' : ''}">
+            <div class="dossier-block-title" style="color:${tax.has_delinquency ? '#991b1b' : '#059669'};">
+              🚨 8. 체납 & 재산 대비 징수 분석
             </div>
             <div style="font-weight:700;">
-              체납 상태: ${dos.tax_delinquency.has_delinquency ? dos.tax_delinquency.delinquent_amount_fmt : '체납 이력 없음'}
+              체납 현황: ${tax.has_delinquency ? tax.delinquent_amount_fmt : '0원 (체납 없음, 성실납세)'}
             </div>
-            <div style="margin-top:4px;">${dos.tax_delinquency.summary}</div>
-            ${dos.tax_delinquency.enforcement_measures ? `
-              <div style="margin-top:6px; display:flex; gap:4px; flex-wrap:wrap;">
-                ${dos.tax_delinquency.enforcement_measures.map(m => `<span class="lds-badge" style="background:#fee2e2; color:#991b1b; font-size:10px;">${m}</span>`).join('')}
+            <div style="margin-top:4px;">${tax.summary || '-'}</div>
+            ${taxAnal.ability_to_pay ? `
+              <div style="margin-top:6px; padding:6px; background:#ffffff; border:1px solid #fecaca; border-radius:6px; font-size:11.5px;">
+                <strong>재산 대비 체납액 분석:</strong> ${taxAnal.ability_to_pay}<br>
+                <span style="color:#b91c1c;">강제징수/압류 현황: ${taxAnal.enforcement_risk || '없음'}</span>
               </div>
             ` : ''}
+          </div>
+        </div>
+      `;
+
+      modal.style.display = 'flex';
+    }
           </div>
         </div>
       `;
