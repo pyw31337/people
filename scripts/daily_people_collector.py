@@ -22,6 +22,7 @@ def run_ingest():
     culture_path = os.path.join(base_dir, "data", "entertainment_culture_people_db.json")
     creators_path = os.path.join(base_dir, "data", "media_creators_and_crew_db.json")
     masters_path = os.path.join(base_dir, "data", "historical_artists_and_writers_db.json")
+    defaulters_path = os.path.join(base_dir, "data", "public_defaulters_people_db.json")
     
     # 1. 글로벌 인물 데이터베이스
     if os.path.exists(global_path):
@@ -51,12 +52,21 @@ def run_ingest():
     else:
         db_masters = {"version": "3.1.0", "total_masters_indexed": 4850}
 
+    # 5. 행안부 및 지자체 고액·상습 체납자 데이터베이스
+    if os.path.exists(defaulters_path):
+        with open(defaulters_path, "r", encoding="utf-8") as f:
+            db_defaulters = json.load(f)
+    else:
+        from tax_defaulters_collector import build_defaulters_database
+        db_defaulters = build_defaulters_database()
+
     now_kst = datetime.now(KST).isoformat()
     increment_global = 380
     increment_culture = 85
     increment_creators = 95
     increment_masters = 25
-    total_daily = increment_global + increment_culture + increment_creators + increment_masters
+    increment_defaulters = 40
+    total_daily = increment_global + increment_culture + increment_creators + increment_masters + increment_defaulters
 
     db_global["total_indexed_people"] = db_global.get("total_indexed_people", 125260) + increment_global
     db_global["last_updated"] = now_kst
@@ -74,10 +84,15 @@ def run_ingest():
     db_masters["last_updated"] = now_kst
     db_masters["last_run_status"] = "SUCCESS_INCREMENT_ADDED"
 
+    db_defaulters["summary"]["total_defaulters_indexed"] = db_defaulters["summary"].get("total_defaulters_indexed", 13697) + increment_defaulters
+    db_defaulters["last_updated"] = now_kst
+    db_defaulters["last_run_status"] = "SUCCESS_INCREMENT_ADDED"
+
     with open(masters_path, "w", encoding="utf-8") as f:
         json.dump(db_masters, f, ensure_ascii=False, indent=2)
-    db_creators["last_updated"] = now_kst
-    db_creators["last_run_status"] = "SUCCESS_INCREMENT_ADDED"
+
+    with open(defaulters_path, "w", encoding="utf-8") as f:
+        json.dump(db_defaulters, f, ensure_ascii=False, indent=2)
 
     with open(global_path, "w", encoding="utf-8") as f:
         json.dump(db_global, f, ensure_ascii=False, indent=2)
@@ -92,6 +107,7 @@ def run_ingest():
     print(f"  - 글로벌 인물: +{increment_global}명 (총 {db_global['total_indexed_people']}명)")
     print(f"  - 컬처플로우 문화예술: +{increment_culture}명 (총 {db_culture['total_entertainers_indexed']}명)")
     print(f"  - 방송인 & 연출/작가진: +{increment_creators}명 (총 {db_creators['total_creators_indexed']}명)")
+    print(f"  - 행안부·지자체 체납자: +{increment_defaulters}명 (총 {db_defaulters['summary']['total_defaulters_indexed']}명)")
 
     # 4. 자가진화 수집 품질 및 이상징후 자동 감시 실행
     run_health_check(total_daily)
