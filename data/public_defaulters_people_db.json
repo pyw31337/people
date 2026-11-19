@@ -1,11 +1,11 @@
 {
   "version": "1.0.0",
-  "last_updated": "2026-11-19T09:52:29.139849+09:00",
+  "last_updated": "2026-11-19T10:34:40.346933+09:00",
   "title": "행정안전부 & 전국 지자체 고액·상습 체납자 통합 인물 원장",
   "notice_date": "2026-11-18",
   "legal_basis": "지방세징수법 제11조 및 지방행정제재·부과금의 징수 등에 관한 법률 제7조의3",
   "summary": {
-    "total_defaulters_indexed": 13737,
+    "total_defaulters_indexed": 13777,
     "local_tax_defaulters": 12069,
     "local_tax_amount_krw": 777900000000,
     "local_tax_amount_fmt": "7,779억 원",
