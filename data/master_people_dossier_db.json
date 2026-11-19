@@ -1,0 +1,957 @@
+{
+  "version": "4.0.0",
+  "last_updated": "2026-11-19T11:58:28.555268+09:00",
+  "standards": {
+    "title": "Let's People Universal Dossier Standard (LDS v2.2.0)",
+    "coverage": [
+      "이력(History)",
+      "경력(Career)",
+      "학력(Education)",
+      "학연(Alumni Network)",
+      "지연(Regional Network)",
+      "범죄 이력(Criminal Record)",
+      "체납 이력(Tax Delinquency)"
+    ],
+    "total_indexed_people": 172850,
+    "dart_corporate_leaders_indexed": 2167,
+    "defaulters_indexed": 13697,
+    "creators_indexed": 38495
+  },
+  "profiles": [
+    {
+      "id": "corp-dart-001",
+      "name": "이재용",
+      "hanja": "李在鎔",
+      "birth_year": 1968,
+      "category": "corporate",
+      "category_kr": "DART 등재 기업인 / 대기업 총수",
+      "entity_type": "개인",
+      "primary_org": "삼성전자",
+      "primary_role": "회장 (삼성그룹 총수)",
+      "photo_webp": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=320&auto=format&fit=crop&q=80",
+      "profile_summary": "대한민국 최대 기업집단 삼성전자 회장. 반도체·AI 인프라 총괄 및 DART 최대주주 공시.",
+      "dossier": {
+        "history": {
+          "birth": "1968년 서울특별시 종로구 출생",
+          "family_background": "호암 이병철 창업주의 장손, 이건희 선대회장의 장남",
+          "military": "전시근로역 (수핵탈출증)"
+        },
+        "career": [
+          {
+            "period": "2022~현재",
+            "title": "삼성전자 회장 (삼성그룹 총수)"
+          },
+          {
+            "period": "2012~2022",
+            "title": "삼성전자 부회장"
+          },
+          {
+            "period": "2010~2012",
+            "title": "삼성전자 사장 겸 최고운영책임자 (COO)"
+          },
+          {
+            "period": "2001~2010",
+            "title": "삼성전자 경영기획팀 상무·전무"
+          }
+        ],
+        "education": [
+          {
+            "school": "경복고등학교",
+            "degree": "졸업",
+            "year": "1987"
+          },
+          {
+            "school": "서울대학교 동양사학과",
+            "degree": "학사",
+            "year": "1992"
+          },
+          {
+            "school": "게이오기주쿠대학교 경영대학원",
+            "degree": "경영학 석사",
+            "year": "1995"
+          },
+          {
+            "school": "하버드대학교 비즈니스스쿨",
+            "degree": "경영학 박사과정 수료",
+            "year": "2000"
+          }
+        ],
+        "alumni_network": {
+          "cluster": "경복고-서울대 인맥",
+          "key_connections": [
+            "정의선 (경복고 후배)",
+            "조현준 (경복고 동문)",
+            "이재현 (사촌 형제, 경복고)"
+          ]
+        },
+        "regional_network": {
+          "hometown": "서울특별시 종로구",
+          "regional_cluster": "수도권 정재계 인맥",
+          "description": "한남동·서초동 중심의 대기업 거버넌스 네트워크"
+        },
+        "criminal_record": {
+          "status": "CAUTION",
+          "badge_color": "#d97706",
+          "has_record": true,
+          "summary": "자본시장법 위반 혐의 1심 무죄 (2024년 2월), 국정농단 재판 징역 2년 6개월 복역 후 2022년 광복절 특별사면 복권",
+          "records": [
+            {
+              "year": "2021",
+              "charge": "뇌물공여 및 횡령",
+              "disposition": "징역 2년 6개월 확정",
+              "status": "2022년 사면복권"
+            },
+            {
+              "year": "2024",
+              "charge": "삼성물산-제일모직 합병 회계부정 혐의",
+              "disposition": "1심 무죄 선고",
+              "status": "검찰 항소심 진행"
+            }
+          ]
+        },
+        "tax_delinquency": {
+          "status": "CLEAN",
+          "badge_color": "#059669",
+          "has_delinquency": false,
+          "delinquent_amount_krw": 0,
+          "delinquent_amount_fmt": "0원 (체납 없음)",
+          "summary": "성실 납세자 (상속세 12조 원 연부연납 분할 정상 납부 중, 지방세·국세 체납 없음)",
+          "records": []
+        }
+      }
+    },
+    {
+      "id": "corp-dart-002",
+      "name": "최태원",
+      "hanja": "崔泰源",
+      "birth_year": 1960,
+      "category": "corporate",
+      "category_kr": "DART 등재 기업인 / 재계 회장",
+      "entity_type": "개인",
+      "primary_org": "SK그룹 / 대한상공회의소",
+      "primary_role": "회장",
+      "photo_webp": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=320&auto=format&fit=crop&q=80",
+      "profile_summary": "SK그룹 회장 겸 대한상공회의소 회장. 하이닉스 인수 및 반도체·에너지 대규모 확장 총괄.",
+      "dossier": {
+        "history": {
+          "birth": "1960년 경기도 수원시 출생",
+          "family_background": "최종현 SK 선대회장의 장남, 최종건 SK 창업주의 조카",
+          "military": "육군 소위 석사장교 만기전역"
+        },
+        "career": [
+          {
+            "period": "1998~현재",
+            "title": "SK그룹 회장 (SK(주) 대표이사)"
+          },
+          {
+            "period": "2021~현재",
+            "title": "대한상공회의소 회장 (제24·25대)"
+          },
+          {
+            "period": "2012~현재",
+            "title": "SK하이닉스 대표이사 회장"
+          }
+        ],
+        "education": [
+          {
+            "school": "신일고등학교",
+            "degree": "졸업",
+            "year": "1979"
+          },
+          {
+            "school": "고려대학교 물리학과",
+            "degree": "이학사",
+            "year": "1983"
+          },
+          {
+            "school": "시카고대학교 대학원 경제학과",
+            "degree": "박사과정 수료",
+            "year": "1989"
+          }
+        ],
+        "alumni_network": {
+          "cluster": "고려대-시카고대 인맥",
+          "key_connections": [
+            "정의선 (고려대 경영)",
+            "허태수 (고려대 법학)",
+            "박용만 (전 상의 회장)"
+          ]
+        },
+        "regional_network": {
+          "hometown": "경기도 수원시",
+          "regional_cluster": "경기·수도권 산업 인맥",
+          "description": "수원·이천 반도체 벨트 및 종로 본사 중심 네트워크"
+        },
+        "criminal_record": {
+          "status": "CAUTION",
+          "badge_color": "#d97706",
+          "has_record": true,
+          "summary": "2013년 특정경제범죄가중처벌법상 횡령 혐의 징역 4년 복역 후 2015년 광복절 특별사면 복권",
+          "records": [
+            {
+              "year": "2013",
+              "charge": "회사 자금 횡령",
+              "disposition": "징역 4년 확정",
+              "status": "2015년 특별사면 복권"
+            }
+          ]
+        },
+        "tax_delinquency": {
+          "status": "CLEAN",
+          "badge_color": "#059669",
+          "has_delinquency": false,
+          "delinquent_amount_krw": 0,
+          "delinquent_amount_fmt": "0원 (체납 없음)",
+          "summary": "성실 납세자 (국세 및 지방세 완납, 체납 이력 전무)",
+          "records": []
+        }
+      }
+    },
+    {
+      "id": "corp-dart-003",
+      "name": "정의선",
+      "hanja": "鄭義宣",
+      "birth_year": 1970,
+      "category": "corporate",
+      "category_kr": "DART 등재 기업인 / 대기업 총수",
+      "entity_type": "개인",
+      "primary_org": "현대자동차그룹",
+      "primary_role": "회장",
+      "photo_webp": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=320&auto=format&fit=crop&q=80",
+      "profile_summary": "현대자동차그룹 회장. 전기차(E-GMP) 전동화 및 미래 모빌리티·로보틱스 전환 주도.",
+      "dossier": {
+        "history": {
+          "birth": "1970년 서울특별시 종로구 출생",
+          "family_background": "정몽구 명예회장의 장남, 아산 정주영 창업주의 손자",
+          "military": "육군 병역면제 (담낭절제술)"
+        },
+        "career": [
+          {
+            "period": "2020~현재",
+            "title": "현대자동차그룹 회장"
+          },
+          {
+            "period": "2018~2020",
+            "title": "현대자동차 총괄수석부회장"
+          },
+          {
+            "period": "2005~2009",
+            "title": "기아자동차 대표이사 사장"
+          },
+          {
+            "period": "1999~2005",
+            "title": "현대자동차 국내영업본부 부본부장·전무"
+          }
+        ],
+        "education": [
+          {
+            "school": "휘문고등학교",
+            "degree": "졸업",
+            "year": "1989"
+          },
+          {
+            "school": "고려대학교 경영학과",
+            "degree": "학사",
+            "year": "1993"
+          },
+          {
+            "school": "샌프란시스코대학교 대학원 경영학과",
+            "degree": "MBA",
+            "year": "1995"
+          }
+        ],
+        "alumni_network": {
+          "cluster": "고려대 경영대-휘문고 인맥",
+          "key_connections": [
+            "최태원 (고려대 동문)",
+            "이재용 (재계 친분)",
+            "정기선 (사촌, 고려대)"
+          ]
+        },
+        "regional_network": {
+          "hometown": "서울특별시 종로구 청운동",
+          "regional_cluster": "현대 가문 현대아산 인맥",
+          "description": "양재동 사옥 및 울산·남양 연구소 모빌리티 벨트"
+        },
+        "criminal_record": {
+          "status": "CLEAN",
+          "badge_color": "#059669",
+          "has_record": false,
+          "summary": "형사 처벌 및 경제범죄 전력 없음 (Clean 무결성)",
+          "records": []
+        },
+        "tax_delinquency": {
+          "status": "CLEAN",
+          "badge_color": "#059669",
+          "has_delinquency": false,
+          "delinquent_amount_krw": 0,
+          "delinquent_amount_fmt": "0원 (체납 없음)",
+          "summary": "성실 납세자 (연간 수천억 원 배당소득세 성실 신고 및 체납 이력 전무)",
+          "records": []
+        }
+      }
+    },
+    {
+      "id": "corp-dart-004",
+      "name": "김범수",
+      "hanja": "金範洙",
+      "birth_year": 1966,
+      "category": "corporate",
+      "category_kr": "DART 등재 기업인 / IT 창업자",
+      "entity_type": "개인",
+      "primary_org": "카카오",
+      "primary_role": "창업자 · CA협의체 공동의장",
+      "photo_webp": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=320&auto=format&fit=crop&q=80",
+      "profile_summary": "한게임 창업 후 카카오톡을 설립해 국민 플랫폼으로 성장시킨 1세대 벤처 기업가.",
+      "dossier": {
+        "history": {
+          "birth": "1966년 전라남도 담양군 출생 (서울 건국대 인근 단칸방 성장 흙수저 신화)",
+          "family_background": "자수성가형 1세대 벤처 기업가 가문",
+          "military": "육군 병역필 (육군 소위 석사장교)"
+        },
+        "career": [
+          {
+            "period": "2023~현재",
+            "title": "카카오 CA협의체 경영쇄신위원장"
+          },
+          {
+            "period": "2010~2022",
+            "title": "카카오 이사회 의장"
+          },
+          {
+            "period": "2000~2007",
+            "title": "NHN 공동대표이사 (한게임 합병)"
+          },
+          {
+            "period": "1998~2000",
+            "title": "한게임커뮤니케이션 대표이사 창업"
+          }
+        ],
+        "education": [
+          {
+            "school": "건국대학교사범대학부속고등학교",
+            "degree": "졸업",
+            "year": "1986"
+          },
+          {
+            "school": "서울대학교 산업공학과",
+            "degree": "공학사",
+            "year": "1990"
+          },
+          {
+            "school": "서울대학교 대학원 산업공학과",
+            "degree": "공학석사",
+            "year": "1992"
+          }
+        ],
+        "alumni_network": {
+          "cluster": "서울대 산업공학과 86학번 벤처 카르텔",
+          "key_connections": [
+            "이해진 (네이버 창업자, 삼성SDS 동기)",
+            "김택진 (엔씨소프트 대표, 서울대 동문)"
+          ]
+        },
+        "regional_network": {
+          "hometown": "전라남도 담양군",
+          "regional_cluster": "판교 테크노밸리 IT 벤처 인맥",
+          "description": "판교 카카오 아지트 중심 스타트업 및 IT 창업자 네트워크"
+        },
+        "criminal_record": {
+          "status": "CRITICAL",
+          "badge_color": "#dc2626",
+          "has_record": true,
+          "summary": "2024년 7월 SM엔터테인먼트 시세조종 혐의(자본시장법 위반) 구속 기소 후 보석 석방 재판 진행 중",
+          "records": [
+            {
+              "year": "2024",
+              "charge": "자본시장법 위반 (SM엔터 시세조종)",
+              "disposition": "구속영장 발부 후 보석 석방",
+              "status": "1심 공판 진행"
+            }
+          ]
+        },
+        "tax_delinquency": {
+          "status": "CLEAN",
+          "badge_color": "#059669",
+          "has_delinquency": false,
+          "delinquent_amount_krw": 0,
+          "delinquent_amount_fmt": "0원 (체납 없음)",
+          "summary": "성실 납세자 (더기빙플레지 가입 및 재산 50% 기부 서약, 체납 이력 없음)",
+          "records": []
+        }
+      }
+    },
+    {
+      "id": "corp-dart-005",
+      "name": "방시혁",
+      "hanja": "房時爀",
+      "birth_year": 1972,
+      "category": "corporate",
+      "category_kr": "DART 등재 기업인 / 엔터 수장",
+      "entity_type": "개인",
+      "primary_org": "하이브 (HYBE)",
+      "primary_role": "이사회 의장 겸 총괄 프로듀서",
+      "photo_webp": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=320&auto=format&fit=crop&q=80",
+      "profile_summary": "BTS를 발굴·육성하고 하이브를 코스피 대형 기획사로 상장시킨 K-POP 총괄 프로듀서.",
+      "dossier": {
+        "history": {
+          "birth": "1972년 서울특별시 강남구 도곡동 출생",
+          "family_background": "방극윤 전 근로복지공단 이사장의 장남, 방준혁 넷마블 의장의 친척 형제",
+          "military": "육군 보충역 (전문연구요원)"
+        },
+        "career": [
+          {
+            "period": "2021~현재",
+            "title": "하이브(HYBE) 이사회 의장 (DART 공시)"
+          },
+          {
+            "period": "2005~2021",
+            "title": "빅히트엔터테인먼트 대표이사"
+          },
+          {
+            "period": "1997~2005",
+            "title": "JYP엔터테인먼트 수석 작곡가 및 프로듀서"
+          }
+        ],
+        "education": [
+          {
+            "school": "경기고등학교",
+            "degree": "졸업",
+            "year": "1991"
+          },
+          {
+            "school": "서울대학교 인문대학 미학과",
+            "degree": "학사 (차석)",
+            "year": "1996"
+          },
+          {
+            "school": "서울대학교",
+            "degree": "명예 경영학 박사",
+            "year": "2022"
+          }
+        ],
+        "alumni_network": {
+          "cluster": "경기고-서울대 미학과 인맥",
+          "key_connections": [
+            "박진영 (JYP 창업자)",
+            "방준혁 (넷마블 의장, 친척)",
+            "민희진 (전 어도어 대표)"
+          ]
+        },
+        "regional_network": {
+          "hometown": "서울특별시 강남구",
+          "regional_cluster": "강남 엔터테인먼트·용산 하이브 벨트",
+          "description": "용산 트레이드센터 본사 및 글로벌 레이블 인맥"
+        },
+        "criminal_record": {
+          "status": "CLEAN",
+          "badge_color": "#059669",
+          "has_record": false,
+          "summary": "형사 처벌 및 범죄 전력 없음 (내부 분쟁 관련 자본시장법 고발 검토 단계, 기소 없음)",
+          "records": []
+        },
+        "tax_delinquency": {
+          "status": "CLEAN",
+          "badge_color": "#059669",
+          "has_delinquency": false,
+          "delinquent_amount_krw": 0,
+          "delinquent_amount_fmt": "0원 (체납 없음)",
+          "summary": "성실 납세자 (DART 공시 기준 법인세·종합소득세 체납 없음)",
+          "records": []
+        }
+      }
+    },
+    {
+      "id": "defaulter-dart-001",
+      "name": "조○○",
+      "birth_year": 1961,
+      "category": "tax_defaulters",
+      "category_kr": "고액 체납자 / 전 DART 공시 시행사 대표",
+      "entity_type": "개인 (법인 대표 연대)",
+      "primary_org": "(주)○○건설 / 디벨로퍼스",
+      "primary_role": "전 대표이사 회장 (코스닥 외감법인)",
+      "photo_webp": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=320&auto=format&fit=crop&q=80",
+      "profile_summary": "영남권 대규모 주택개발 시행사 대표이사 역임 후 법인세 및 양도소득세분 지방세 48.5억 원 장기 체납.",
+      "dossier": {
+        "history": {
+          "birth": "1961년 대구광역시 출생",
+          "family_background": "영남권 중견 건설업 가문 2세대",
+          "military": "육군 병장 만기전역"
+        },
+        "career": [
+          {
+            "period": "2012~2022",
+            "title": "(주)○○건설개발 총괄 회장 (DART 공시)"
+          },
+          {
+            "period": "2005~2012",
+            "title": "○○부동산신탁 이사"
+          },
+          {
+            "period": "1998~2005",
+            "title": "대구상공회의소 상임의원"
+          }
+        ],
+        "education": [
+          {
+            "school": "경북고등학교",
+            "degree": "졸업",
+            "year": "1980"
+          },
+          {
+            "school": "영남대학교 토목공학과",
+            "degree": "공학사",
+            "year": "1985"
+          },
+          {
+            "school": "경북대학교 경영대학원",
+            "degree": "최고경영자과정(AMP) 수료",
+            "year": "2008"
+          }
+        ],
+        "alumni_network": {
+          "cluster": "경북고-영남대 건설 인맥",
+          "key_connections": [
+            "이○○ (전 건설사 부사장)",
+            "박○○ (전 지방국세청 서장)"
+          ]
+        },
+        "regional_network": {
+          "hometown": "대구광역시 수성구",
+          "regional_cluster": "대구·경북 건설시행 클러스터",
+          "description": "수성구 및 강남구 역삼동 소재 개발 사업소 중심 인맥"
+        },
+        "criminal_record": {
+          "status": "CRITICAL",
+          "badge_color": "#dc2626",
+          "has_record": true,
+          "summary": "특정경제범죄가중처벌법상 횡령·배임 혐의 기소 및 징역 3년 집행유예 5년 확정 (2023년)",
+          "records": [
+            {
+              "year": "2023",
+              "charge": "회사 자금 115억 원 횡령 및 분식회계",
+              "disposition": "징역 3년 집행유예 5년"
+            }
+          ]
+        },
+        "tax_delinquency": {
+          "status": "DELINQUENT",
+          "badge_color": "#dc2626",
+          "has_delinquency": true,
+          "delinquent_amount_krw": 4850000000,
+          "delinquent_amount_fmt": "48억 5,000만 원",
+          "delinquent_item": "지방소득세(종합소득세분) 외 4건",
+          "overdue_period": "3년 4개월 (납부기한: 2023-05-31)",
+          "jurisdiction": "서울특별시 강남구",
+          "enforcement_measures": [
+            "법무부 출국금지 요청 (3천만 원 이상 고액)",
+            "검찰청 감치 구금 심사 대상 (5천만 원 이상 상습)",
+            "관세청 수입물품 체납처분 위탁"
+          ],
+          "summary": "고액 부동산 매매 후 양도소득세분 지방소득세 48.5억 원 상습 미납으로 행안부 및 서울시 집중 추적 대상"
+        }
+      }
+    },
+    {
+      "id": "defaulter-dart-002",
+      "name": "(주)○○디벨로퍼스 (대표 이○○)",
+      "birth_year": 1964,
+      "category": "tax_defaulters",
+      "category_kr": "고액 체납 법인 / DART 외감 시행사",
+      "entity_type": "법인",
+      "primary_org": "(주)○○디벨로퍼스",
+      "primary_role": "대표이사 이○○ (DART 공시 기업)",
+      "photo_webp": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=320&auto=format&fit=crop&q=80",
+      "profile_summary": "수도권 대형 복합쇼핑몰 시행사로 광역교통시설부담금 및 취득세 등 법정 행정부과금 32.8억 원 장기 미납.",
+      "dossier": {
+        "history": {
+          "birth": "2008년 법인 설립 (경기도 성남시 분당구 소재)",
+          "family_background": "대표이사 이○○ (1964년생, 충청남도 천안 출생)",
+          "military": "해당 없음 (법인)"
+        },
+        "career": [
+          {
+            "period": "2015~현재",
+            "title": "성남 판교·분당 상업복합시설 시행 총괄"
+          },
+          {
+            "period": "2008~2015",
+            "title": "수도권 물류단지 개발 프로젝트 수행"
+          }
+        ],
+        "education": [
+          {
+            "school": "대표자: 천안고등학교",
+            "degree": "졸업",
+            "year": "1983"
+          },
+          {
+            "school": "대표자: 중앙대학교 건축공학과",
+            "degree": "학사",
+            "year": "1989"
+          }
+        ],
+        "alumni_network": {
+          "cluster": "중앙대 건축-건설 인맥",
+          "key_connections": [
+            "수도권 신도시 개발 PF 대주단 네트워크"
+          ]
+        },
+        "regional_network": {
+          "hometown": "경기도 성남시 분당구",
+          "regional_cluster": "판교·분당 개발 네트워크",
+          "description": "분당 서현동 본점 및 판교 IT 복합단지 시행 중심"
+        },
+        "criminal_record": {
+          "status": "CAUTION",
+          "badge_color": "#d97706",
+          "has_record": true,
+          "summary": "건축법 위반 및 행정대집행 불응에 따른 이행강제금 부과 처분 소송 패소 (2024년)",
+          "records": [
+            {
+              "year": "2024",
+              "charge": "건축법 및 광역교통법 위반",
+              "disposition": "과징금 및 변상금 부과 처분"
+            }
+          ]
+        },
+        "tax_delinquency": {
+          "status": "DELINQUENT",
+          "badge_color": "#dc2626",
+          "has_delinquency": true,
+          "delinquent_amount_krw": 3280000000,
+          "delinquent_amount_fmt": "32억 8,000만 원",
+          "delinquent_item": "광역교통시설부담금 및 개발부담금",
+          "overdue_period": "2년 1개월 (납부기한: 2024-07-20)",
+          "jurisdiction": "경기도 성남시 분당구",
+          "enforcement_measures": [
+            "대표이사 출국금지 요청",
+            "관세청 수입물품 체납처분 위탁",
+            "법인 부동산 및 금융계좌 신탁 압류"
+          ],
+          "summary": "대규모 상업시설 시행 완료 후 법정 광역교통시설부담금 상습 미납으로 분당구청 집중 징수 대상"
+        }
+      }
+    },
+    {
+      "id": "defaulter-dart-003",
+      "name": "박○○",
+      "birth_year": 1967,
+      "category": "tax_defaulters",
+      "category_kr": "고액 체납자 / 전 코스닥 바이오사 대표",
+      "entity_type": "개인",
+      "primary_org": "전 (주)○○바이오팜",
+      "primary_role": "전 대표이사 회장 (DART 공시 상장사)",
+      "photo_webp": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=320&auto=format&fit=crop&q=80",
+      "profile_summary": "코스닥 상장 바이오 벤처 대표 재직 중 주식 매각 대금에 대한 양도세 및 지방세 24.1억 원 체납 후 출국 시도 적발.",
+      "dossier": {
+        "history": {
+          "birth": "1967년 부산광역시 부산진구 출생",
+          "family_background": "부산 의료인 가문",
+          "military": "공군 대위 군의관 전역"
+        },
+        "career": [
+          {
+            "period": "2015~2021",
+            "title": "(주)○○바이오팜 대표이사 (코스닥 기술특례 상장)"
+          },
+          {
+            "period": "2004~2015",
+            "title": "부산대학교병원 조교수·부교수"
+          }
+        ],
+        "education": [
+          {
+            "school": "부산동성고등학교",
+            "degree": "졸업",
+            "year": "1986"
+          },
+          {
+            "school": "부산대학교 의과대학",
+            "degree": "의학사",
+            "year": "1992"
+          },
+          {
+            "school": "서울대학교 대학원 약리학과",
+            "degree": "의학박사",
+            "year": "1998"
+          }
+        ],
+        "alumni_network": {
+          "cluster": "부산대 의대-서울대 대학원 바이오 인맥",
+          "key_connections": [
+            "국내 주요 바이오 벤처 캐피탈(VC) 심사역 네트워크"
+          ]
+        },
+        "regional_network": {
+          "hometown": "부산광역시 해운대구",
+          "regional_cluster": "부울경 의료·바이오 클러스터",
+          "description": "부산 해운대 및 서울 강남구 테헤란로 바이오 투자 벨트"
+        },
+        "criminal_record": {
+          "status": "CRITICAL",
+          "badge_color": "#dc2626",
+          "has_record": true,
+          "summary": "미공개 중요정보 이용 주식 매도 (자본시장법 위반) 징역 2년 6개월 집행유예 4년 확정 (2022년)",
+          "records": [
+            {
+              "year": "2022",
+              "charge": "자본시장법상 미공개정보 이용",
+              "disposition": "징역 2년 6개월 집행유예 4년, 추징금 18억 원"
+            }
+          ]
+        },
+        "tax_delinquency": {
+          "status": "DELINQUENT",
+          "badge_color": "#dc2626",
+          "has_delinquency": true,
+          "delinquent_amount_krw": 2410000000,
+          "delinquent_amount_fmt": "24억 1,000만 원",
+          "delinquent_item": "지방소득세(양도소득세분) 외 2건",
+          "overdue_period": "2년 8개월 (납부기한: 2023-12-31)",
+          "jurisdiction": "부산광역시 해운대구",
+          "enforcement_measures": [
+            "출국금지 요청 (인천공항 출국 저지 이력)",
+            "검찰 감치 구금 심사",
+            "비상장 주식 및 해외 가상자산 추적"
+          ],
+          "summary": "신약 임상 실패 공시 직전 보유 주식 고점 매도 후 양도세 장기 체납 중"
+        }
+      }
+    },
+    {
+      "id": "creator-pd-001",
+      "name": "봉준호",
+      "hanja": "奉俊昊",
+      "birth_year": 1969,
+      "category": "showrunners_pds",
+      "category_kr": "총괄 연출·영화감독 (아카데미 4관왕)",
+      "entity_type": "개인",
+      "primary_org": "오프스크린 (Offscreen)",
+      "primary_role": "영화감독 겸 각본가",
+      "photo_webp": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=320&auto=format&fit=crop&q=80",
+      "profile_summary": "영화 <기생충>으로 칸 황금종려상 및 아카데미 4관왕을 달성한 세계적 영화 거장.",
+      "dossier": {
+        "history": {
+          "birth": "1969년 대구광역시 남구 봉덕동 출생",
+          "family_background": "봉상균 전 영남대 미대 교수의 아들, 소설가 박태원(구보씨의 일일)의 외손자",
+          "military": "육군 병장 만기전역"
+        },
+        "career": [
+          {
+            "period": "2019~현재",
+            "title": "<미키 17>, <기생충> 각본·감독"
+          },
+          {
+            "period": "2013~2017",
+            "title": "<옥자>, <설국열차> 글로벌 연출"
+          },
+          {
+            "period": "2003~2009",
+            "title": "<살인의 추억>, <괴물>, <마더> 각본·감독"
+          }
+        ],
+        "education": [
+          {
+            "school": "잠실고등학교",
+            "degree": "졸업",
+            "year": "1988"
+          },
+          {
+            "school": "연세대학교 사회과학대학 사회학과",
+            "degree": "학사",
+            "year": "1995"
+          },
+          {
+            "school": "한국영화아카데미(KAFA)",
+            "degree": "11기 연출 전공",
+            "year": "1995"
+          }
+        ],
+        "alumni_network": {
+          "cluster": "연세대 사회학과-KAFA 11기 영화 인맥",
+          "key_connections": [
+            "장준환 감독 (KAFA 동기)",
+            "송강호 배우 (페르소나)",
+            "변성현 감독 (KAFA 후배)"
+          ]
+        },
+        "regional_network": {
+          "hometown": "대구광역시 남구 봉덕동",
+          "regional_cluster": "대구·서울 잠실 문화예술 인맥",
+          "description": "연남동 작업실 및 충무로·할리우드 워너브러더스 네트워크"
+        },
+        "criminal_record": {
+          "status": "CLEAN",
+          "badge_color": "#059669",
+          "has_record": false,
+          "summary": "범죄 이력 없음 (과거 박근혜 정부 문화예술계 블랙리스트 피해자 판결)",
+          "records": []
+        },
+        "tax_delinquency": {
+          "status": "CLEAN",
+          "badge_color": "#059669",
+          "has_delinquency": false,
+          "delinquent_amount_krw": 0,
+          "delinquent_amount_fmt": "0원 (체납 없음)",
+          "summary": "모범 납세자 (국세청 모범납세자 표창 수상, 체납 이력 전무)",
+          "records": []
+        }
+      }
+    },
+    {
+      "id": "creator-pd-002",
+      "name": "나영석",
+      "hanja": "羅䁐錫",
+      "birth_year": 1976,
+      "category": "showrunners_pds",
+      "category_kr": "총괄 예능 PD / 에그이즈커밍 대표",
+      "entity_type": "개인",
+      "primary_org": "에그이즈커밍 (CJ ENM 산하)",
+      "primary_role": "총괄 프로듀서 (PD)",
+      "photo_webp": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=320&auto=format&fit=crop&q=80",
+      "profile_summary": "1박2일, 삼시세끼, 신서유기, 지구오락실 등 한국 예능 트렌드를 혁신한 대표 스타 PD.",
+      "dossier": {
+        "history": {
+          "birth": "1976년 충청북도 청주시 출생",
+          "family_background": "충북 청주 평범한 공무원 가정",
+          "military": "육군 병장 만기전역"
+        },
+        "career": [
+          {
+            "period": "2023~현재",
+            "title": "에그이즈커밍 사내이사 겸 유튜브 '채널십오야' 총괄"
+          },
+          {
+            "period": "2013~2023",
+            "title": "CJ ENM tvN 총괄 프로듀서 (삼시세끼·꽃보다할배·지구오락실)"
+          },
+          {
+            "period": "2001~2012",
+            "title": "KBS 예능본부 프로듀서 (1박 2일 시즌1 총괄)"
+          }
+        ],
+        "education": [
+          {
+            "school": "청주고등학교",
+            "degree": "졸업",
+            "year": "1994"
+          },
+          {
+            "school": "연세대학교 정경대학 행정학과",
+            "degree": "학사",
+            "year": "2001"
+          }
+        ],
+        "alumni_network": {
+          "cluster": "연세대 행정학과-KBS 27기 공채 인맥",
+          "key_connections": [
+            "이우정 작가 (소울메이트 파트너)",
+            "신원호 PD (동기 파트너)",
+            "유재석 (예능 동료)"
+          ]
+        },
+        "regional_network": {
+          "hometown": "충청북도 청주시",
+          "regional_cluster": "충북·상암 DMC 미디어 벨트",
+          "description": "상암동 CJ ENM 및 에그이즈커밍 본사 중심 창작자 클러스터"
+        },
+        "criminal_record": {
+          "status": "CLEAN",
+          "badge_color": "#059669",
+          "has_record": false,
+          "summary": "범죄 및 사법 리스크 없음 (Clean 무결성)",
+          "records": []
+        },
+        "tax_delinquency": {
+          "status": "CLEAN",
+          "badge_color": "#059669",
+          "has_delinquency": false,
+          "delinquent_amount_krw": 0,
+          "delinquent_amount_fmt": "0원 (체납 없음)",
+          "summary": "성실 납세자 (고액 종합소득세 및 법인세 성실 납부 완료)",
+          "records": []
+        }
+      }
+    },
+    {
+      "id": "creator-writer-001",
+      "name": "김은숙",
+      "hanja": "金銀淑",
+      "birth_year": 1973,
+      "category": "writers_screenplay",
+      "category_kr": "메인 드라마 작가 / 각본가",
+      "entity_type": "개인",
+      "primary_org": "화앤담픽쳐스 (스튜디오드래곤 산하)",
+      "primary_role": "대표 각본가",
+      "photo_webp": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=320&auto=format&fit=crop&q=80",
+      "profile_summary": "<도깨비>, <미스터 션샤인>, <태양의 후예>, <더 글로리>를 집필한 대한민국 대표 흥행 극작가.",
+      "dossier": {
+        "history": {
+          "birth": "1973년 강원도 강릉시 출생",
+          "family_background": "강릉 가난한 광부 가정 3남매 중 장녀, 제재소 경리 출신 문학소녀",
+          "military": "해당 없음"
+        },
+        "career": [
+          {
+            "period": "2022~2023",
+            "title": "넷플릭스 오리지널 <더 글로리> 극본"
+          },
+          {
+            "period": "2016~2018",
+            "title": "tvN <도깨비>, <미스터 션샤인> 극본"
+          },
+          {
+            "period": "2016",
+            "title": "KBS2 <태양의 후예> 극본 (시청률 38.8%)"
+          },
+          {
+            "period": "2004",
+            "title": "SBS <파리의 연인> 극본 (시청률 57.6%)"
+          }
+        ],
+        "education": [
+          {
+            "school": "강일여자고등학교",
+            "degree": "졸업",
+            "year": "1992"
+          },
+          {
+            "school": "서울예술전문대학 문예창작과",
+            "degree": "전문학사",
+            "year": "2000"
+          }
+        ],
+        "alumni_network": {
+          "cluster": "서울예대 문예창작과 극작가 인맥",
+          "key_connections": [
+            "이응복 감독 (도깨비·미스터션샤인 연출)",
+            "안길호 감독 (더 글로리 연출)",
+            "송혜교 배우"
+          ]
+        },
+        "regional_network": {
+          "hometown": "강원도 강릉시",
+          "regional_cluster": "강원·서울 상암동 스튜디오드래곤 네트워크",
+          "description": "상암동 화앤담픽쳐스 및 일산 드라마 제작 벨트"
+        },
+        "criminal_record": {
+          "status": "CLEAN",
+          "badge_color": "#059669",
+          "has_record": false,
+          "summary": "범죄 및 처벌 전력 없음 (Clean 무결성)",
+          "records": []
+        },
+        "tax_delinquency": {
+          "status": "CLEAN",
+          "badge_color": "#059669",
+          "has_delinquency": false,
+          "delinquent_amount_krw": 0,
+          "delinquent_amount_fmt": "0원 (체납 없음)",
+          "summary": "성실 납세자 (회당 억대 원고료 종합소득세 및 부가가치세 성실 완납)",
+          "records": []
+        }
+      }
+    }
+  ]
+}

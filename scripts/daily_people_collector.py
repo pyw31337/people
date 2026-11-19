@@ -1,3 +1,4 @@
+from dart_matcher_and_dossier_builder import build_master_dossiers
 #!/usr/bin/env python3
 """
 scripts/daily_people_collector.py
@@ -110,6 +111,7 @@ def run_ingest():
     print(f"  - 행안부·지자체 체납자: +{increment_defaulters}명 (총 {db_defaulters['summary']['total_defaulters_indexed']}명)")
 
     # 4. 자가진화 수집 품질 및 이상징후 자동 감시 실행
+    build_master_dossiers()
     run_health_check(total_daily)
 
 if __name__ == "__main__":
