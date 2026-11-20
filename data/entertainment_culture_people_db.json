@@ -1,9 +1,9 @@
 {
   "version": "2.2.0",
-  "last_updated": "2026-11-19T10:34:40.346933+09:00",
+  "last_updated": "2026-11-20T10:33:37.635456+09:00",
   "domain": "entertainment_culture_and_arts",
   "federation_target": "CultureFlow (컬처플로우 연동 규약)",
-  "total_entertainers_indexed": 25225,
+  "total_entertainers_indexed": 25310,
   "categories": {
     "movie_drama_actors": {
       "name": "영화·드라마 배우/감독",

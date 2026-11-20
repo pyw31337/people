@@ -1,9 +1,9 @@
 {
   "version": "3.1.0",
-  "last_updated": "2026-11-19T10:34:40.346933+09:00",
+  "last_updated": "2026-11-20T10:33:37.635456+09:00",
   "domain": "historical_art_and_literature_masters",
   "federation_target": "Let's Art (렛츠아트 독립 출자 사전 원장)",
-  "total_masters_indexed": 4925,
+  "total_masters_indexed": 4950,
   "categories": {
     "fine_art_masters": {
       "name": "세계 미술사 거장 (화가·조각가)",
