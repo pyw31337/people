@@ -1,0 +1,26 @@
+{
+  "schema": "lets_observability_v1",
+  "run_id": "people-unimplemented-20261120T075918Z",
+  "observed_at": "2026-11-20T07:59:18.837118+00:00",
+  "service_id": "people",
+  "source": "workflow_guard",
+  "stages": {
+    "collect": {
+      "status": "not_implemented",
+      "ok": null
+    },
+    "analyze": {
+      "status": "not_started",
+      "ok": null
+    },
+    "quality": {
+      "status": "not_started",
+      "quality_issue_count": null
+    },
+    "publish": {
+      "status": "not_started"
+    }
+  },
+  "counts": {},
+  "note": "No source-backed people collector is configured. Synthetic counter updates are disabled."
+}

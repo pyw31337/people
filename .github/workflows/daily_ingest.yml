@@ -21,9 +21,9 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Run Daily People Ingest
+      - name: Record unavailable collector
         run: |
-          python3 scripts/daily_people_collector.py
+          python3 scripts/record_observability.py
 
       - name: Commit & Push Incremental Data
         run: |
