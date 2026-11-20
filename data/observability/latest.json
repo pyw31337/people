@@ -1,26 +1,34 @@
 {
   "schema": "lets_observability_v1",
-  "run_id": "people-unimplemented-20261120T075918Z",
-  "observed_at": "2026-11-20T07:59:18.837118+00:00",
+  "run_id": "people-unimplemented-20261120T081228Z",
+  "observed_at": "2026-11-20T08:12:28.115989+00:00",
   "service_id": "people",
-  "source": "workflow_guard",
+  "source": "wikipedia_category_feed",
   "stages": {
     "collect": {
-      "status": "not_implemented",
-      "ok": null
+      "status": "success",
+      "ok": 50,
+      "artifact": true
     },
     "analyze": {
       "status": "not_started",
       "ok": null
     },
     "quality": {
-      "status": "not_started",
-      "quality_issue_count": null
+      "status": "success",
+      "quality_issue_count": 0,
+      "detail": "unique page identifiers"
     },
     "publish": {
-      "status": "not_started"
+      "status": "success",
+      "artifact": true
     }
   },
-  "counts": {},
-  "note": "No source-backed people collector is configured. Synthetic counter updates are disabled."
+  "counts": {
+    "records": 50
+  },
+  "artifacts": {
+    "raw": "4a6f9c3c580f1386e4901fdb1de7f8e92c0fee681eade291094c1aaa341476f4"
+  },
+  "note": "Wikipedia South Korean politicians category snapshot."
 }

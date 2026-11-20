@@ -21,7 +21,7 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Record unavailable collector
+      - name: Collect source evidence
         run: |
           python3 scripts/record_observability.py
 
