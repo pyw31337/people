@@ -1,7 +1,7 @@
 {
   "schema": "lets_observability_v1",
-  "run_id": "people-unimplemented-20261121T005941Z",
-  "observed_at": "2026-11-21T00:59:41.119850+00:00",
+  "run_id": "people-unimplemented-20261121T235933Z",
+  "observed_at": "2026-11-21T23:59:33.254341+00:00",
   "service_id": "people",
   "source": "wikipedia_category_feed",
   "stages": {
@@ -28,7 +28,7 @@
     "records": 50
   },
   "artifacts": {
-    "raw": "e05d178091c7c191e63770b81e413b65558058c3b0be9545ee6e25d4a01594ed"
+    "raw": "8e957df3f72b0433d7c7d22163894656b2e251c3a3d6f166f5e3f6a8366fc4f9"
   },
   "note": "Wikipedia South Korean politicians category snapshot."
 }
