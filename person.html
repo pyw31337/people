@@ -2,48 +2,125 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>인물 상세 프로파일 — 렛츠피플 (Let's People)</title>
-  <link rel="stylesheet" href="css/lets-design-system.css">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>인물 · Let's People</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600&display=swap">
   <style>
-    :root { --bg:#f8fafc; --card:#ffffff; --border:#e2e8f0; --text:#0f172a; --muted:#64748b; --accent:#2563eb; }
-    * { box-sizing: border-box; }
-    body { margin:0; font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Segoe UI", sans-serif; background:var(--bg); color:var(--text); }
-    .topbar { background:#fff; border-bottom:1px solid var(--border); padding:14px 24px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:20; }
-    .topbar a { text-decoration:none; color:var(--accent); font-weight:700; font-size:14px; }
-    .container { max-width:980px; margin:28px auto; padding:0 18px 60px; }
-    .hero-card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:28px; display:flex; gap:24px; align-items:flex-start; box-shadow:0 4px 20px rgba(15,23,42,0.04); flex-wrap:wrap; }
-    .avatar-wrap { width:136px; height:136px; border-radius:16px; overflow:hidden; background:#e2e8f0; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:44px; font-weight:800; color:#475569; }
-    .avatar-wrap img { width:100%; height:100%; object-fit:cover; display:block; }
-    .hero-meta { flex:1; min-width:260px; }
-    .badge { display:inline-block; padding:4px 10px; border-radius:999px; font-size:12px; font-weight:700; background:#eff6ff; color:#1d4ed8; margin-right:6px; margin-bottom:6px; }
-    .badge-amber { background:#fef3c7; color:#b45309; }
-    .badge-green { background:#ecfdf5; color:#047857; }
-    h1 { margin:6px 0 8px; font-size:28px; letter-spacing:-0.02em; }
-    .desc { color:#334155; font-size:15px; line-height:1.6; margin:0 0 14px; }
-    .kv-row { display:flex; flex-wrap:wrap; gap:14px; font-size:13px; color:var(--muted); }
-    .kv-row strong { color:var(--text); }
-    .grid-2 { display:grid; grid-template-columns:repeat(auto-fit, minmax(290px, 1fr)); gap:18px; margin-top:20px; }
-    .section-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:20px; }
-    .section-card h2 { margin:0 0 12px; font-size:15px; color:#0f172a; border-bottom:1px solid #f1f5f9; padding-bottom:8px; }
-    .chip-list { display:flex; flex-wrap:wrap; gap:8px; }
-    .chip { background:#f1f5f9; color:#1e293b; padding:6px 11px; border-radius:8px; font-size:13px; text-decoration:none; font-weight:600; }
-    .chip:hover { background:#e2e8f0; }
-    .empty { color:#94a3b8; font-size:13px; }
-    .btn { display:inline-flex; align-items:center; gap:6px; padding:8px 14px; border-radius:8px; font-size:13px; font-weight:700; text-decoration:none; border:1px solid var(--border); background:#fff; color:var(--text); cursor:pointer; }
-    .btn-primary { background:var(--accent); color:#fff; border-color:var(--accent); }
-    .actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
-    pre { background:#0f172a; color:#e2e8f0; padding:14px; border-radius:10px; font-size:12px; overflow:auto; max-height:320px; }
+    :root {
+      --c-bg:#fbfbfa; --c-surface:#ffffff; --c-sunken:#f1f1ef; --c-sunken-2:#e8e8e5;
+      --c-line:#e3e3df; --c-line-strong:#cfcfca;
+      --c-ink-1:#16181d; --c-ink-2:#3d424c; --c-ink-3:#6c717b; --c-ink-4:#a7abb2;
+      --c-accent:#2450e0; --c-accent-soft:rgba(36,80,224,.10);
+      --c-pos:#138a52; --c-pos-soft:#e5f4ec; --c-warn:#b7791f; --c-warn-soft:#fbf1df;
+      --f-sans:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo",sans-serif;
+      --f-serif:"Noto Serif KR","Nanum Myeongjo",serif;
+      --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:20px; --s-6:24px; --s-7:32px; --s-8:48px;
+      --r-sm:6px; --r-md:10px; --r-lg:16px; --r-full:999px;
+      --page-max:1280px; --gutter:clamp(20px,4.4vw,64px);
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; font-family:var(--f-sans); background:var(--c-bg); color:var(--c-ink-1); -webkit-font-smoothing:antialiased; }
+    a { color:inherit; }
+    .wrap { max-width:var(--page-max); margin:0 auto; padding:0 var(--gutter); }
+
+    /* Top Header */
+    .top { display:flex; align-items:center; justify-content:space-between; height:64px; border-bottom:1px solid var(--c-line); gap:16px; }
+    .brand { font-size:20px; font-weight:800; letter-spacing:-0.03em; text-decoration:none; }
+    .brand i { color:var(--c-accent); font-style:normal; }
+    .top nav { display:flex; gap:20px; overflow-x:auto; }
+    .top nav a { text-decoration:none; font-size:14px; font-weight:600; color:var(--c-ink-3); white-space:nowrap; }
+    .top nav a:hover, .top nav a.on { color:var(--c-ink-1); }
+
+    /* Hero */
+    .hero { display:grid; grid-template-columns:minmax(0,1fr) clamp(200px,22vw,280px); gap:var(--s-8); align-items:end; padding:var(--s-8) 0 var(--s-7); }
+    @media (max-width:780px) { .hero { grid-template-columns:1fr; gap:var(--s-5); padding:var(--s-6) 0; } }
+    .hero-role { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:700; color:var(--c-accent); }
+    .hero h1 { font-size:clamp(38px,5vw,64px); font-weight:800; letter-spacing:-0.035em; line-height:1.06; margin:10px 0 8px; }
+    .hero h1 small { font-size:18px; font-weight:500; color:var(--c-ink-3); margin-left:10px; letter-spacing:-0.01em; }
+    .hero-line { font-size:17px; font-weight:500; color:var(--c-ink-2); line-height:1.5; margin:0; }
+    .facts { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px 24px; margin-top:var(--s-6); padding-top:var(--s-5); border-top:1px solid var(--c-line); }
+    @media (max-width:560px) { .facts { grid-template-columns:1fr; } }
+    .fact { display:flex; flex-direction:column; gap:2px; }
+    .fact dt { font-size:12px; font-weight:600; color:var(--c-ink-3); }
+    .fact dd { margin:0; font-size:14px; font-weight:600; color:var(--c-ink-1); }
+    .hero-src { display:flex; flex-wrap:wrap; gap:8px; margin-top:var(--s-5); }
+    .src-chip { display:inline-flex; align-items:center; gap:6px; padding:7px 13px; border-radius:var(--r-full); background:var(--c-surface); border:1px solid var(--c-line); font-size:13px; font-weight:600; text-decoration:none; color:var(--c-ink-2); cursor:pointer; }
+    .src-chip:hover { border-color:var(--c-ink-3); color:var(--c-ink-1); }
+    .src-chip--primary { background:var(--c-accent); border-color:var(--c-accent); color:#fff; }
+    .src-chip--primary:hover { color:#fff; opacity:.92; }
+
+    .hero-ph { margin:0; justify-self:end; width:100%; max-width:280px; }
+    .hero-ph img { width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:var(--r-lg); display:block; background:var(--c-sunken); }
+    .hero-ph--none { aspect-ratio:3/4; border-radius:var(--r-lg); background:var(--c-sunken); display:grid; place-items:center; font-size:64px; font-weight:800; color:var(--c-ink-4); }
+    .hero-ph figcaption { font-size:11px; color:var(--c-ink-4); margin-top:6px; text-align:right; }
+
+    /* KPIs */
+    .kpis { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:var(--s-6); padding:var(--s-6) 0 var(--s-7); border-top:1px solid var(--c-line); }
+    @media (max-width:780px) { .kpis { grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--s-4); } }
+    .stat { padding-left:var(--s-4); border-left:2px solid var(--c-line); }
+    .stat:first-child { border-left-color:var(--c-accent); }
+    .stat-k { font-size:12px; font-weight:600; color:var(--c-ink-3); }
+    .stat-v { font-size:28px; font-weight:800; letter-spacing:-0.025em; margin:4px 0 2px; }
+    .stat-v small { font-size:14px; font-weight:600; color:var(--c-ink-3); margin-left:3px; }
+    .stat-s { font-size:12px; color:var(--c-ink-3); }
+
+    /* Sticky TOC Bar */
+    .toc--bar { display:flex; flex-direction:row; gap:4px; overflow-x:auto; scrollbar-width:none; position:sticky; top:0; z-index:10; background:var(--c-bg); padding:12px var(--gutter); margin:0 calc(var(--gutter) * -1); border-top:1px solid var(--c-line); border-bottom:1px solid var(--c-line); }
+    .toc--bar::-webkit-scrollbar { display:none; }
+    .toc-i { display:inline-flex; align-items:center; gap:6px; padding:7px 14px; border-radius:var(--r-sm); font-size:13px; font-weight:600; color:var(--c-ink-3); text-decoration:none; white-space:nowrap; flex:none; }
+    .toc-i:hover { color:var(--c-ink-1); background:var(--c-sunken); }
+    .toc-i.is-on { color:var(--c-ink-1); font-weight:700; background:var(--c-sunken); }
+    .toc-i small { font-size:11px; color:var(--c-ink-4); font-weight:600; }
+
+    /* Sections & Modules */
+    .sec { padding:48px 0; border-top:1px solid var(--c-line); scroll-margin-top:58px; }
+    .sec:first-of-type { border-top:0; }
+    .sh { display:flex; align-items:baseline; gap:10px; margin-bottom:20px; }
+    .sh h2 { margin:0; font-size:22px; font-weight:800; letter-spacing:-0.02em; }
+    .sh-c { font-size:13px; font-weight:700; color:var(--c-accent); }
+    .sh-a { margin-left:auto; font-size:13px; font-weight:600; color:var(--c-ink-3); }
+
+    .mod-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(290px, 1fr)); gap:16px; }
+    .mod-card { background:var(--c-surface); border:1px solid var(--c-line); border-radius:var(--r-md); padding:20px; }
+    .mod-card h3 { margin:0 0 12px; font-size:14px; font-weight:700; color:var(--c-ink-2); }
+    .compare-note { font-size:14px; color:var(--c-ink-2); line-height:1.65; margin:0 0 16px; }
+    .quote-box { border-left:3px solid var(--c-accent); padding:12px 16px; background:var(--c-surface); border-radius:0 var(--r-sm) var(--r-sm) 0; font-family:var(--f-serif); font-size:16px; line-height:1.6; color:var(--c-ink-1); margin-bottom:14px; }
+    .tags { display:flex; flex-wrap:wrap; gap:8px; }
+    .tag { display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:var(--r-sm); background:var(--c-sunken); font-size:13px; font-weight:600; color:var(--c-ink-1); text-decoration:none; }
+    .tag:hover { background:var(--c-sunken-2); }
+    .tag--accent { background:var(--c-accent-soft); color:var(--c-accent); }
+    .member-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+    .member-pill { display:inline-flex; align-items:center; gap:6px; padding:5px 10px; border-radius:var(--r-full); background:var(--c-surface); border:1px solid var(--c-line); font-size:12px; font-weight:600; text-decoration:none; }
+    .member-pill:hover { border-color:var(--c-accent); color:var(--c-accent); }
+    .member-dot { width:20px; height:20px; border-radius:50%; object-fit:cover; background:var(--c-sunken); display:inline-grid; place-items:center; font-size:10px; font-weight:700; color:var(--c-ink-3); }
+    .empty { color:var(--c-ink-4); font-size:13px; margin:0; }
+    details.raw-box summary { cursor:pointer; font-size:13px; font-weight:700; color:var(--c-ink-2); }
+    pre { background:#16181d; color:#e2e8f0; padding:16px; border-radius:var(--r-md); font-size:12px; overflow:auto; max-height:360px; margin-top:12px; }
+    footer { padding:32px 0 48px; border-top:1px solid var(--c-line); font-size:12px; color:var(--c-ink-3); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
   </style>
 </head>
 <body>
-  <div class="topbar">
-    <a href="index.html">← 렛츠피플 전체 목록으로</a>
-    <span style="font-size:12px; color:#64748b; font-weight:700;">Let's People · 개별 인물 프로파일</span>
-  </div>
+  <div class="wrap">
+    <header class="top">
+      <a class="brand" href="index.html"><b>Let's</b> People<i>.</i></a>
+      <nav>
+        <a class="on" href="index.html">전체 인물</a>
+        <a href="index.html?cat=clusters">학연·지연 클러스터</a>
+        <a href="index.html?cat=medical_professionals">의료인</a>
+        <a href="https://pyw31337.github.io/lets/" target="_blank" rel="noopener">LetsHub 관제</a>
+      </nav>
+    </header>
 
-  <div class="container" id="app">
-    <div class="section-card">인물 데이터를 불러오는 중입니다...</div>
+    <main id="app">
+      <section class="hero"><div><h1>프로파일 로딩 중...</h1></div></section>
+    </main>
+
+    <footer>
+      <span>© 2026 렛츠피플 (Let's People) · 실측 인물·관계망 원장</span>
+      <span>Wikidata · Wikipedia · Elite Network · Medical DB</span>
+    </footer>
   </div>
 
   <script>
@@ -55,104 +132,225 @@
       for (let i = 0; i < id.length; i++) sum += id.charCodeAt(i);
       return (sum % 64).toString(16).padStart(2, '0');
     }
-    function chips(items, emptyMsg, linkToSearch = false) {
-      if (!items || !items.length) return `<span class="empty">${emptyMsg}</span>`;
-      return `<div class="chip-list">${items.map(item =>
+    function tagList(items, emptyMsg, linkToSearch = false) {
+      if (!items || !items.length) return `<p class="empty">${emptyMsg}</p>`;
+      return `<div class="tags">${items.map(item =>
         linkToSearch
-          ? `<a class="chip" href="index.html?q=${encodeURIComponent(item)}">${esc(item)}</a>`
-          : `<span class="chip">${esc(item)}</span>`
+          ? `<a class="tag" href="index.html?q=${encodeURIComponent(item)}">${esc(item)}</a>`
+          : `<span class="tag">${esc(item)}</span>`
       ).join('')}</div>`;
+    }
+    function renderClusterCards(names, clustersArr, emptyMsg) {
+      if (!names || !names.length) return `<p class="empty">${emptyMsg}</p>`;
+      const byName = new Map((clustersArr || []).map(c => [c.cluster, c]));
+      return `<div class="mod-grid">${names.map(name => {
+        const cl = byName.get(name);
+        const members = (cl?.members || []).slice(0, 8);
+        return `
+          <div class="mod-card">
+            <h3>
+              <a href="index.html?q=${encodeURIComponent(name)}" style="text-decoration:none; color:var(--c-ink-1);">${esc(name)}</a>
+              ${cl ? `<span class="tag tag--accent" style="margin-left:6px; padding:2px 8px; font-size:11px;">동문/동향 ${cl.count}명</span>` : ''}
+            </h3>
+            ${members.length ? `
+              <div class="member-row">
+                ${members.map(m => `
+                  <a class="member-pill" href="person.html?id=${encodeURIComponent(m.id)}">
+                    ${m.photo ? `<img class="member-dot" src="${esc(m.photo)}" alt="">` : `<span class="member-dot">${esc((m.name || '?')[0])}</span>`}
+                    <span>${esc(m.name)}</span>
+                  </a>
+                `).join('')}
+              </div>
+            ` : `<p class="empty">단독 등재 (추가 클러스터 연결 대기)</p>`}
+          </div>
+        `;
+      }).join('')}</div>`;
     }
 
     async function main() {
       const params = new URLSearchParams(location.search);
       const id = params.get('id') || 'wd-Q76';
       const app = document.getElementById('app');
+
       try {
-        const res = await fetch(`data/profiles/${bucketOf(id)}.json`, { cache: 'no-store' });
-        if (!res.ok) throw new Error('샤드 파일을 찾을 수 없습니다.');
-        const shard = await res.json();
+        const [shardRes, clusterRes] = await Promise.all([
+          fetch(`data/profiles/${bucketOf(id)}.json`, { cache: 'no-store' }),
+          fetch('data/people_clusters.json', { cache: 'no-store' }).catch(() => null)
+        ]);
+        if (!shardRes.ok) throw new Error('프로파일 샤드 데이터를 불러오지 못했습니다.');
+        const shard = await shardRes.json();
+        const clusters = clusterRes && clusterRes.ok ? await clusterRes.json() : {};
         const p = (shard.profiles || {})[id];
+
         if (!p) {
-          app.innerHTML = `<div class="section-card"><h2>인물을 찾을 수 없습니다</h2><p class="empty">요청한 ID(${esc(id)})에 해당하는 레코드가 없습니다.</p><a class="btn" href="index.html">목록으로 돌아가기</a></div>`;
+          app.innerHTML = `<section class="sec"><h1>인물을 찾을 수 없습니다</h1><p class="compare-note">요청한 ID(${esc(id)})가 원장에 없습니다.</p><a class="src-chip" href="index.html">← 전체 목록으로</a></section>`;
           return;
         }
-        document.title = `${p.name} — 렛츠피플 프로파일`;
+
+        document.title = `${p.name} — Let's People`;
         const fam = p.family || {};
         const famRows = [
-          ...(fam.father || []).map(x => `부: ${x}`),
-          ...(fam.mother || []).map(x => `모: ${x}`),
-          ...(fam.spouse || []).map(x => `배우자: ${x}`),
+          ...(fam.father || []).map(x => `부 · ${x}`),
+          ...(fam.mother || []).map(x => `모 · ${x}`),
+          ...(fam.spouse || []).map(x => `배우자 · ${x}`),
           ...(Array.isArray(fam.members) ? fam.members.map(m => typeof m === 'string' ? m : (m.name || JSON.stringify(m))) : [])
         ];
-        const avatar = p.photo_url
-          ? `<img src="${esc(p.photo_url)}" alt="${esc(p.name)}" onerror="this.parentElement.textContent='${esc((p.name || '?')[0])}'">`
-          : esc((p.name || '?')[0]);
+        const edus = p.educations || [];
+        const bps = p.birth_places || [];
+        const occs = p.occupations || [];
+        const awards = p.awards || [];
+        const nbUrl = p.id && p.id.startsWith('wd-')
+          ? `https://pyw31337.github.io/news/person/?id=${encodeURIComponent('wd:' + p.id.slice(3))}#s-q`
+          : '';
+
+        const facts = [
+          ['소속 / 기관', p.primary_org || '미상'],
+          ['직책 / 역할', p.primary_role || '미상'],
+          ['출생 / 사망', `${p.birth_date || '미상'}${p.death_date ? ` ~ ${p.death_date}` : ''}`],
+          ['국적', p.country || '미상'],
+          ['학력', edus.length ? edus.slice(0, 3).join(' · ') : '미확인'],
+          ['출생지(지연)', bps.length ? bps.join(' · ') : '미확인'],
+        ];
 
         app.innerHTML = `
-          <div class="hero-card">
-            <div class="avatar-wrap">${avatar}</div>
-            <div class="hero-meta">
-              <div>
-                <span class="badge">${esc(p.category_kr || p.category)}</span>
-                <span class="badge badge-green">출처: ${esc(p.source)}</span>
-                ${p.sitelinks ? `<span class="badge badge-amber">글로벌 미디어 노출 지수 ${Number(p.sitelinks).toLocaleString()}</span>` : ''}
-              </div>
-              <h1>${esc(p.name)}</h1>
-              <p class="desc">${esc(p.description || '상세 설명이 아직 등록되지 않았습니다.')}</p>
-              <div class="kv-row">
-                <div>소속/기관: <strong>${esc(p.primary_org || '미상')}</strong></div>
-                <div>직책/역할: <strong>${esc(p.primary_role || '미상')}</strong></div>
-                <div>국적: <strong>${esc(p.country || '미상')}</strong></div>
-                <div>생몰: <strong>${esc(p.birth_date || '?')}${p.death_date ? ` ~ ${esc(p.death_date)}` : ''}</strong></div>
-              </div>
-              <div class="actions">
-                ${p.wikipedia_url ? `<a class="btn btn-primary" href="${esc(p.wikipedia_url)}" target="_blank" rel="noopener">Wikipedia 원문 ↗</a>` : ''}
-                ${p.wikiquote_url ? `<a class="btn" href="${esc(p.wikiquote_url)}" target="_blank" rel="noopener">Wikiquote 발언/어록 ↗</a>` : ''}
-                <button class="btn" onclick="navigator.clipboard?.writeText(location.href); this.textContent='링크 복사됨 ✓';">프로파일 URL 복사</button>
+          <section class="hero">
+            <div>
+              <span class="hero-role">${esc(p.category_kr || p.category)} · ${esc(p.source)}</span>
+              <h1>${esc(p.name)}<small>${esc(p.id)}</small></h1>
+              <p class="hero-line">${esc(p.description || '공공 원천 데이터 기반 실측 인물 프로파일입니다.')}</p>
+              <dl class="facts">
+                ${facts.map(([k, v]) => `<div class="fact"><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}
+              </dl>
+              <div class="hero-src">
+                ${p.wikipedia_url ? `<a class="src-chip src-chip--primary" href="${esc(p.wikipedia_url)}" target="_blank" rel="noopener">위키백과 ↗</a>` : ''}
+                ${p.wikiquote_url ? `<a class="src-chip" href="${esc(p.wikiquote_url)}" target="_blank" rel="noopener">위키인용집(어록) ↗</a>` : ''}
+                ${nbUrl ? `<a class="src-chip" href="${esc(nbUrl)}" target="_blank" rel="noopener">NewsBoard 발언 타임라인 ↗</a>` : ''}
+                <button class="src-chip" onclick="navigator.clipboard?.writeText(location.href); this.textContent='URL 복사됨 ✓';">URL 복사</button>
               </div>
             </div>
-          </div>
+            ${p.photo_url
+              ? `<figure class="hero-ph"><img src="${esc(p.photo_url)}" alt="${esc(p.name)}" onerror="this.outerHTML='<div class=\\'hero-ph--none\\'>${esc((p.name || '?')[0])}</div>'"><figcaption>Wikimedia Commons</figcaption></figure>`
+              : `<figure class="hero-ph"><div class="hero-ph--none">${esc((p.name || '?')[0])}</div><figcaption>이미지 미등록</figcaption></figure>`}
+          </section>
 
-          <div class="grid-2">
-            <div class="section-card">
-              <h2>🎓 학연 (출신 학교 클러스터)</h2>
-              ${chips(p.educations, '수집된 학력 정보 없음', true)}
+          <section class="kpis">
+            <div class="stat">
+              <div class="stat-k">글로벌 미디어 노출</div>
+              <div class="stat-v">${Number(p.sitelinks || 0).toLocaleString()}<small>언어판</small></div>
+              <div class="stat-s">${p.wikiquote_url ? '어록(Wikiquote) 등재' : '위키데이터 기준'}</div>
             </div>
-            <div class="section-card">
-              <h2>📍 지연 (출생지·연고 클러스터)</h2>
-              ${chips(p.birth_places, '수집된 출생지 정보 없음', true)}
+            <div class="stat">
+              <div class="stat-k">학연·지연 연결</div>
+              <div class="stat-v">${edus.length + bps.length}<small>노드</small></div>
+              <div class="stat-s">학력 ${edus.length} · 출생지 ${bps.length}</div>
             </div>
-            <div class="section-card">
-              <h2>💼 경력·직업</h2>
-              ${chips(p.occupations, '수집된 직업 정보 없음', false)}
+            <div class="stat">
+              <div class="stat-k">가족·인척 관계</div>
+              <div class="stat-v">${famRows.length}<small>건</small></div>
+              <div class="stat-s">${famRows.length ? '부·모·배우자 연결' : '추가 수집 대기'}</div>
             </div>
-            <div class="section-card">
-              <h2>👨‍👩‍👧‍👦 가족·인척 관계</h2>
-              ${chips(famRows, '수집된 가족 정보 없음', false)}
+            <div class="stat">
+              <div class="stat-k">경력·수상 이력</div>
+              <div class="stat-v">${occs.length + awards.length}<small>건</small></div>
+              <div class="stat-s">직업 ${occs.length} · 수상 ${awards.length}</div>
             </div>
-            <div class="section-card">
-              <h2>🏆 수상·서훈 이력</h2>
-              ${chips(p.awards, '수집된 수상 이력 없음', false)}
+          </section>
+
+          <nav class="toc--bar" aria-label="프로파일 모듈 이동">
+            <a class="toc-i is-on" href="#s-q">발언·미디어 노출 <small>${p.sitelinks || 0}</small></a>
+            <a class="toc-i" href="#s-career">경력·수상 <small>${occs.length + awards.length}</small></a>
+            <a class="toc-i" href="#s-edu">학연 클러스터 <small>${edus.length}</small></a>
+            <a class="toc-i" href="#s-region">지연 클러스터 <small>${bps.length}</small></a>
+            <a class="toc-i" href="#s-family">가족 관계망 <small>${famRows.length}</small></a>
+            <a class="toc-i" href="#s-raw">원시 원장</a>
+          </nav>
+
+          <section class="sec" id="s-q">
+            <div class="sh">
+              <h2>발언·어록 &amp; 미디어 노출</h2>
+              <span class="sh-c">${Number(p.sitelinks || 0).toLocaleString()} 언어판</span>
+              <span class="sh-a">시계열 인용 &amp; 글로벌 인지도</span>
             </div>
-            <div class="section-card" id="s-q" style="grid-column:1/-1;">
-              <h2>💬 발언·미디어 노출 (#s-q)</h2>
-              <p class="desc" style="margin-bottom:10px;">
-                ${p.wikiquote_url ? `Wikiquote에 공식 발언·어록이 등재되어 있습니다.` : `글로벌 미디어 노출 지수 ${Number(p.sitelinks || 0).toLocaleString()}개 언어판 기준 인물입니다.`}
-              </p>
-              <div class="actions" style="margin-top:0;">
-                ${p.wikiquote_url ? `<a class="btn btn-primary" href="${esc(p.wikiquote_url)}" target="_blank" rel="noopener">Wikiquote 발언·어록 보기 ↗</a>` : ''}
-                ${p.id && p.id.startsWith('wd-') ? `<a class="btn" href="https://pyw31337.github.io/news/person/?id=${encodeURIComponent('wd:' + p.id.slice(3))}#s-q" target="_blank" rel="noopener">NewsBoard 발언 타임라인 연동 ↗</a>` : ''}
+            <div class="quote-box">
+              ${esc(p.description || `${p.name}의 위키데이터·위키백과 실측 기록입니다.`)}
+            </div>
+            <p class="compare-note">
+              ${p.wikiquote_url
+                ? 'Wikiquote에 공식 발언·어록이 등재되어 있으며, NewsBoard 인물 타임라인과도 직접 연동됩니다.'
+                : '글로벌 위키백과 사이트링크 수를 기준으로 미디어 노출도를 산출하며, NewsBoard 기사 수집 원장과 교차 검증할 수 있습니다.'}
+            </p>
+            <div class="tags">
+              ${p.wikiquote_url ? `<a class="tag tag--accent" href="${esc(p.wikiquote_url)}" target="_blank" rel="noopener">Wikiquote 어록 원문 ↗</a>` : ''}
+              ${nbUrl ? `<a class="tag tag--accent" href="${esc(nbUrl)}" target="_blank" rel="noopener">NewsBoard 시계열 발언 비교 (#s-q) ↗</a>` : ''}
+              ${p.wikipedia_url ? `<a class="tag" href="${esc(p.wikipedia_url)}" target="_blank" rel="noopener">Wikipedia 바이오그래피 ↗</a>` : ''}
+            </div>
+          </section>
+
+          <section class="sec" id="s-career">
+            <div class="sh">
+              <h2>경력·직업 &amp; 수상</h2>
+              <span class="sh-c">${occs.length + awards.length}건</span>
+            </div>
+            <div class="mod-grid">
+              <div class="mod-card">
+                <h3>💼 등재 직업·역할 (${occs.length}건)</h3>
+                ${tagList(occs, '수집된 직업 정보 없음', false)}
+              </div>
+              <div class="mod-card">
+                <h3>🏆 수상·서훈 이력 (${awards.length}건)</h3>
+                ${tagList(awards, '수집된 수상 이력 없음', false)}
               </div>
             </div>
-            <div class="section-card">
-              <h2>🗂️ 원시 원장 데이터</h2>
-              <pre>${esc(JSON.stringify(p, null, 2))}</pre>
+          </section>
+
+          <section class="sec" id="s-edu">
+            <div class="sh">
+              <h2>학연 클러스터</h2>
+              <span class="sh-c">${edus.length}개 기관</span>
+              <span class="sh-a">같은 학교 출신 인물 자동 연결</span>
             </div>
-          </div>
+            ${renderClusterCards(edus, clusters.alumni_clusters, '수집된 학력 정보 없음')}
+          </section>
+
+          <section class="sec" id="s-region">
+            <div class="sh">
+              <h2>지연(출생지) 클러스터</h2>
+              <span class="sh-c">${bps.length}개 지역</span>
+              <span class="sh-a">동일 출생지 인물 자동 연결</span>
+            </div>
+            ${renderClusterCards(bps, clusters.regional_clusters, '수집된 출생지 정보 없음')}
+          </section>
+
+          <section class="sec" id="s-family">
+            <div class="sh">
+              <h2>가족·인척 관계망</h2>
+              <span class="sh-c">${famRows.length}건</span>
+            </div>
+            <div class="mod-card">
+              ${tagList(famRows, '수집된 가족 관계 정보 없음', false)}
+            </div>
+          </section>
+
+          <section class="sec" id="s-raw">
+            <div class="sh">
+              <h2>원시 원장 데이터</h2>
+              <span class="sh-a">샤드 ${bucketOf(id)}.json</span>
+            </div>
+            <details class="raw-box">
+              <summary>JSON 원천 레코드 펼치기</summary>
+              <pre>${esc(JSON.stringify(p, null, 2))}</pre>
+            </details>
+          </section>
         `;
+
+        document.querySelectorAll('.toc--bar .toc-i').forEach(link => {
+          link.addEventListener('click', () => {
+            document.querySelectorAll('.toc--bar .toc-i').forEach(x => x.classList.remove('is-on'));
+            link.classList.add('is-on');
+          });
+        });
       } catch (err) {
-        app.innerHTML = `<div class="section-card"><h2>로딩 오류</h2><p class="empty">${esc(err.message)}</p></div>`;
+        app.innerHTML = `<section class="sec"><h1>로딩 오류</h1><p class="compare-note">${esc(err.message)}</p></section>`;
       }
     }
     main();
