@@ -570,6 +570,9 @@
       <button class="cat-tab-btn" onclick="filterCategory('broadcasters_mcs')">🎙️ 방송인·MC·크리에이터</button>
       <button class="cat-tab-btn" onclick="filterCategory('culture')">🎭 영화·뮤지컬·K-POP</button>
       <button class="cat-tab-btn" onclick="filterCategory('medical_professionals')">🩺 의료인 (의사·간호사)</button>
+      <button class="cat-tab-btn" onclick="filterCategory('politics_policy')">🏛️ 정계·관료</button>
+      <button class="cat-tab-btn" onclick="filterCategory('science_nobel')">🔬 과학·석학</button>
+      <button class="cat-tab-btn" onclick="filterCategory('clusters')">🎓 학연·지연 클러스터</button>
     </div>
 
     <!-- People Cards Grid -->
@@ -748,7 +751,7 @@
 
     async function loadData() {
       try {
-        const [gRes, cRes, wRes, crRes, hRes, hmRes, dRes, masterRes, medRes] = await Promise.all([
+        const [gRes, cRes, wRes, crRes, hRes, hmRes, dRes, masterRes, medRes, catRes, clusterRes] = await Promise.all([
           fetch('data/global_media_people_db.json'),
           fetch('data/entertainment_culture_people_db.json'),
           fetch('data/filmography_works_master_db.json'),
@@ -757,7 +760,9 @@
           fetch('data/historical_artists_and_writers_db.json'),
           fetch('data/public_defaulters_people_db.json'),
           fetch('data/master_people_dossier_db.json'),
-          fetch('data/medical_professionals_db.json')
+          fetch('data/medical_professionals_db.json'),
+          fetch('data/global_people_catalog.json'),
+          fetch('data/people_clusters.json')
         ]);
 
         const gData = await gRes.json();
@@ -769,6 +774,8 @@
         const dData = await dRes.json();
         const mData = masterRes.ok ? await masterRes.json() : { dossiers: [] };
         const medData = medRes.ok ? await medRes.json() : { featured_medical_profiles: [] };
+        const catData = catRes.ok ? await catRes.json() : { featured_profiles: [] };
+        window.peopleClustersData = clusterRes.ok ? await clusterRes.json() : null;
         
         masterDossierList = (mData.dossiers || mData.profiles || []).map(p => ({ ...p, dossier: ensurePersonDossier(p) }));
         globalList = (gData.featured_global_profiles || []).map(p => ({ ...p, dossier: ensurePersonDossier(p) }));
@@ -777,12 +784,13 @@
         historicalList = (hmData.featured_masters || []).map(p => ({ ...p, dossier: ensurePersonDossier(p) }));
         defaultersList = (dData.profiles_sample || []).map(d => ({ ...d, category: 'tax_defaulters', dossier: ensurePersonDossier(d) }));
         const medicalList = (medData.featured_medical_profiles || []).map(p => ({ ...p, dossier: ensurePersonDossier(p) }));
+        const catalogList = (catData.featured_profiles || []).map(p => ({ ...p, dossier: ensurePersonDossier(p) }));
         worksDB = wData.works || [];
         
         // Merge without duplicate IDs
         const seen = new Set();
         mergedList = [];
-        [...masterDossierList, ...defaultersList, ...medicalList, ...creatorsList, ...historicalList, ...cultureList, ...globalList].forEach(p => {
+        [...masterDossierList, ...medicalList, ...catalogList, ...defaultersList, ...creatorsList, ...historicalList, ...cultureList, ...globalList].forEach(p => {
           p.name = p.name || p.name_kr || '인물';
           p.photo_webp = resolvePersonPhoto(p);
           const key = p.id || p.name;
@@ -792,7 +800,10 @@
           }
         });
 
-        if (mData.standards && mData.standards.total_indexed_people) {
+        if (window.peopleClustersData && window.peopleClustersData.total_people) {
+          document.getElementById('statPeople').innerHTML = `${window.peopleClustersData.total_people.toLocaleString()} <span class="pulse-unit">명 (실측)</span>`;
+          document.getElementById('statCreators').innerHTML = `${(window.peopleClustersData.alumni_clusters_total || 0).toLocaleString()} <span class="pulse-unit">학연 클러스터</span>`;
+        } else if (mData.standards && mData.standards.total_indexed_people) {
           document.getElementById('statPeople').innerHTML = `${mData.standards.total_indexed_people.toLocaleString()} <span class="pulse-unit">명</span>`;
         }
         if (mData.standards && mData.standards.dart_corporate_leaders_indexed) {
@@ -853,6 +864,13 @@
         filtered = mergedList.filter(p => p.category === 'broadcasters_mcs' || p.category === 'anchors_journalists');
       } else if (currentFilter === 'medical_professionals') {
         filtered = mergedList.filter(p => p.category === 'medical_professionals');
+      } else if (currentFilter === 'politics_policy') {
+        filtered = mergedList.filter(p => p.category === 'politics_policy');
+      } else if (currentFilter === 'science_nobel') {
+        filtered = mergedList.filter(p => p.category === 'science_nobel');
+      } else if (currentFilter === 'clusters') {
+        renderClusterView();
+        return;
       }
 
       if (q) {
@@ -870,6 +888,32 @@
       }
 
       renderPeople(filtered);
+    }
+
+    function renderClusterView() {
+      const grid = document.getElementById('personGrid');
+      const cl = window.peopleClustersData;
+      if (!cl) {
+        grid.innerHTML = '<p style="padding:24px; color:#64748b;">클러스터 데이터를 불러오는 중입니다.</p>';
+        return;
+      }
+      const renderGroup = (title, items) => `
+        <div style="grid-column:1/-1; margin:16px 0 8px; font-weight:800; font-size:16px; color:#0f172a;">${title}</div>
+        ${(items || []).slice(0, 30).map(c => `
+          <div class="person-card" style="padding:16px; cursor:pointer;" onclick="document.getElementById('searchInput').value='${c.cluster.replace(/'/g, "\\'")}'; filterCategory('all');">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <strong style="font-size:14px; color:#0f172a;">${c.cluster}</strong>
+              <span class="person-category-badge">${c.count}명</span>
+            </div>
+            <div style="font-size:12px; color:#475569; line-height:1.5;">
+              ${(c.members || []).slice(0, 6).map(m => m.name).join(', ')}
+            </div>
+          </div>
+        `).join('')}
+      `;
+      grid.innerHTML =
+        renderGroup(`🎓 학연 클러스터 Top 30 (전체 ${(cl.alumni_clusters_total || 0).toLocaleString()}개)`, cl.alumni_clusters) +
+        renderGroup(`📍 지연(출생지) 클러스터 Top 30 (전체 ${(cl.regional_clusters_total || 0).toLocaleString()}개)`, cl.regional_clusters);
     }
 
     function switchCardTab(personId, tabKey, btn) {

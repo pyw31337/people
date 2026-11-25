@@ -24,6 +24,7 @@ jobs:
       - name: Collect source evidence
         run: |
           python3 scripts/medical_professionals_collector.py
+          python3 scripts/global_people_wikidata_collector.py
           python3 scripts/record_observability.py
 
       - name: Commit & Push Incremental Data

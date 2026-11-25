@@ -1,23 +1,23 @@
 {
   "schema": "lets_observability_v1",
-  "run_id": "people-20261125T031558Z",
-  "observed_at": "2026-11-25T03:15:58.644961+00:00",
+  "run_id": "people-20261125T050740Z",
+  "observed_at": "2026-11-25T05:07:40.294155+00:00",
   "service_id": "people",
-  "source": "wikipedia_category_feed",
+  "source": "wikidata_wikipedia_elite_pipeline",
   "stages": {
     "collect": {
       "status": "success",
-      "ok": 206,
+      "ok": 21710,
       "artifact": true
     },
     "analyze": {
-      "status": "not_started",
-      "ok": null
+      "status": "observed",
+      "ok": 3076
     },
     "quality": {
       "status": "success",
       "quality_issue_count": 0,
-      "detail": "unique page identifiers"
+      "detail": "unique verified people & clusters"
     },
     "publish": {
       "status": "success",
@@ -25,13 +25,16 @@
     }
   },
   "counts": {
-    "records": 206,
+    "records": 21710,
     "politicians": 50,
     "medical_professionals": 156,
-    "increment": 156
+    "with_photo": 2051,
+    "alumni_clusters": 1864,
+    "regional_clusters": 1212,
+    "increment": 21504
   },
   "artifacts": {
-    "raw": "1fc950ba8782795789cd7784f3f83e291eda313da6e0665a971c0adb99826c70"
+    "raw": "40879f5cefbd5dd683fbb47270ea138a98ec925a0f5bf3a8958d6a37e27a3358"
   },
-  "note": "Wikipedia South Korean politicians & medical professionals snapshot."
+  "note": "Wikidata global notables, Wikipedia Korean medical/political figures, and elite network clusters."
 }
