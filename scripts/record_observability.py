@@ -26,13 +26,21 @@ raw_path = ROOT / "data" / "raw" / "wikipedia_south_korean_politicians.json"
 raw_path.parent.mkdir(parents=True, exist_ok=True)
 raw_path.write_bytes(raw_bytes + b"\n")
 out = ROOT / "data" / "observability" / "latest.json"
+med_path = ROOT / "data" / "medical_professionals_db.json"
+med_count = 0
+if med_path.exists():
+    try:
+        med_count = int(json.loads(med_path.read_text(encoding="utf-8")).get("total_medical_indexed") or 0)
+    except (OSError, json.JSONDecodeError, ValueError):
+        med_count = 0
+total_records = len(records) + med_count
 prev_records = None
 if out.exists():
     try:
         prev_records = (json.loads(out.read_text(encoding="utf-8")).get("counts") or {}).get("records")
     except (OSError, json.JSONDecodeError):
         pass
-increment = max(0, len(records) - int(prev_records)) if isinstance(prev_records, (int, float)) else 0
+increment = max(0, total_records - int(prev_records)) if isinstance(prev_records, (int, float)) else 0
 payload = {
     "schema": "lets_observability_v1",
     "run_id": f"people-{now.strftime('%Y%m%dT%H%M%SZ')}",
@@ -40,14 +48,14 @@ payload = {
     "service_id": "people",
     "source": "wikipedia_category_feed",
     "stages": {
-        "collect": {"status": "success", "ok": len(records), "artifact": True},
+        "collect": {"status": "success", "ok": total_records, "artifact": True},
         "analyze": {"status": "not_started", "ok": None},
         "quality": {"status": "success", "quality_issue_count": 0, "detail": "unique page identifiers"},
         "publish": {"status": "success", "artifact": True},
     },
-    "counts": {"records": len(records), "increment": increment},
+    "counts": {"records": total_records, "politicians": len(records), "medical_professionals": med_count, "increment": increment},
     "artifacts": {"raw": hashlib.sha256(raw_bytes).hexdigest()},
-    "note": "Wikipedia South Korean politicians category snapshot.",
+    "note": "Wikipedia South Korean politicians & medical professionals snapshot.",
 }
 out.parent.mkdir(parents=True, exist_ok=True)
 out.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

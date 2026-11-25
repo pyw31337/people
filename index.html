@@ -569,6 +569,7 @@
       <button class="cat-tab-btn" onclick="filterCategory('historical_masters')">🎨 역사적 거장·미술·문학</button>
       <button class="cat-tab-btn" onclick="filterCategory('broadcasters_mcs')">🎙️ 방송인·MC·크리에이터</button>
       <button class="cat-tab-btn" onclick="filterCategory('culture')">🎭 영화·뮤지컬·K-POP</button>
+      <button class="cat-tab-btn" onclick="filterCategory('medical_professionals')">🩺 의료인 (의사·간호사)</button>
     </div>
 
     <!-- People Cards Grid -->
@@ -747,7 +748,7 @@
 
     async function loadData() {
       try {
-        const [gRes, cRes, wRes, crRes, hRes, hmRes, dRes, masterRes] = await Promise.all([
+        const [gRes, cRes, wRes, crRes, hRes, hmRes, dRes, masterRes, medRes] = await Promise.all([
           fetch('data/global_media_people_db.json'),
           fetch('data/entertainment_culture_people_db.json'),
           fetch('data/filmography_works_master_db.json'),
@@ -755,7 +756,8 @@
           fetch('data/collection_health_pulse.json'),
           fetch('data/historical_artists_and_writers_db.json'),
           fetch('data/public_defaulters_people_db.json'),
-          fetch('data/master_people_dossier_db.json')
+          fetch('data/master_people_dossier_db.json'),
+          fetch('data/medical_professionals_db.json')
         ]);
 
         const gData = await gRes.json();
@@ -766,6 +768,7 @@
         const hmData = await hmRes.json();
         const dData = await dRes.json();
         const mData = masterRes.ok ? await masterRes.json() : { dossiers: [] };
+        const medData = medRes.ok ? await medRes.json() : { featured_medical_profiles: [] };
         
         masterDossierList = (mData.dossiers || mData.profiles || []).map(p => ({ ...p, dossier: ensurePersonDossier(p) }));
         globalList = (gData.featured_global_profiles || []).map(p => ({ ...p, dossier: ensurePersonDossier(p) }));
@@ -773,12 +776,13 @@
         creatorsList = (crData.featured_behind_and_front_profiles || []).map(p => ({ ...p, dossier: ensurePersonDossier(p) }));
         historicalList = (hmData.featured_masters || []).map(p => ({ ...p, dossier: ensurePersonDossier(p) }));
         defaultersList = (dData.profiles_sample || []).map(d => ({ ...d, category: 'tax_defaulters', dossier: ensurePersonDossier(d) }));
+        const medicalList = (medData.featured_medical_profiles || []).map(p => ({ ...p, dossier: ensurePersonDossier(p) }));
         worksDB = wData.works || [];
         
         // Merge without duplicate IDs
         const seen = new Set();
         mergedList = [];
-        [...masterDossierList, ...defaultersList, ...creatorsList, ...historicalList, ...cultureList, ...globalList].forEach(p => {
+        [...masterDossierList, ...defaultersList, ...medicalList, ...creatorsList, ...historicalList, ...cultureList, ...globalList].forEach(p => {
           p.name = p.name || p.name_kr || '인물';
           p.photo_webp = resolvePersonPhoto(p);
           const key = p.id || p.name;
@@ -847,6 +851,8 @@
         filtered = mergedList.filter(p => p.category === 'culture' || p.category === 'entertainment');
       } else if (currentFilter === 'broadcasters_mcs') {
         filtered = mergedList.filter(p => p.category === 'broadcasters_mcs' || p.category === 'anchors_journalists');
+      } else if (currentFilter === 'medical_professionals') {
+        filtered = mergedList.filter(p => p.category === 'medical_professionals');
       }
 
       if (q) {
@@ -1038,7 +1044,7 @@
                 <img class="avatar" src="${p.photo_webp}" alt="${p.name}" onerror="this.outerHTML='<div class=\'avatar-placeholder\'>👤</div>'">
               ` : `
                 <div class="avatar-placeholder">
-                  ${hasTax ? '⚖️' : (p.category === 'corporate' ? '🏢' : '👤')}
+                  ${hasTax ? '⚖️' : (p.category === 'corporate' ? '🏢' : (p.category === 'medical_professionals' ? '🩺' : '👤'))}
                 </div>
               `}
               <div class="person-info">

@@ -111,6 +111,9 @@ def run_ingest():
     print(f"  - 행안부·지자체 체납자: +{increment_defaulters}명 (총 {db_defaulters['summary']['total_defaulters_indexed']}명)")
 
     # 4. 자가진화 수집 품질 및 이상징후 자동 감시 실행
+    from medical_professionals_collector import collect_medical_professionals
+    med_res = collect_medical_professionals()
+    print(f"  - 의료인(의사·간호사 등): {med_res.get('total_medical_indexed', 0)}명 수집 완료")
     build_master_dossiers()
     run_health_check(total_daily)
 
