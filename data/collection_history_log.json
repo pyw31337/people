@@ -34,5 +34,10 @@
   {
     "date": "2026-11-20",
     "count": 625
+  },
+  {
+    "date": "2026-11-26",
+    "total_accumulated": 101206,
+    "storage_mb": 49.42
   }
 ]

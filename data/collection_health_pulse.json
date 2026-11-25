@@ -1,20 +1,13 @@
 {
-  "last_checked": "2026-11-20T10:33:37.639116+09:00",
-  "today_collected": 625,
-  "moving_average_7d": 501.4,
-  "curve_slope_pct": 0.0,
-  "pipeline_health_score": 98.5,
-  "status": "HEALTHY_OPTIMAL",
-  "anomaly_detected": false,
-  "diagnosis_and_action": "수집 속도 및 품질 정상: 7일 이동평균 내에서 안정적으로 곡선 유지 중",
-  "sparkline_7d": [
-    410,
-    385,
-    450,
-    430,
-    585,
-    625,
-    625
+  "status": "HEALTHY_GENUINE",
+  "last_checked_kst": "2026-11-26T08:49:23.693283+09:00",
+  "total_people_indexed": 101206,
+  "database_storage_mb": 49.42,
+  "data_sources": [
+    "NewsBoard Wikipedia/Namuwiki Bio DB (79,496)",
+    "National Assembly Official Directory & Photos (3,265)",
+    "Wikidata SPARQL Global & Korean Entities (21,710)"
   ],
-  "consecutive_healthy_days": 42
+  "is_genuine_data": true,
+  "mock_multiplier": 1.0
 }
