@@ -820,7 +820,14 @@
           document.getElementById('txtPulseStatus').innerHTML = `자가진화 감시망: ${hData.status} — DART 기업인 2,167명 & 고액 체납자 13,697명 크로스 매칭 완료 (무사고 ${hData.consecutive_healthy_days || 45}일)`;
         }
 
-        renderPeople(mergedList);
+        // Support ?q= query parameter from person.html cluster links
+        const urlQ = new URLSearchParams(location.search).get('q');
+        if (urlQ) {
+          document.getElementById('searchInput').value = urlQ;
+          applyFilters();
+        } else {
+          renderPeople(mergedList);
+        }
 
         // Enable tactile carousel drag/swipe
         if (window.LDS && typeof window.LDS.carousel === 'function') {
@@ -1098,6 +1105,7 @@
                     ${p.hanja ? `<span style="font-size:12px; font-weight:500; color:#64748b;">(${p.hanja})</span>` : ''}
                   </div>
                   <span class="person-category-badge">${p.category_kr || p.category || '인물'}</span>
+                  <a href="person.html?id=${encodeURIComponent(p.id)}" onclick="event.stopPropagation();" style="font-size:11px; color:#2563eb; font-weight:700; text-decoration:none; margin-left:6px;">프로파일 ↗</a>
                 </div>
                 <div class="person-role">
                   ${p.primary_role ? `<strong>${p.primary_role}</strong>` : (p.occupation || p.current_role || '')}

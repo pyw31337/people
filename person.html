@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>인물 상세 프로파일 — 렛츠피플 (Let's People)</title>
+  <link rel="stylesheet" href="css/lets-design-system.css">
+  <style>
+    :root { --bg:#f8fafc; --card:#ffffff; --border:#e2e8f0; --text:#0f172a; --muted:#64748b; --accent:#2563eb; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Segoe UI", sans-serif; background:var(--bg); color:var(--text); }
+    .topbar { background:#fff; border-bottom:1px solid var(--border); padding:14px 24px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:20; }
+    .topbar a { text-decoration:none; color:var(--accent); font-weight:700; font-size:14px; }
+    .container { max-width:980px; margin:28px auto; padding:0 18px 60px; }
+    .hero-card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:28px; display:flex; gap:24px; align-items:flex-start; box-shadow:0 4px 20px rgba(15,23,42,0.04); flex-wrap:wrap; }
+    .avatar-wrap { width:136px; height:136px; border-radius:16px; overflow:hidden; background:#e2e8f0; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:44px; font-weight:800; color:#475569; }
+    .avatar-wrap img { width:100%; height:100%; object-fit:cover; display:block; }
+    .hero-meta { flex:1; min-width:260px; }
+    .badge { display:inline-block; padding:4px 10px; border-radius:999px; font-size:12px; font-weight:700; background:#eff6ff; color:#1d4ed8; margin-right:6px; margin-bottom:6px; }
+    .badge-amber { background:#fef3c7; color:#b45309; }
+    .badge-green { background:#ecfdf5; color:#047857; }
+    h1 { margin:6px 0 8px; font-size:28px; letter-spacing:-0.02em; }
+    .desc { color:#334155; font-size:15px; line-height:1.6; margin:0 0 14px; }
+    .kv-row { display:flex; flex-wrap:wrap; gap:14px; font-size:13px; color:var(--muted); }
+    .kv-row strong { color:var(--text); }
+    .grid-2 { display:grid; grid-template-columns:repeat(auto-fit, minmax(290px, 1fr)); gap:18px; margin-top:20px; }
+    .section-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:20px; }
+    .section-card h2 { margin:0 0 12px; font-size:15px; color:#0f172a; border-bottom:1px solid #f1f5f9; padding-bottom:8px; }
+    .chip-list { display:flex; flex-wrap:wrap; gap:8px; }
+    .chip { background:#f1f5f9; color:#1e293b; padding:6px 11px; border-radius:8px; font-size:13px; text-decoration:none; font-weight:600; }
+    .chip:hover { background:#e2e8f0; }
+    .empty { color:#94a3b8; font-size:13px; }
+    .btn { display:inline-flex; align-items:center; gap:6px; padding:8px 14px; border-radius:8px; font-size:13px; font-weight:700; text-decoration:none; border:1px solid var(--border); background:#fff; color:var(--text); cursor:pointer; }
+    .btn-primary { background:var(--accent); color:#fff; border-color:var(--accent); }
+    .actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
+    pre { background:#0f172a; color:#e2e8f0; padding:14px; border-radius:10px; font-size:12px; overflow:auto; max-height:320px; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <a href="index.html">← 렛츠피플 전체 목록으로</a>
+    <span style="font-size:12px; color:#64748b; font-weight:700;">Let's People · 개별 인물 프로파일</span>
+  </div>
+
+  <div class="container" id="app">
+    <div class="section-card">인물 데이터를 불러오는 중입니다...</div>
+  </div>
+
+  <script>
+    function esc(v) {
+      return String(v ?? '').replace(/[&<>"']/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));
+    }
+    function bucketOf(id) {
+      let sum = 0;
+      for (let i = 0; i < id.length; i++) sum += id.charCodeAt(i);
+      return (sum % 64).toString(16).padStart(2, '0');
+    }
+    function chips(items, emptyMsg, linkToSearch = false) {
+      if (!items || !items.length) return `<span class="empty">${emptyMsg}</span>`;
+      return `<div class="chip-list">${items.map(item =>
+        linkToSearch
+          ? `<a class="chip" href="index.html?q=${encodeURIComponent(item)}">${esc(item)}</a>`
+          : `<span class="chip">${esc(item)}</span>`
+      ).join('')}</div>`;
+    }
+
+    async function main() {
+      const params = new URLSearchParams(location.search);
+      const id = params.get('id') || 'wd-Q76';
+      const app = document.getElementById('app');
+      try {
+        const res = await fetch(`data/profiles/${bucketOf(id)}.json`, { cache: 'no-store' });
+        if (!res.ok) throw new Error('샤드 파일을 찾을 수 없습니다.');
+        const shard = await res.json();
+        const p = (shard.profiles || {})[id];
+        if (!p) {
+          app.innerHTML = `<div class="section-card"><h2>인물을 찾을 수 없습니다</h2><p class="empty">요청한 ID(${esc(id)})에 해당하는 레코드가 없습니다.</p><a class="btn" href="index.html">목록으로 돌아가기</a></div>`;
+          return;
+        }
+        document.title = `${p.name} — 렛츠피플 프로파일`;
+        const fam = p.family || {};
+        const famRows = [
+          ...(fam.father || []).map(x => `부: ${x}`),
+          ...(fam.mother || []).map(x => `모: ${x}`),
+          ...(fam.spouse || []).map(x => `배우자: ${x}`),
+          ...(Array.isArray(fam.members) ? fam.members.map(m => typeof m === 'string' ? m : (m.name || JSON.stringify(m))) : [])
+        ];
+        const avatar = p.photo_url
+          ? `<img src="${esc(p.photo_url)}" alt="${esc(p.name)}" onerror="this.parentElement.textContent='${esc((p.name || '?')[0])}'">`
+          : esc((p.name || '?')[0]);
+
+        app.innerHTML = `
+          <div class="hero-card">
+            <div class="avatar-wrap">${avatar}</div>
+            <div class="hero-meta">
+              <div>
+                <span class="badge">${esc(p.category_kr || p.category)}</span>
+                <span class="badge badge-green">출처: ${esc(p.source)}</span>
+                ${p.sitelinks ? `<span class="badge badge-amber">글로벌 미디어 노출 지수 ${Number(p.sitelinks).toLocaleString()}</span>` : ''}
+              </div>
+              <h1>${esc(p.name)}</h1>
+              <p class="desc">${esc(p.description || '상세 설명이 아직 등록되지 않았습니다.')}</p>
+              <div class="kv-row">
+                <div>소속/기관: <strong>${esc(p.primary_org || '미상')}</strong></div>
+                <div>직책/역할: <strong>${esc(p.primary_role || '미상')}</strong></div>
+                <div>국적: <strong>${esc(p.country || '미상')}</strong></div>
+                <div>생몰: <strong>${esc(p.birth_date || '?')}${p.death_date ? ` ~ ${esc(p.death_date)}` : ''}</strong></div>
+              </div>
+              <div class="actions">
+                ${p.wikipedia_url ? `<a class="btn btn-primary" href="${esc(p.wikipedia_url)}" target="_blank" rel="noopener">Wikipedia 원문 ↗</a>` : ''}
+                ${p.wikiquote_url ? `<a class="btn" href="${esc(p.wikiquote_url)}" target="_blank" rel="noopener">Wikiquote 발언/어록 ↗</a>` : ''}
+                <button class="btn" onclick="navigator.clipboard?.writeText(location.href); this.textContent='링크 복사됨 ✓';">프로파일 URL 복사</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="section-card">
+              <h2>🎓 학연 (출신 학교 클러스터)</h2>
+              ${chips(p.educations, '수집된 학력 정보 없음', true)}
+            </div>
+            <div class="section-card">
+              <h2>📍 지연 (출생지·연고 클러스터)</h2>
+              ${chips(p.birth_places, '수집된 출생지 정보 없음', true)}
+            </div>
+            <div class="section-card">
+              <h2>💼 경력·직업</h2>
+              ${chips(p.occupations, '수집된 직업 정보 없음', false)}
+            </div>
+            <div class="section-card">
+              <h2>👨‍👩‍👧‍👦 가족·인척 관계</h2>
+              ${chips(famRows, '수집된 가족 정보 없음', false)}
+            </div>
+            <div class="section-card">
+              <h2>🏆 수상·서훈 이력</h2>
+              ${chips(p.awards, '수집된 수상 이력 없음', false)}
+            </div>
+            <div class="section-card" id="s-q" style="grid-column:1/-1;">
+              <h2>💬 발언·미디어 노출 (#s-q)</h2>
+              <p class="desc" style="margin-bottom:10px;">
+                ${p.wikiquote_url ? `Wikiquote에 공식 발언·어록이 등재되어 있습니다.` : `글로벌 미디어 노출 지수 ${Number(p.sitelinks || 0).toLocaleString()}개 언어판 기준 인물입니다.`}
+              </p>
+              <div class="actions" style="margin-top:0;">
+                ${p.wikiquote_url ? `<a class="btn btn-primary" href="${esc(p.wikiquote_url)}" target="_blank" rel="noopener">Wikiquote 발언·어록 보기 ↗</a>` : ''}
+                ${p.id && p.id.startsWith('wd-') ? `<a class="btn" href="https://pyw31337.github.io/news/person/?id=${encodeURIComponent('wd:' + p.id.slice(3))}#s-q" target="_blank" rel="noopener">NewsBoard 발언 타임라인 연동 ↗</a>` : ''}
+              </div>
+            </div>
+            <div class="section-card">
+              <h2>🗂️ 원시 원장 데이터</h2>
+              <pre>${esc(JSON.stringify(p, null, 2))}</pre>
+            </div>
+          </div>
+        `;
+      } catch (err) {
+        app.innerHTML = `<div class="section-card"><h2>로딩 오류</h2><p class="empty">${esc(err.message)}</p></div>`;
+      }
+    }
+    main();
+  </script>
+</body>
+</html>

@@ -440,6 +440,46 @@ def build_clusters_and_exports(conn: sqlite3.Connection, now_iso: str) -> dict:
     (DATA / "global_people_catalog.json").write_text(
         json.dumps(catalog_payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
+
+    # Export 64 sharded JSON files (data/profiles/00.json .. 3f.json) so every
+    # single one of the 21,710+ people has an instant person.html?id=... page.
+    profiles_dir = DATA / "profiles"
+    profiles_dir.mkdir(parents=True, exist_ok=True)
+    buckets: dict[str, dict[str, dict]] = defaultdict(dict)
+    for row in rows:
+        (
+            pid, name, source, cat, cat_kr, desc, photo, birth, death,
+            country, org, role, sitelinks, wiki_url, quote_url,
+            edus_j, bps_j, fam_j, awards_j, occs_j,
+        ) = row
+        bucket_key = f"{sum(ord(c) for c in pid) % 64:02x}"
+        buckets[bucket_key][pid] = {
+            "id": pid,
+            "name": name,
+            "source": source,
+            "category": cat,
+            "category_kr": cat_kr,
+            "description": desc,
+            "photo_url": photo,
+            "birth_date": birth,
+            "death_date": death,
+            "country": country,
+            "primary_org": org,
+            "primary_role": role,
+            "sitelinks": sitelinks,
+            "wikipedia_url": wiki_url,
+            "wikiquote_url": quote_url,
+            "educations": json.loads(edus_j or "[]"),
+            "birth_places": json.loads(bps_j or "[]"),
+            "family": json.loads(fam_j or "{}"),
+            "awards": json.loads(awards_j or "[]"),
+            "occupations": json.loads(occs_j or "[]"),
+        }
+    for bkey, bmap in buckets.items():
+        (profiles_dir / f"{bkey}.json").write_text(
+            json.dumps({"bucket": bkey, "count": len(bmap), "profiles": bmap}, ensure_ascii=False) + "\n",
+            encoding="utf-8",
+        )
     return clusters_payload
 
 

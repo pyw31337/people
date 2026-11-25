@@ -1,6 +1,6 @@
 {
   "schema": "lets_people_global_catalog_v1",
-  "last_updated": "2026-11-25T14:04:25.769225+09:00",
+  "last_updated": "2026-11-25T14:17:50.414234+09:00",
   "source": "Wikidata SPARQL + wbgetentities + Elite Network + Medical DB",
   "total_indexed_people": 21710,
   "with_photo_count": 2051,
