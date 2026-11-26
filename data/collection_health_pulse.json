@@ -1,8 +1,8 @@
 {
   "status": "HEALTHY_GENUINE",
-  "last_checked_kst": "2026-11-26T08:49:23.693283+09:00",
-  "total_people_indexed": 101206,
-  "database_storage_mb": 49.42,
+  "last_checked_kst": "2026-11-26T11:34:50.616793+09:00",
+  "total_people_indexed": 102774,
+  "database_storage_mb": 51.65,
   "data_sources": [
     "NewsBoard Wikipedia/Namuwiki Bio DB (79,496)",
     "National Assembly Official Directory & Photos (3,265)",

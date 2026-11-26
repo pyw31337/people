@@ -1,18 +1,18 @@
 {
   "schema": "lets_observability_v1",
-  "run_id": "people-20261125T050740Z",
-  "observed_at": "2026-11-25T05:07:40.294155+00:00",
+  "run_id": "people-20261126T023450Z",
+  "observed_at": "2026-11-26T02:34:50.659495+00:00",
   "service_id": "people",
   "source": "wikidata_wikipedia_elite_pipeline",
   "stages": {
     "collect": {
       "status": "success",
-      "ok": 21710,
+      "ok": 102774,
       "artifact": true
     },
     "analyze": {
       "status": "observed",
-      "ok": 3076
+      "ok": 10873
     },
     "quality": {
       "status": "success",
@@ -25,16 +25,16 @@
     }
   },
   "counts": {
-    "records": 21710,
+    "records": 102774,
     "politicians": 50,
     "medical_professionals": 156,
-    "with_photo": 2051,
-    "alumni_clusters": 1864,
-    "regional_clusters": 1212,
-    "increment": 21504
+    "with_photo": 3498,
+    "alumni_clusters": 1637,
+    "regional_clusters": 9236,
+    "increment": 81064
   },
   "artifacts": {
-    "raw": "40879f5cefbd5dd683fbb47270ea138a98ec925a0f5bf3a8958d6a37e27a3358"
+    "raw": "fa2b9bc7c5f47932da18b2684ceaf241f077b3b0c5fbd502e70d49333db28dc6"
   },
   "note": "Wikidata global notables, Wikipedia Korean medical/political figures, and elite network clusters."
 }
