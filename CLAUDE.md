@@ -24,7 +24,24 @@
 
 ---
 
-## 2. 진정 실데이터 수집 및 허수(가짜 카운트/모의 헬스체크) 영구 금지 (RULE #75 — IMMUTABLE)
+## 2. 외장하드 우선 저장 및 1-클릭 이관 표준 (RULE #78 — IMMUTABLE)
+
+맥미니(M2)에서 집 아이맥(M1) 또는 다른 기기로 손쉽게 작업 환경과 데이터를 무손실 이관할 수 있도록 다음 규칙을 엄격히 적용합니다:
+
+1. **외장하드 우선 적재 (External Vault First)**:
+   - 모든 대용량 원천 데이터(수집된 원본 파일, SQLite DB 스냅샷, 아카이브 번들)는 맥미니 내장 SSD에 단독 보관하지 않고, 외장하드 통일 경로인 **`/Volumes/My Passport for Mac/LETS_DATA_VAULT/`** 에 실시간 미러링·우선 저장한다.
+   - 외장하드 표준 디렉터리 구조:
+     - `/Volumes/My Passport for Mac/LETS_DATA_VAULT/services/<service_name>/data/` (원천 DB)
+     - `/Volumes/My Passport for Mac/LETS_DATA_VAULT/backups/` (단일 번들 아카이브)
+     - `/Volumes/My Passport for Mac/LETS_DATA_VAULT/manifests/` (무결성 검증 매니페스트)
+2. **동기화 파이프라인 필수 실행**:
+   - 대량 데이터 수집 및 온톨로지 빌드가 완료될 때마다 `python3 scripts/migration/sync_to_external_vault.py`를 호출하여 외장하드와 로컬의 동기화 상태를 100% 일치시킨다.
+3. **1-클릭 무손실 이전 원칙**:
+   - 기기 교체 시 외장하드만 분리하여 새 아이맥(M1)에 연결하면, `python3 scripts/migration/import_ecosystem_backup.py` 1회 실행으로 추가 설정 없이 즉시 전체 서비스가 가동되어야 한다.
+
+---
+
+## 3. 진정 실데이터 수집 및 허수(가짜 카운트/모의 헬스체크) 영구 금지 (RULE #75 — IMMUTABLE)
 
 1. **가짜 증분 코드 금지**:
    - `increment = 168`이나 `db["count"] += 420`과 같이 실제 API 호출이나 파일 다운로드 없이 정수를 덧셈하는 가짜 카운터는 절대 작성하거나 방치하지 않는다.
@@ -32,28 +49,28 @@
    - `pipeline_health_score: 98.5`, `consecutive_healthy_days: 42` 등을 하드코딩으로 찍어내는 스크립트는 원천 금지한다.
    - 모든 모니터링 수치는 **실제 SQLite 레코드 수(`SELECT count(*)`), 실제 JSON 파일 크기, 실제 성공한 API 건수**를 기반으로 실측(True Observability)하여 발행해야 한다.
 3. **단일 진실 소스(Single Source of Truth) 원칙**:
-   - 서비스 간 중복 수집을 지양하고, 뉴스보드의 7.9만명 인물 DB(`people_bio.json`) 및 국회 공식 사진(3,265장)과 같이 이미 확보된 고품질 실데이터는 정규 동기화 파이프라인을 통해 서비스 간 공유한다.
+   - 서비스 간 중복 수집을 지양하고, 이미 확보된 고품질 실데이터는 정규 동기화 파이프라인을 통해 서비스 간 공유한다.
 
 ---
 
-## 3. 일일 점진적 실데이터 누적 및 파이프라인 관리 (RULE #76)
+## 4. 일일 점진적 실데이터 누적 및 파이프라인 관리 (RULE #76)
 
 1. **안전한 일일 누적(Daily Cadence)**:
-   - 외부 기관(공공데이터포털, 금감원 DART, 법제처, 박물관, Wikidata 등)의 Rate Limit(초당 5~10회)을 준수하며 매일 허용 가능한 범위(일일 500~2,000건) 내에서 안정적으로 수집을 누적한다.
+   - 외부 기관(공공데이터포털, 금감원 DART, 법제처, 박물관, Wikidata 등)의 Rate Limit을 준수하며 매일 허용 가능한 범위 내에서 안정적으로 수집을 누적한다.
 2. **체크포인트 기반 중단 없는 수집**:
    - 모든 수집기는 `last_synced_id` 또는 타임스탬프를 보관하여, 장애 발생 시 직전 지점부터 즉시 재개할 수 있는 멱등성(Idempotency)을 유지한다.
-3. **일일 모니터링 로그 기록**:
-   - 매일 수집 완료 시 `data/collection_history_log.json` 및 `data/collection_health_pulse.json`에 `actual_added_count`, `total_db_records`, `storage_mb`, `is_genuine_data: true`를 기록한다.
+3. **24/7 센티널 가디언 감시**:
+   - `scripts/guardian/sentinel_guardian.py`를 통해 DB 손상, 프로세스 중단, Rate Limit 이상징후를 자동 감시하고 복구한다.
 
 ---
 
-## 4. 카테고리별 데이터 구조화 및 프론트엔드 연계 (RULE #77)
+## 5. 카테고리별 데이터 구조화 및 프론트엔드 연계 (RULE #77)
 
 1. **분야별 데이터 분류 체계 유지**:
    - **피플 (`people`)**: 정치·행정, 기업·경제, 법조·사법, 문화·예술, 사회·공공, 학술·연구, 의료·보건
    - **인슈 (`insu`)**: 실손의료비(1~4세대), 3대진단비(암/뇌/심장), 일상생활배상책임(누수/대물), 자동차/운전자, 치매/간병
    - **로 (`law`)**: 헌법·선거, 형사·반부패, 민사·부동산, 노동·산업안전, 행정·조세, 가사·상속, 교통·손해배상, IT·지식재산
-   - **에셋 (`asset`)**: DART 5% 대량보유, 임원·주요주주 소유주식, 최대주주 지배구조, 글로벌 빌리어네어, SEC 13F 포트폴리오
+   - **에셋 (`asset`)**: DART 5% 대량보유, 임원·주요주주 소유주식, 최대주주 지배구조, 글로벌 빌리어네어, KRX 상장사 유니버스
    - **아트 (`art`)**: 계절별(봄/여름/가을/겨울), 테마별(사랑/밤/미스터리/혁명/고독/자연/한국미), 사조별(르네상스/바로크/인상주의/현대)
 2. **서비스 즉시 활용성(Production-Ready)**:
    - 수집된 원천 DB에서 웹 서비스가 0.1초 내로 렌더링할 수 있도록 경량화된 요약 JSON(`master_dossier_db.json`, `fast_search_index.json` 등)을 수집 완료 시점에 자동 생성·배포한다.
