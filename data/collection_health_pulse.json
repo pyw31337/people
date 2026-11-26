@@ -1,13 +1,9 @@
 {
   "status": "HEALTHY_GENUINE",
-  "last_checked_kst": "2026-11-26T11:34:50.616793+09:00",
-  "total_people_indexed": 102774,
-  "database_storage_mb": 51.65,
-  "data_sources": [
-    "NewsBoard Wikipedia/Namuwiki Bio DB (79,496)",
-    "National Assembly Official Directory & Photos (3,265)",
-    "Wikidata SPARQL Global & Korean Entities (21,710)"
-  ],
+  "last_checked_kst": "2026-11-26T18:04:26.137165+09:00",
+  "total_people_indexed": 102928,
+  "daily_added_count": 154,
+  "database_storage_mb": 51.73,
   "is_genuine_data": true,
-  "mock_multiplier": 1.0
+  "rule_74_media_compliant": true
 }

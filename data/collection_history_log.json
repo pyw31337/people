@@ -39,5 +39,11 @@
     "date": "2026-11-26",
     "total_accumulated": 102774,
     "storage_mb": 51.65
+  },
+  {
+    "date": "2026-11-26",
+    "actual_added_count": 154,
+    "total_accumulated": 102928,
+    "timestamp": "2026-11-26T18:04:26.137165+09:00"
   }
 ]
