@@ -1,9 +1,7 @@
 {
   "status": "HEALTHY_GENUINE",
-  "last_checked_kst": "2026-11-26T18:04:26.137165+09:00",
-  "total_people_indexed": 102928,
-  "daily_added_count": 154,
-  "database_storage_mb": 51.73,
-  "is_genuine_data": true,
-  "rule_74_media_compliant": true
+  "last_checked_kst": "2026-11-27T08:30:17.943122+09:00",
+  "total_people_indexed": 103092,
+  "recently_added_count": 164,
+  "is_genuine_data": true
 }

@@ -1,6 +1,6 @@
 {
   "schema": "lets_people_medical_v1",
-  "last_updated": "2026-11-26T11:33:47.524446+09:00",
+  "last_updated": "2026-11-27T08:25:34.328876+09:00",
   "source": "ko/en.wikipedia.org API",
   "total_medical_indexed": 156,
   "breakdown": {
@@ -1340,7 +1340,7 @@
       "photo_webp": "",
       "profile_summary": "하영수(河英洙)는 대한민국의 간호학자이다. 1999년 플로렌스 나이팅게일 기장을 받았다.",
       "source_url": "https://ko.wikipedia.org/wiki/%ED%95%98%EC%98%81%EC%88%98",
-      "touched": "2026-11-16T19:47:12Z"
+      "touched": "2026-11-26T23:19:29Z"
     },
     {
       "id": "med-nurses-3650318",
@@ -1354,7 +1354,7 @@
       "photo_webp": "",
       "profile_summary": "한국의 플로렌스 나이팅게일 기장 수상자 목록은 다음과 같다.",
       "source_url": "https://ko.wikipedia.org/wiki/%ED%95%9C%EA%B5%AD%EC%9D%98_%ED%94%8C%EB%A1%9C%EB%A0%8C%EC%8A%A4_%EB%82%98%EC%9D%B4%ED%8C%85%EA%B2%8C%EC%9D%BC_%EA%B8%B0%EC%9E%A5_%EC%88%98%EC%83%81%EC%9E%90_%EB%AA%A9%EB%A1%9D",
-      "touched": "2026-11-17T09:25:26Z"
+      "touched": "2026-11-26T23:20:06Z"
     },
     {
       "id": "med-oriental_doctors-1405728",
