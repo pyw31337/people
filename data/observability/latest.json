@@ -1,7 +1,7 @@
 {
   "schema": "lets_observability_v1",
-  "run_id": "people-20261126T023450Z",
-  "observed_at": "2026-11-26T02:34:50.659495+00:00",
+  "run_id": "people-20261127T023407Z",
+  "observed_at": "2026-11-27T02:34:07.222753+00:00",
   "service_id": "people",
   "source": "wikidata_wikipedia_elite_pipeline",
   "stages": {
@@ -31,10 +31,10 @@
     "with_photo": 3498,
     "alumni_clusters": 1637,
     "regional_clusters": 9236,
-    "increment": 81064
+    "increment": 0
   },
   "artifacts": {
-    "raw": "fa2b9bc7c5f47932da18b2684ceaf241f077b3b0c5fbd502e70d49333db28dc6"
+    "raw": "ee3672f52d87b41dfdc111bbd9e121d9cc93805fb223421766da7a4ea54475e5"
   },
   "note": "Wikidata global notables, Wikipedia Korean medical/political figures, and elite network clusters."
 }
